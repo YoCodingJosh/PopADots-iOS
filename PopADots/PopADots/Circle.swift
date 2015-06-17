@@ -24,7 +24,8 @@ class Circle : SKShapeNode {
         super.init()
         
         self.radius = Utils.scaleRadius();
-        self.fillColor = SKColor.greenColor() // Needs to be random.
+        self.fillColor = Utils.getColor()
+        self.strokeColor = SKColor.clearColor()
         self.position.x = Utils.scaleXPos()
         self.position.y = Utils.scaleYPos()
         

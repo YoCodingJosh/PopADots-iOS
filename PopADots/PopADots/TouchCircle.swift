@@ -16,10 +16,10 @@ class TouchCircle : Circle {
     var velocity = (xVel: CGFloat(0.0), yVel: CGFloat(0.0))
     
     var active: Bool = false
+    var touchable: Bool = false
     
     override init() {
         self.velocity = Utils.scaleVelocity(false)
-        print("velocity is: \(self.velocity)\n")
         super.init()
     }
     
@@ -61,7 +61,21 @@ class TouchCircle : Circle {
         self.position.y += velocity.yVel
     }
     
-    func checkTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool{
+    func checkTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
+        if (!self.touchable) {
+            return false
+        }
+        
+        print("not implemented :P")
+        
         return false
+    }
+    
+    func checkTouch(touch: CGPoint) -> Bool {
+        if (!self.touchable) {
+            return false
+        }
+        
+        return ((touch.x - self.position.x) * (touch.x - self.position.x)) + ((touch.y - self.position.y) * (touch.y - self.position.y)) < ((self.radius * self.radius));
     }
 }

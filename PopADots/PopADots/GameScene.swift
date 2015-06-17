@@ -8,31 +8,35 @@
 
 import SpriteKit
 
+enum GameState {
+    case MainMenu, ClassicMode, ArcadeMode, VoidsMode
+}
+
 class GameScene: SKScene {
+    var numCircles:UInt32 = 10
     var circles:Array<TouchCircle>? = Array<TouchCircle>()
     
+    var gameState: GameState = GameState.MainMenu;
+    
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        /*
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
-        self.addChild(myLabel)
-        */
-        
         self.scene?.backgroundColor = SKColor.whiteColor()
         
-        let tempCircle: TouchCircle = TouchCircle()
-        tempCircle.active = true
-        
-        self.circles?.append(tempCircle)
-        self.addChild(tempCircle)
+        self.generateCircles()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
+        /* Called when a touch begins */
+        
+        // We only want one touch (unless we want multi-touch)
+        let myTouch: UITouch = touches.first!
+        let touchLocation = myTouch.locationInNode(self)
+        
+        for var i = 0; i < self.circles!.count; ++i {
+            if self.circles?[i].checkTouch(touchLocation) == true {
+                self.circles?[i].removeFromParent()
+                self.circles?.removeAtIndex(i)
+            }
+        }
         
         /*
         for touch in touches {
@@ -57,6 +61,21 @@ class GameScene: SKScene {
         /* Called before each frame is rendered */
         for var i = 0; i < self.circles!.count; ++i {
             self.circles?[i].update(currentTime)
+        }
+        
+        if self.circles!.count == 0 {
+            generateCircles()
+        }
+    }
+    
+    func generateCircles() {
+        for var i:UInt32 = 0; i < self.numCircles; ++i {
+            let tempCircle: TouchCircle = TouchCircle()
+            tempCircle.active = true
+            tempCircle.touchable = true
+            
+            self.circles?.append(tempCircle)
+            self.addChild(tempCircle)
         }
     }
 }

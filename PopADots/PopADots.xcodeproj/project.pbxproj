@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C065D451B3091D8001A4CF3 /* ClassicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C065D441B3091D8001A4CF3 /* ClassicScene.swift */; };
 		5C5FE2D51B2A35530029EC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D41B2A35530029EC23 /* AppDelegate.swift */; };
 		5C5FE2D71B2A35530029EC23 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D61B2A35530029EC23 /* GameScene.sks */; };
 		5C5FE2D91B2A35530029EC23 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D81B2A35530029EC23 /* GameScene.swift */; };
@@ -21,9 +22,12 @@
 		5CB6AE5E1B2A8C96009D5CA7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB6AE5C1B2A8C96009D5CA7 /* Fabric.framework */; };
 		5CB6AE5F1B2A8C96009D5CA7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB6AE5D1B2A8C96009D5CA7 /* Crashlytics.framework */; };
 		5CB6AE611B2B3D9E009D5CA7 /* TouchCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6AE601B2B3D9E009D5CA7 /* TouchCircle.swift */; };
+		5CE2AF4D1B30CA2C005C2989 /* ClassicScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5CE2AF4C1B30CA2C005C2989 /* ClassicScene.sks */; };
+		5CE66C3E1B31D78E0078B9A5 /* MenuCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE66C3D1B31D78E0078B9A5 /* MenuCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C065D441B3091D8001A4CF3 /* ClassicScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassicScene.swift; sourceTree = "<group>"; };
 		5C5FE2D11B2A35530029EC23 /* PopADots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopADots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C5FE2D41B2A35530029EC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C5FE2D61B2A35530029EC23 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -40,6 +44,8 @@
 		5CB6AE5C1B2A8C96009D5CA7 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		5CB6AE5D1B2A8C96009D5CA7 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		5CB6AE601B2B3D9E009D5CA7 /* TouchCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchCircle.swift; sourceTree = "<group>"; };
+		5CE2AF4C1B30CA2C005C2989 /* ClassicScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ClassicScene.sks; sourceTree = "<group>"; };
+		5CE66C3D1B31D78E0078B9A5 /* MenuCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCircle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,9 @@
 				5C5FE2EA1B2A785F0029EC23 /* Circle.swift */,
 				5C5FE2EC1B2A7E520029EC23 /* Utils.swift */,
 				5CB6AE601B2B3D9E009D5CA7 /* TouchCircle.swift */,
+				5C065D441B3091D8001A4CF3 /* ClassicScene.swift */,
+				5CE2AF4C1B30CA2C005C2989 /* ClassicScene.sks */,
+				5CE66C3D1B31D78E0078B9A5 /* MenuCircle.swift */,
 			);
 			path = PopADots;
 			sourceTree = "<group>";
@@ -165,6 +174,7 @@
 				5C5FE2D71B2A35530029EC23 /* GameScene.sks in Resources */,
 				5C5FE2E31B2A35530029EC23 /* LaunchScreen.storyboard in Resources */,
 				5C5FE2E01B2A35530029EC23 /* Assets.xcassets in Resources */,
+				5CE2AF4D1B30CA2C005C2989 /* ClassicScene.sks in Resources */,
 				5C5FE2DE1B2A35530029EC23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,7 +204,9 @@
 			files = (
 				5C5FE2ED1B2A7E520029EC23 /* Utils.swift in Sources */,
 				5C5FE2D91B2A35530029EC23 /* GameScene.swift in Sources */,
+				5CE66C3E1B31D78E0078B9A5 /* MenuCircle.swift in Sources */,
 				5C5FE2EB1B2A785F0029EC23 /* Circle.swift in Sources */,
+				5C065D451B3091D8001A4CF3 /* ClassicScene.swift in Sources */,
 				5C5FE2DB1B2A35530029EC23 /* GameViewController.swift in Sources */,
 				5C5FE2D51B2A35530029EC23 /* AppDelegate.swift in Sources */,
 				5CB6AE611B2B3D9E009D5CA7 /* TouchCircle.swift in Sources */,
