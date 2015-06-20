@@ -40,7 +40,7 @@ class Utils {
     }
     
     static func getTempScalar() -> CGFloat {
-        return (getScreenResolution().width / 1280) // We'll probably need to change from 1280.
+        return (getScreenResolution().width / 1280)
     }
     
     static func getScreenScalar() -> CGFloat {
@@ -155,5 +155,11 @@ class Utils {
         }
         
         return myColor
+    }
+    
+    static func getScaledFontSize(size: CGFloat) -> CGFloat {
+        let dim: CGFloat = (self.getScreenResolution().width / size)
+        
+        return 1.3 * dim
     }
 }

@@ -15,22 +15,36 @@ class TouchCircle : Circle {
      */
     var velocity = (xVel: CGFloat(0.0), yVel: CGFloat(0.0))
     
+    var backgroundCircle: Circle?
+    
     var active: Bool = false
     var touchable: Bool = false
     
     override init() {
         self.velocity = Utils.scaleVelocity(false)
         super.init()
+        
+        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: self.position, color: UIColor.blackColor())
+        
+        self.addChild(self.backgroundCircle!)
     }
     
     init(radius: CGFloat, pos: CGPoint, color: SKColor, xVel: CGFloat, yVel: CGFloat) {
         self.velocity = (xVel, yVel)
         super.init(radius: radius, pos: pos, color: color)
+        
+        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: self.position, color: UIColor.blackColor())
+        
+        self.addChild(self.backgroundCircle!)
     }
 
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)
+        
+        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: self.position, color: UIColor.blackColor())
+        
+        self.addChild(self.backgroundCircle!)
     }
     
     func update(currentTime: CFTimeInterval) {
@@ -59,6 +73,8 @@ class TouchCircle : Circle {
         // delta time is pretty confusing in SK.. :(
         self.position.x += velocity.xVel
         self.position.y += velocity.yVel
+        
+        self.backgroundCircle!.position = convertPoint(self.position, toNode: self.backgroundCircle!) //self.position
     }
     
     func checkTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {

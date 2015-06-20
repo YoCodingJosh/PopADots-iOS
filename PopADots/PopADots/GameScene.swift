@@ -13,8 +13,8 @@ enum GameState {
 }
 
 class GameScene: SKScene {
-    var numCircles:UInt32 = 10
-    var circles:Array<TouchCircle>? = Array<TouchCircle>()
+    var numCircles:UInt32 = 4
+    var circles:Array<MenuCircle>? = Array<MenuCircle>()
     
     var gameState: GameState = GameState.MainMenu;
     
@@ -22,6 +22,9 @@ class GameScene: SKScene {
         self.scene?.backgroundColor = SKColor.whiteColor()
         
         self.generateCircles()
+        
+        print("Screen Resolution: \(Utils.getScreenResolution())")
+        print("Aspect Ratio: \(Utils.getAspectRatio())")
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -33,8 +36,7 @@ class GameScene: SKScene {
         
         for var i = 0; i < self.circles!.count; ++i {
             if self.circles?[i].checkTouch(touchLocation) == true {
-                self.circles?[i].removeFromParent()
-                self.circles?.removeAtIndex(i)
+                self.menuAction(i)
             }
         }
         
@@ -62,20 +64,63 @@ class GameScene: SKScene {
         for var i = 0; i < self.circles!.count; ++i {
             self.circles?[i].update(currentTime)
         }
-        
-        if self.circles!.count == 0 {
-            generateCircles()
-        }
     }
     
     func generateCircles() {
-        for var i:UInt32 = 0; i < self.numCircles; ++i {
-            let tempCircle: TouchCircle = TouchCircle()
-            tempCircle.active = true
-            tempCircle.touchable = true
+        for var i: UInt32 = 0; i < self.numCircles; ++i {
+            let tempCircle: MenuCircle = createMenuButton(Int(i))
             
             self.circles?.append(tempCircle)
             self.addChild(tempCircle)
+        }
+        
+        print("Number of MenuCircles: \(self.circles!.count)")
+        print("Number of Nodes in Scene: \(self.children.count)")
+    }
+    
+    func createMenuButton(button: Int) -> MenuCircle {
+        var circle: MenuCircle?
+        
+        switch button {
+        case 0:
+            // Classic
+            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: Utils.getScreenResolution().width / 4, y: Utils.getScreenResolution().height / 4), color: Utils.getColor(button + 1), label: "Classic")
+        case 1:
+            // Arcade
+            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: (Utils.getScreenResolution().width / 6) + (Utils.getScreenResolution().width / 2), y: (Utils.getScreenResolution().height - Utils.getScreenResolution().height / 2 - Utils.getScreenResolution().height / 12)), color: Utils.getColor(button + 1), label: "Arcade")
+        case 2:
+            // Voids
+            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: Utils.getScreenResolution().width / 4, y: (Utils.getScreenResolution().height - Utils.getScreenResolution().height / 3 - Utils.getScreenResolution().height / 12)), color: Utils.getColor(button + 1), label: "Voids")
+        case 3:
+            // Insane
+            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: Utils.getScreenResolution().width - (Utils.getScreenResolution().width / 4), y: Utils.getScreenResolution().height - Utils.getScreenResolution().height / 3 - Utils.getScreenResolution().height / 12 + (Utils.getScreenResolution().height / 4 + Utils.getScreenResolution().height / 5)), color: Utils.getColor(button + 1), label: "Insane")
+        default:
+            fatalError("Button index is invalid!")
+        }
+        
+        circle?.yScale = -1
+        
+        print("Button pos: \(circle!.position)")
+        
+        return circle!
+    }
+    
+    func menuAction(button: Int) {
+        switch button {
+        case 0:
+            // Classic Mode
+            print("Classic Mode pressed!")
+        case 1:
+            // Arcade Mode
+            print("Arcade Mode pressed!")
+        case 2:
+            // Voids Mode
+            print("Voids Mode pressed!")
+        case 3:
+            // Insane Mode
+            print("Insane Mode pressed!")
+        default:
+            fatalError("Button index is invalid.")
         }
     }
 }

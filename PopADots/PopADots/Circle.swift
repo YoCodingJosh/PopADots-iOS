@@ -29,11 +29,9 @@ class Circle : SKShapeNode {
         self.position.x = Utils.scaleXPos()
         self.position.y = Utils.scaleYPos()
         
-        let myPath: CGMutablePathRef = CGPathCreateMutable();
+        self.setCirclePath()
         
-        CGPathAddArc(myPath, nil, CGFloat(0.0), CGFloat(0.0), self.radius, CGFloat(0.0), CGFloat(M_PI * 2), true)
-    
-        self.path = myPath
+        //self.yScale = -1
     }
     
     init(radius: CGFloat, pos: CGPoint, color: SKColor) {
@@ -42,10 +40,23 @@ class Circle : SKShapeNode {
         self.radius = radius
         self.fillColor = color
         self.position = pos
+        self.strokeColor = SKColor.clearColor()
+        
+        self.setCirclePath()
+        
+        //self.yScale = -1
     }
 
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)
+    }
+    
+    func setCirclePath() {
+        let myPath: CGMutablePathRef = CGPathCreateMutable();
+        
+        CGPathAddArc(myPath, nil, CGFloat(0.0), CGFloat(0.0), self.radius, CGFloat(0.0), CGFloat(M_PI * 2), true)
+        
+        self.path = myPath
     }
 }
