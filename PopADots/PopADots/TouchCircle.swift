@@ -24,7 +24,11 @@ class TouchCircle : Circle {
         self.velocity = Utils.scaleVelocity(false)
         super.init()
         
-        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: self.position, color: UIColor.blackColor())
+        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: CGPointMake(0, 0), color: UIColor.blackColor())
+        
+        self.backgroundCircle?.position = CGPointMake(0, 0)
+        
+        self.backgroundCircle?.zPosition = -1
         
         self.addChild(self.backgroundCircle!)
     }
@@ -33,7 +37,11 @@ class TouchCircle : Circle {
         self.velocity = (xVel, yVel)
         super.init(radius: radius, pos: pos, color: color)
         
-        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: self.position, color: UIColor.blackColor())
+        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: CGPointMake(0, 0), color: UIColor.blackColor())
+        
+        self.backgroundCircle?.position = CGPointMake(0, 0)
+        
+        self.backgroundCircle?.zPosition = -1
         
         self.addChild(self.backgroundCircle!)
     }
@@ -42,7 +50,11 @@ class TouchCircle : Circle {
         //fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)
         
-        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: self.position, color: UIColor.blackColor())
+        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: CGPointMake(0, 0), color: UIColor.blackColor())
+        
+        self.backgroundCircle?.position = CGPointMake(0, 0)
+        
+        self.backgroundCircle?.zPosition = -1
         
         self.addChild(self.backgroundCircle!)
     }
@@ -73,8 +85,6 @@ class TouchCircle : Circle {
         // delta time is pretty confusing in SK.. :(
         self.position.x += velocity.xVel
         self.position.y += velocity.yVel
-        
-        self.backgroundCircle!.position = convertPoint(self.position, toNode: self.backgroundCircle!) //self.position
     }
     
     func checkTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {

@@ -35,7 +35,8 @@ class GameScene: SKScene {
         let touchLocation = myTouch.locationInNode(self)
         
         for var i = 0; i < self.circles!.count; ++i {
-            if self.circles?[i].checkTouch(touchLocation) == true {
+            //print("is \(touchLocation) inside of the circle at \(self.circles![i].position)")
+            if self.circles![i].checkTouch(touchLocation) == true {
                 self.menuAction(i)
             }
         }
@@ -84,21 +85,21 @@ class GameScene: SKScene {
         switch button {
         case 0:
             // Classic
-            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: Utils.getScreenResolution().width / 4, y: Utils.getScreenResolution().height / 4), color: Utils.getColor(button + 1), label: "Classic")
+            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: Utils.getScreenResolution().width / 4, y: Utils.getScreenResolution().height - Utils.getScreenResolution().height / 4), color: Utils.getColor(button + 1), label: "Classic")
         case 1:
             // Arcade
-            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: (Utils.getScreenResolution().width / 6) + (Utils.getScreenResolution().width / 2), y: (Utils.getScreenResolution().height - Utils.getScreenResolution().height / 2 - Utils.getScreenResolution().height / 12)), color: Utils.getColor(button + 1), label: "Arcade")
+            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: (Utils.getScreenResolution().width / 6) + (Utils.getScreenResolution().width / 2), y: Utils.getScreenResolution().height - (Utils.getScreenResolution().height - Utils.getScreenResolution().height / 2 - Utils.getScreenResolution().height / 12)), color: Utils.getColor(button + 1), label: "Arcade")
         case 2:
             // Voids
-            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: Utils.getScreenResolution().width / 4, y: (Utils.getScreenResolution().height - Utils.getScreenResolution().height / 3 - Utils.getScreenResolution().height / 12)), color: Utils.getColor(button + 1), label: "Voids")
+            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: Utils.getScreenResolution().width / 4, y: Utils.getScreenResolution().height - (Utils.getScreenResolution().height - Utils.getScreenResolution().height / 3 - Utils.getScreenResolution().height / 12)), color: Utils.getColor(button + 1), label: "Voids")
         case 3:
             // Insane
-            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: Utils.getScreenResolution().width - (Utils.getScreenResolution().width / 4), y: Utils.getScreenResolution().height - Utils.getScreenResolution().height / 3 - Utils.getScreenResolution().height / 12 + (Utils.getScreenResolution().height / 4 + Utils.getScreenResolution().height / 5)), color: Utils.getColor(button + 1), label: "Insane")
+            circle = MenuCircle(radius: Utils.scaleRadius(250), pos: CGPoint(x: Utils.getScreenResolution().width - (Utils.getScreenResolution().width / 4), y: Utils.getScreenResolution().height - Utils.getScreenResolution().height - Utils.getScreenResolution().height / 3 + (Utils.getScreenResolution().height - Utils.getScreenResolution().height / 4 - Utils.getScreenResolution().height / 5)), color: Utils.getColor(button + 1), label: "Insane")
         default:
             fatalError("Button index is invalid!")
         }
         
-        circle?.yScale = -1
+        circle?.initialize(self)
         
         print("Button pos: \(circle!.position)")
         

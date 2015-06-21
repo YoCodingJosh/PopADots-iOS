@@ -30,8 +30,6 @@ class Circle : SKShapeNode {
         self.position.y = Utils.scaleYPos()
         
         self.setCirclePath()
-        
-        //self.yScale = -1
     }
     
     init(radius: CGFloat, pos: CGPoint, color: SKColor) {
@@ -43,8 +41,6 @@ class Circle : SKShapeNode {
         self.strokeColor = SKColor.clearColor()
         
         self.setCirclePath()
-        
-        //self.yScale = -1
     }
 
     required init?(coder aDecoder: NSCoder) {
