@@ -24,15 +24,14 @@ class MenuCircle: TouchCircle {
         self.text = label
     }
     
-    func initialize(scene: SKScene?) {
+    func initialize() {
         self.name = self.text + " Menu Circle"
         
         self.labelNode = SKLabelNode(fontNamed: "Orbitron Medium")
         self.labelNode?.text = self.text
         self.labelNode?.fontSize = Utils.getScaledFontSize(23)
         self.labelNode?.color = SKColor.whiteColor()
-        print("my parent scene is \(scene)")
-        self.labelNode?.position = CGPointMake(0, 0)//convertPoint(self.position, fromNode: self)
+        self.labelNode?.position = CGPointMake(0, 0)
         self.labelNode?.zPosition = 10
         
         self.active = false

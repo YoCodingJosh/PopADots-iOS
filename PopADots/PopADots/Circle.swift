@@ -29,6 +29,8 @@ class Circle : SKShapeNode {
         self.position.x = Utils.scaleXPos()
         self.position.y = Utils.scaleYPos()
         
+        self.antialiased = true
+        
         self.setCirclePath()
     }
     
@@ -39,6 +41,8 @@ class Circle : SKShapeNode {
         self.fillColor = color
         self.position = pos
         self.strokeColor = SKColor.clearColor()
+        
+        self.antialiased = true
         
         self.setCirclePath()
     }
@@ -52,6 +56,8 @@ class Circle : SKShapeNode {
         let myPath: CGMutablePathRef = CGPathCreateMutable();
         
         CGPathAddArc(myPath, nil, CGFloat(0.0), CGFloat(0.0), self.radius, CGFloat(0.0), CGFloat(M_PI * 2), true)
+        
+        CGPathCloseSubpath(myPath);
         
         self.path = myPath
     }

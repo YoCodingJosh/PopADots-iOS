@@ -26,6 +26,14 @@
 		5CE66C3E1B31D78E0078B9A5 /* MenuCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE66C3D1B31D78E0078B9A5 /* MenuCircle.swift */; };
 		5CE66C411B33A03B0078B9A5 /* Orbitron Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5CE66C3F1B33A03B0078B9A5 /* Orbitron Black.otf */; };
 		5CE66C421B33A03B0078B9A5 /* Orbitron Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CE66C401B33A03B0078B9A5 /* Orbitron Medium.ttf */; };
+		5CE66C4C1B379BEB0078B9A5 /* RainbowEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE66C4B1B379BEB0078B9A5 /* RainbowEffect.swift */; };
+		5CE66C4E1B379C660078B9A5 /* BackgroundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE66C4D1B379C660078B9A5 /* BackgroundEffect.swift */; };
+		5CE66C511B379CF70078B9A5 /* highpop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CE66C4F1B379CF70078B9A5 /* highpop.wav */; };
+		5CE66C521B379CF70078B9A5 /* highpop2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CE66C501B379CF70078B9A5 /* highpop2.wav */; };
+		5CE66C571B379D080078B9A5 /* badpop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CE66C531B379D080078B9A5 /* badpop.wav */; };
+		5CE66C581B379D080078B9A5 /* Icon_Full.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE66C541B379D080078B9A5 /* Icon_Full.png */; };
+		5CE66C591B379D080078B9A5 /* jaguar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CE66C551B379D080078B9A5 /* jaguar.wav */; };
+		5CE66C5A1B379D080078B9A5 /* lowpop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CE66C561B379D080078B9A5 /* lowpop.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +58,14 @@
 		5CE66C3D1B31D78E0078B9A5 /* MenuCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCircle.swift; sourceTree = "<group>"; };
 		5CE66C3F1B33A03B0078B9A5 /* Orbitron Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron Black.otf"; sourceTree = "<group>"; };
 		5CE66C401B33A03B0078B9A5 /* Orbitron Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron Medium.ttf"; sourceTree = "<group>"; };
+		5CE66C4B1B379BEB0078B9A5 /* RainbowEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RainbowEffect.swift; sourceTree = "<group>"; };
+		5CE66C4D1B379C660078B9A5 /* BackgroundEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundEffect.swift; sourceTree = "<group>"; };
+		5CE66C4F1B379CF70078B9A5 /* highpop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = highpop.wav; sourceTree = "<group>"; };
+		5CE66C501B379CF70078B9A5 /* highpop2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = highpop2.wav; sourceTree = "<group>"; };
+		5CE66C531B379D080078B9A5 /* badpop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = badpop.wav; sourceTree = "<group>"; };
+		5CE66C541B379D080078B9A5 /* Icon_Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Full.png; sourceTree = "<group>"; };
+		5CE66C551B379D080078B9A5 /* jaguar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jaguar.wav; sourceTree = "<group>"; };
+		5CE66C561B379D080078B9A5 /* lowpop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lowpop.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +104,12 @@
 		5C5FE2D31B2A35530029EC23 /* PopADots */ = {
 			isa = PBXGroup;
 			children = (
+				5CE66C531B379D080078B9A5 /* badpop.wav */,
+				5CE66C541B379D080078B9A5 /* Icon_Full.png */,
+				5CE66C551B379D080078B9A5 /* jaguar.wav */,
+				5CE66C561B379D080078B9A5 /* lowpop.wav */,
+				5CE66C4F1B379CF70078B9A5 /* highpop.wav */,
+				5CE66C501B379CF70078B9A5 /* highpop2.wav */,
 				5CE66C3F1B33A03B0078B9A5 /* Orbitron Black.otf */,
 				5CE66C401B33A03B0078B9A5 /* Orbitron Medium.ttf */,
 				5CB6AE5C1B2A8C96009D5CA7 /* Fabric.framework */,
@@ -106,6 +128,8 @@
 				5C065D441B3091D8001A4CF3 /* ClassicScene.swift */,
 				5CE2AF4C1B30CA2C005C2989 /* ClassicScene.sks */,
 				5CE66C3D1B31D78E0078B9A5 /* MenuCircle.swift */,
+				5CE66C4B1B379BEB0078B9A5 /* RainbowEffect.swift */,
+				5CE66C4D1B379C660078B9A5 /* BackgroundEffect.swift */,
 			);
 			path = PopADots;
 			sourceTree = "<group>";
@@ -177,13 +201,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CE66C591B379D080078B9A5 /* jaguar.wav in Resources */,
 				5C5FE2D71B2A35530029EC23 /* GameScene.sks in Resources */,
 				5CE66C411B33A03B0078B9A5 /* Orbitron Black.otf in Resources */,
 				5C5FE2E31B2A35530029EC23 /* LaunchScreen.storyboard in Resources */,
+				5CE66C5A1B379D080078B9A5 /* lowpop.wav in Resources */,
+				5CE66C521B379CF70078B9A5 /* highpop2.wav in Resources */,
+				5CE66C571B379D080078B9A5 /* badpop.wav in Resources */,
 				5C5FE2E01B2A35530029EC23 /* Assets.xcassets in Resources */,
 				5CE2AF4D1B30CA2C005C2989 /* ClassicScene.sks in Resources */,
 				5CE66C421B33A03B0078B9A5 /* Orbitron Medium.ttf in Resources */,
+				5CE66C511B379CF70078B9A5 /* highpop.wav in Resources */,
 				5C5FE2DE1B2A35530029EC23 /* Main.storyboard in Resources */,
+				5CE66C581B379D080078B9A5 /* Icon_Full.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +246,8 @@
 				5C5FE2EB1B2A785F0029EC23 /* Circle.swift in Sources */,
 				5C065D451B3091D8001A4CF3 /* ClassicScene.swift in Sources */,
 				5C5FE2DB1B2A35530029EC23 /* GameViewController.swift in Sources */,
+				5CE66C4E1B379C660078B9A5 /* BackgroundEffect.swift in Sources */,
+				5CE66C4C1B379BEB0078B9A5 /* RainbowEffect.swift in Sources */,
 				5C5FE2D51B2A35530029EC23 /* AppDelegate.swift in Sources */,
 				5CB6AE611B2B3D9E009D5CA7 /* TouchCircle.swift in Sources */,
 			);

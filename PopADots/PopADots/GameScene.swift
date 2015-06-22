@@ -35,7 +35,6 @@ class GameScene: SKScene {
         let touchLocation = myTouch.locationInNode(self)
         
         for var i = 0; i < self.circles!.count; ++i {
-            //print("is \(touchLocation) inside of the circle at \(self.circles![i].position)")
             if self.circles![i].checkTouch(touchLocation) == true {
                 self.menuAction(i)
             }
@@ -74,9 +73,6 @@ class GameScene: SKScene {
             self.circles?.append(tempCircle)
             self.addChild(tempCircle)
         }
-        
-        print("Number of MenuCircles: \(self.circles!.count)")
-        print("Number of Nodes in Scene: \(self.children.count)")
     }
     
     func createMenuButton(button: Int) -> MenuCircle {
@@ -99,9 +95,7 @@ class GameScene: SKScene {
             fatalError("Button index is invalid!")
         }
         
-        circle?.initialize(self)
-        
-        print("Button pos: \(circle!.position)")
+        circle?.initialize()
         
         return circle!
     }
@@ -111,6 +105,10 @@ class GameScene: SKScene {
         case 0:
             // Classic Mode
             print("Classic Mode pressed!")
+            let transition: SKTransition = SKTransition.fadeWithDuration(1)
+            let classic: ClassicScene = ClassicScene(size: self.frame.size)
+            
+            self.view?.presentScene(classic, transition: transition)
         case 1:
             // Arcade Mode
             print("Arcade Mode pressed!")
