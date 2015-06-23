@@ -12,6 +12,7 @@ import SpriteKit
 class ClassicScene: SKScene {
     var numCircles: UInt32 = 10
     var circles: Array<TouchCircle>? = Array<TouchCircle>()
+    var bg: RainbowEffect?
     
     override init() {
         super.init()
@@ -26,7 +27,10 @@ class ClassicScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        self.backgroundColor = UIColor.whiteColor()
+        //self.backgroundColor = UIColor.whiteColor()
+        
+        self.bg?.zPosition = -2
+        self.addChild(self.bg!)
         
         self.generateCircles()
     }
@@ -46,6 +50,8 @@ class ClassicScene: SKScene {
     override func update(currentTime: NSTimeInterval) {
         /* Called before each frame is rendered */
         
+        self.bg?.update(currentTime)
+        
         for var i = 0; i < self.circles!.count; ++i {
             self.circles?[i].update(currentTime)
         }
@@ -60,6 +66,8 @@ class ClassicScene: SKScene {
             let tempCircle: TouchCircle = TouchCircle()
             tempCircle.active = true
             tempCircle.touchable = true
+            
+            tempCircle.zPosition = CGFloat(i)
             
             self.circles!.append(tempCircle)
             self.addChild(tempCircle)

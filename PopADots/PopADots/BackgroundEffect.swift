@@ -11,7 +11,7 @@ import SpriteKit
 
 // I'm not sure a SKShapeNode is the best way to do this... :\
 class BackgroundEffect: SKShapeNode {
-    init(frame: CGRect) {
+    required init(frame: CGRect) {
         super.init()
         
         let myPath: CGMutablePathRef = CGPathCreateMutable();
@@ -19,10 +19,16 @@ class BackgroundEffect: SKShapeNode {
         CGPathCloseSubpath(myPath);
         
         self.path = myPath
+        
+        self.strokeColor = SKColor.clearColor()
     }
 
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)
+    }
+    
+    func update(currentTime: NSTimeInterval) {
+        // do nothing, just a placeholder to enforce design pattern
     }
 }

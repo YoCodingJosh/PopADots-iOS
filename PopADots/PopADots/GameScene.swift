@@ -15,11 +15,17 @@ enum GameState {
 class GameScene: SKScene {
     var numCircles:UInt32 = 4
     var circles:Array<MenuCircle>? = Array<MenuCircle>()
+    var bg: RainbowEffect?
     
     var gameState: GameState = GameState.MainMenu;
     
     override func didMoveToView(view: SKView) {
         self.scene?.backgroundColor = SKColor.whiteColor()
+        
+        self.bg = RainbowEffect(frame: self.frame)
+        self.bg!.zPosition = -2
+        
+        self.addChild(self.bg!)
         
         self.generateCircles()
         
@@ -61,6 +67,9 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        
+        self.bg!.update(currentTime)
+        
         for var i = 0; i < self.circles!.count; ++i {
             self.circles?[i].update(currentTime)
         }
@@ -107,6 +116,14 @@ class GameScene: SKScene {
             print("Classic Mode pressed!")
             let transition: SKTransition = SKTransition.fadeWithDuration(1)
             let classic: ClassicScene = ClassicScene(size: self.frame.size)
+            let newBG: RainbowEffect = RainbowEffect(frame: classic.frame)
+            
+            newBG.r = self.bg!.r
+            newBG.g = self.bg!.g
+            newBG.b = self.bg!.b
+            
+            classic.bg = newBG
+            classic.backgroundColor = self.backgroundColor
             
             self.view?.presentScene(classic, transition: transition)
         case 1:

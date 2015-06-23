@@ -30,3 +30,12 @@
 
 * Random circles
 * Popping circles
+* Main Menu
+	* Rainbow Background
+	* Buttons with background
+* Black Border Circle
+
+### Features coming soon ###
+
+* Classic Mode
+* Game Center partial implementation
