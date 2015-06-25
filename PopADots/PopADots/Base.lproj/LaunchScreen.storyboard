@@ -30,13 +30,23 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="SirklesLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Mxe-9s-VcV">
+                                <rect key="frame" x="235" y="350" width="130" height="135"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="HzA-WN-BQ3"/>
+                                    <constraint firstAttribute="width" constant="130" id="Pr8-iB-VJX"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
+                            <constraint firstItem="Mxe-9s-VcV" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="8gN-lq-ueO"/>
                             <constraint firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="Q3B-4B-g5h"/>
                             <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
                             <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
+                            <constraint firstItem="obG-Y5-kRd" firstAttribute="top" secondItem="Mxe-9s-VcV" secondAttribute="bottom" constant="74" id="eRq-J3-RgP"/>
+                            <constraint firstAttribute="bottom" secondItem="Mxe-9s-VcV" secondAttribute="bottom" constant="115" id="lts-AM-KBP"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="bottom" multiplier="1/3" constant="1" id="moa-c2-u7t"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="x7j-FC-K8j"/>
                         </constraints>
@@ -47,4 +57,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SirklesLogo" width="420" height="420"/>
+    </resources>
 </document>
