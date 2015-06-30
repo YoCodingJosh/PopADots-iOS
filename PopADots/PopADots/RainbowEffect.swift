@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/21/15.
-//  Copyright © 2015 Sirkles. All rights reserved.
+//  Copyright © 2015 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -109,7 +109,7 @@ class RainbowEffect: BackgroundEffect {
         self.fillColor = self.color!
     }
     
-    func blackTransition() { // lolol rachal dolezal
+    func blackTransition() {
         colorIncrement = true
         green = true
         purple = true

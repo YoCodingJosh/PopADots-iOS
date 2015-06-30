@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/11/15.
-//  Copyright © 2015 Sirkles. All rights reserved.
+//  Copyright © 2015 Sirkles LLC. All rights reserved.
 //
 
 import UIKit
@@ -16,8 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        print("Pop a Dots\t(C) 2014-2015 Sirkles LLC.\n")
+        
         Fabric.with([Crashlytics()])
         // Override point for customization after application launch.
         return true

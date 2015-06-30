@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/11/15.
-//  Copyright (c) 2015 Sirkles. All rights reserved.
+//  Copyright (c) 2015 Sirkles LLC. All rights reserved.
 //
 
 import SpriteKit
@@ -122,8 +122,12 @@ class GameScene: SKScene {
             newBG.g = self.bg!.g
             newBG.b = self.bg!.b
             
+            newBG.color? = (self.bg?.color)!
+            
             classic.bg = newBG
             classic.backgroundColor = self.backgroundColor
+            
+            classic.addChild(classic.bg!)
             
             self.view?.presentScene(classic, transition: transition)
         case 1:

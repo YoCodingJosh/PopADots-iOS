@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/11/15.
-//  Copyright © 2015 Sirkles. All rights reserved.
+//  Copyright © 2015 Sirkles LLC. All rights reserved.
 //
 
 import Foundation

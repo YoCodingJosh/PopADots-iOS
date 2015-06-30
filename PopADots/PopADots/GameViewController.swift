@@ -3,16 +3,19 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/11/15.
-//  Copyright (c) 2015 Sirkles. All rights reserved.
+//  Copyright (c) 2015 Sirkles LLC. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
+import GameKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GKGameCenterControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.initGameCenter()
         
         if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
@@ -29,6 +32,27 @@ class GameViewController: UIViewController {
             
             skView.presentScene(scene)
         }
+    }
+    
+    // Initialize Game Center
+    func initGameCenter() {
+        // Check if user is already authenticated in game center
+        if GKLocalPlayer.localPlayer().authenticated == false {
+            // Show the Login Prompt for Game Center
+            GKLocalPlayer.localPlayer().authenticateHandler = { (viewController, error) -> Void in
+                if viewController != nil {
+                    //self.scene!.gamePaused = true
+                    self.presentViewController(viewController!, animated: true, completion: nil)
+                    // Add an observer which calls ‘gameCenterStateChanged’ to handle a changed game center state
+                    let notificationCenter = NSNotificationCenter.defaultCenter()
+                    notificationCenter.addObserver(self, selector: "gameCenterStateChanged", name: "GKPlayerAuthenticationDidChangeNotificationName", object: nil)
+                }
+            }
+        }
+    }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+        print("done with game center for now...")
     }
 
     override func shouldAutorotate() -> Bool {

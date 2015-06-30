@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/16/15.
-//  Copyright © 2015 Sirkles. All rights reserved.
+//  Copyright © 2015 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -27,10 +27,8 @@ class ClassicScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        //self.backgroundColor = UIColor.whiteColor()
-        
         self.bg?.zPosition = -2
-        self.addChild(self.bg!)
+        //self.addChild(self.bg!)
         
         self.generateCircles()
     }
