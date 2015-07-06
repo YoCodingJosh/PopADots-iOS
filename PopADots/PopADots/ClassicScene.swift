@@ -11,7 +11,9 @@ import SpriteKit
 
 class ClassicScene: SKScene {
     var numCircles: UInt32 = 10
+    var numBadCircles: UInt32 = 5
     var circles: Array<TouchCircle>? = Array<TouchCircle>()
+    var badCircles: Array<BadCircle>? = Array<BadCircle>()
     var bg: RainbowEffect?
     
     override init() {
@@ -43,6 +45,12 @@ class ClassicScene: SKScene {
                 self.circles?.removeAtIndex(i)
             }
         }
+        
+        for var i = 0; i < self.badCircles!.count; ++i {
+            if self.badCircles?[i].checkTouch(touchLocation) == true {
+                self.paused = true
+            }
+        }
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -52,6 +60,10 @@ class ClassicScene: SKScene {
         
         for var i = 0; i < self.circles!.count; ++i {
             self.circles?[i].update(currentTime)
+        }
+        
+        for var i = 0; i < self.badCircles!.count; ++i {
+            self.badCircles?[i].update(currentTime)
         }
         
         if self.circles!.count == 0 {
@@ -68,6 +80,18 @@ class ClassicScene: SKScene {
             tempCircle.zPosition = CGFloat(i)
             
             self.circles!.append(tempCircle)
+            self.addChild(tempCircle)
+        }
+        
+        for var i: UInt32 = 0; i < self.numBadCircles; ++i {
+            let tempCircle: BadCircle = BadCircle()
+            tempCircle.active = true
+            tempCircle.touchable = true
+            tempCircle.state = BadCircleState.Original
+            
+            tempCircle.zPosition = CGFloat(i)
+            
+            self.badCircles!.append(tempCircle)
             self.addChild(tempCircle)
         }
     }

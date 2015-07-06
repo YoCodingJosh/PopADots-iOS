@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Crashlytics()])
         // Override point for customization after application launch.
+        
+        if !Utils.connectedToNetwork() {
+            print("Not connected to network. :(")
+        }
         return true
     }
 

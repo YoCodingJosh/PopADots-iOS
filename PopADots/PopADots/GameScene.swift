@@ -29,7 +29,7 @@ class GameScene: SKScene {
         
         self.generateCircles()
         
-        print("Screen Resolution: \(Utils.getScreenResolution())")
+        print("Screen Resolution (x,y,w,h): \(Utils.getScreenResolution())")
         print("Aspect Ratio: \(Utils.getAspectRatio())")
     }
     
