@@ -1,6 +1,6 @@
 //
 //  BadCircle.swift
-//  PopADots
+//  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/30/15.
 //  Copyright © 2015 Sirkles LLC. All rights reserved.
@@ -16,8 +16,8 @@ enum BadCircleState {
 class BadCircle: TouchCircle {
     var state: BadCircleState = .Original
     
-    override init() {
-        super.init()
+    override init(myFrame: CGRect = Utils.getScreenResolution()) {
+        super.init(myFrame: myFrame)
         
         self.fillColor = SKColor.blackColor()
     }
@@ -31,30 +31,7 @@ class BadCircle: TouchCircle {
     }
     
     func updateOriginal(currentTime: CFTimeInterval) {
-        if (!self.active) {
-            return
-        }
-        
-        if (self.position.x + velocity.xVel + radius >= Utils.getScreenResolution().width) {
-            self.velocity.xVel *= -1
-            self.position.x = Utils.getScreenResolution().width - self.radius
-        }
-        else if (self.position.x + velocity.xVel - radius <= 0) {
-            self.velocity.xVel *= -1
-            self.position.x = radius
-        }
-        
-        if (self.position.y + velocity.yVel + radius >= Utils.getScreenResolution().height) {
-            self.velocity.yVel *= -1
-            self.position.y = Utils.getScreenResolution().height - self.radius
-        }
-        else if (self.position.y + velocity.yVel - radius <= 0) {
-            self.velocity.yVel *= -1
-            self.position.y = radius
-        }
-        
-        self.position.x += velocity.xVel
-        self.position.y += velocity.yVel
+        super.update(currentTime)
     }
     
     func updateWiggle(currentTime: CFTimeInterval) {
@@ -66,6 +43,10 @@ class BadCircle: TouchCircle {
     }
     
     override func update(currentTime: CFTimeInterval) {
+        if !self.active {
+            return
+        }
+        
         switch (state) {
         case .Original:
             updateOriginal(currentTime)

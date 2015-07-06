@@ -20,7 +20,9 @@ class TouchCircle : Circle {
     var active: Bool = false
     var touchable: Bool = false
     
-    override init() {
+    var myFrame: CGRect = Utils.getScreenResolution()
+    
+    init(myFrame: CGRect = Utils.getScreenResolution()) {
         self.velocity = Utils.scaleVelocity(false)
         super.init()
         
@@ -31,9 +33,11 @@ class TouchCircle : Circle {
         self.backgroundCircle?.zPosition = -1
         
         self.addChild(self.backgroundCircle!)
+        
+        self.myFrame = myFrame
     }
     
-    init(radius: CGFloat, pos: CGPoint, color: SKColor, xVel: CGFloat, yVel: CGFloat) {
+    init(radius: CGFloat, pos: CGPoint, color: SKColor, xVel: CGFloat, yVel: CGFloat, myFrame: CGRect = Utils.getScreenResolution()) {
         self.velocity = (xVel, yVel)
         super.init(radius: radius, pos: pos, color: color)
         
@@ -44,6 +48,8 @@ class TouchCircle : Circle {
         self.backgroundCircle?.zPosition = -1
         
         self.addChild(self.backgroundCircle!)
+        
+        self.myFrame = myFrame
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -64,18 +70,18 @@ class TouchCircle : Circle {
             return
         }
         
-        if (self.position.x + velocity.xVel + radius >= Utils.getScreenResolution().width) {
+        if (self.position.x + velocity.xVel + radius >= self.myFrame.width) {
             self.velocity.xVel *= -1
-            self.position.x = Utils.getScreenResolution().width - self.radius
+            self.position.x = self.myFrame.width - self.radius
         }
         else if (self.position.x + velocity.xVel - radius <= 0) {
             self.velocity.xVel *= -1
             self.position.x = radius
         }
         
-        if (self.position.y + velocity.yVel + radius >= Utils.getScreenResolution().height) {
+        if (self.position.y + velocity.yVel + radius >= self.myFrame.height) {
             self.velocity.yVel *= -1
-            self.position.y = Utils.getScreenResolution().height - self.radius
+            self.position.y = self.myFrame.height - self.radius
         }
         else if (self.position.y + velocity.yVel - radius <= 0) {
             self.velocity.yVel *= -1

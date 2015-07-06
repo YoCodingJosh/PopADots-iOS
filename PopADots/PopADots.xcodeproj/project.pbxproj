@@ -21,6 +21,7 @@
 		5C5FE2F51B2A83510029EC23 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5FE2F41B2A83510029EC23 /* GameKit.framework */; };
 		5C66757F1B431409007E352F /* BadCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C66757E1B431409007E352F /* BadCircle.swift */; };
 		5C8CD1BC1B4178BA00C2D3C2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8CD1BB1B4178BA00C2D3C2 /* Social.framework */; };
+		5C99556C1B4B034900A3E3FE /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C99556B1B4B034900A3E3FE /* GameOverScreen.swift */; };
 		5CB6AE5E1B2A8C96009D5CA7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB6AE5C1B2A8C96009D5CA7 /* Fabric.framework */; };
 		5CB6AE5F1B2A8C96009D5CA7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB6AE5D1B2A8C96009D5CA7 /* Crashlytics.framework */; };
 		5CB6AE611B2B3D9E009D5CA7 /* TouchCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6AE601B2B3D9E009D5CA7 /* TouchCircle.swift */; };
@@ -56,6 +57,7 @@
 		5C66757E1B431409007E352F /* BadCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadCircle.swift; sourceTree = "<group>"; };
 		5C8CD1BA1B3C729D00C2D3C2 /* PopADots.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PopADots.entitlements; sourceTree = "<group>"; };
 		5C8CD1BB1B4178BA00C2D3C2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		5C99556B1B4B034900A3E3FE /* GameOverScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOverScreen.swift; path = ../GameOverScreen.swift; sourceTree = "<group>"; };
 		5CB6AE5C1B2A8C96009D5CA7 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		5CB6AE5D1B2A8C96009D5CA7 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		5CB6AE601B2B3D9E009D5CA7 /* TouchCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchCircle.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				5CE66C4B1B379BEB0078B9A5 /* RainbowEffect.swift */,
 				5CE66C4D1B379C660078B9A5 /* BackgroundEffect.swift */,
 				5C66757E1B431409007E352F /* BadCircle.swift */,
+				5C99556B1B4B034900A3E3FE /* GameOverScreen.swift */,
 			);
 			path = PopADots;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				5C5FE2DB1B2A35530029EC23 /* GameViewController.swift in Sources */,
 				5CE66C4E1B379C660078B9A5 /* BackgroundEffect.swift in Sources */,
 				5CE66C4C1B379BEB0078B9A5 /* RainbowEffect.swift in Sources */,
+				5C99556C1B4B034900A3E3FE /* GameOverScreen.swift in Sources */,
 				5C5FE2D51B2A35530029EC23 /* AppDelegate.swift in Sources */,
 				5CB6AE611B2B3D9E009D5CA7 /* TouchCircle.swift in Sources */,
 			);

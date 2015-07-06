@@ -125,9 +125,12 @@ class GameScene: SKScene {
             newBG.color? = (self.bg?.color)!
             
             classic.bg = newBG
-            classic.backgroundColor = self.backgroundColor
             
-            classic.addChild(classic.bg!)
+            classic.bg!.r = self.bg!.r
+            classic.bg!.g = self.bg!.g
+            classic.bg!.b = self.bg!.b
+            
+            classic.backgroundColor = classic.bg!.color!
             
             self.view?.presentScene(classic, transition: transition)
         case 1:
