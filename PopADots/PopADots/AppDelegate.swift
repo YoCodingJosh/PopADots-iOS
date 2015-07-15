@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("Pop a Dots\t(C) 2014-2015 Sirkles LLC.\n")
         
-        Fabric.with([Crashlytics()])
-        // Override point for customization after application launch.
-        
+        //Fabric.with([Crashlytics()])
+
         if !Utils.connectedToNetwork() {
             print("Not connected to network. :(")
         }
+        
         return true
     }
 
@@ -48,8 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        print("Bye! We'll miss you.")
     }
-
-
 }
-

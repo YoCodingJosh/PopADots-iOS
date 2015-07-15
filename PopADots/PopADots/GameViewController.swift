@@ -8,10 +8,12 @@
 
 import UIKit
 import SpriteKit
-import GameKit
+import GameCenter
 
-class GameViewController: UIViewController, GKGameCenterControllerDelegate {
+import iAd
 
+class GameViewController: UIViewController, GKGameCenterControllerDelegate
+{
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,9 +39,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     // Initialize Game Center
     func initGameCenter() {
         // Check if user is already authenticated in game center
-        if GKLocalPlayer.localPlayer().authenticated == false {
+        if GKLocalPlayer().authenticated == false {
             // Show the Login Prompt for Game Center
-            GKLocalPlayer.localPlayer().authenticateHandler = { (viewController, error) -> Void in
+            GKLocalPlayer().authenticateHandler = { (viewController, error) -> Void in
                 if viewController != nil {
                     //self.scene!.gamePaused = true
                     self.presentViewController(viewController!, animated: true, completion: nil)
@@ -74,5 +76,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func viewControllerForPresentingModalView() -> UIViewController {
+        return self
     }
 }

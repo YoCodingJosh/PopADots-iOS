@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 class ClassicScene: SKScene {
-    var numCircles: UInt32 = 1
+    var numCircles: UInt32 = 0
     var numBadCircles: UInt32 = 0
     var circles: Array<TouchCircle>? = Array<TouchCircle>()
     var badCircles: Array<BadCircle>? = Array<BadCircle>()
@@ -34,7 +34,7 @@ class ClassicScene: SKScene {
         self.bg?.zPosition = -2
         self.addChild(self.bg!)
         
-        self.generateCircles()
+        checkGameState()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -64,10 +64,21 @@ class ClassicScene: SKScene {
         
         if gameOver {
             if gameOverScreenCreated {
+                // check input of game over
                 return
             }
             else {
                 // create game over screen
+                let screen: GameOverScreen = GameOverScreen(myFrame: self.frame)
+                
+                screen.position.x = 0
+                screen.position.y = 0
+                screen.zPosition = 10
+                
+                self.addChild(screen)
+                
+                screen.initialize()
+                
                 gameOverScreenCreated = true
             }
         }
