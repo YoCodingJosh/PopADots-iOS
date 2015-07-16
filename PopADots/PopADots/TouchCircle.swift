@@ -93,16 +93,6 @@ class TouchCircle : Circle {
         self.position.y += velocity.yVel
     }
     
-    func checkTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-        if (!self.touchable) {
-            return false
-        }
-        
-        print("not implemented :P")
-        
-        return false
-    }
-    
     func checkTouch(touch: CGPoint) -> Bool {
         if (!self.touchable) {
             return false

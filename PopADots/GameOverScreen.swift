@@ -28,7 +28,7 @@ class GameOverScreen: SKShapeNode {
     
     var restartCircle: MenuCircle = MenuCircle(radius: Utils.scaleRadius(225), pos: CGPointMake(Utils.getScreenResolution().width / 4, Utils.getScreenResolution().height / 6), color: Utils.getColor(1), label: "Restart")
     
-    var menuCircle: MenuCircle = MenuCircle(radius: Utils.scaleRadius(225), pos: CGPointMake(Utils.getScreenResolution().width - (Utils.getScreenResolution().width / 6), Utils.getScreenResolution().height - (Utils.getScreenResolution().height / 4)), color: Utils.getColor(4), label: "Menu")
+    var menuCircle: MenuCircle = MenuCircle(radius: Utils.scaleRadius(225), pos: CGPointMake(Utils.getScreenResolution().width - (Utils.getScreenResolution().width / 6), Utils.getScreenResolution().height / 6), color: Utils.getColor(4), label: "Menu")
     
     init(myFrame: CGRect, myData: GameData? = nil) {
         super.init()
@@ -59,6 +59,9 @@ class GameOverScreen: SKShapeNode {
         restartCircle.position = convertPoint(restartCircle.position, fromNode: self.parent!)
         menuCircle.position = convertPoint(menuCircle.position, fromNode: self.parent!)
         
+        restartCircle.initialize()
+        menuCircle.initialize()
+        
         restartCircle.labelNode?.fontSize = Utils.getScaledFontSize(19)
     }
 
@@ -67,11 +70,19 @@ class GameOverScreen: SKShapeNode {
     }
     
     // returns:
-    //  0 if the user hasn't done anything yet
+    //  0 if the user hasn't touched a button
     //  1 if the user wants to retry
     //  2 if the user wants to go back to the menu
-    func getUserInput() -> Int {
+    func getUserChoice(touch: CGPoint) -> Int {
         //TODO: Implement. lmao
+        if (restartCircle.checkTouch(touch)) {
+            return 1
+        }
+        
+        if (menuCircle.checkTouch(touch)) {
+            return 2
+        }
+        
         return 0
     }
 }

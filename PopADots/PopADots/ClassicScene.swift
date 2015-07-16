@@ -17,6 +17,7 @@ class ClassicScene: SKScene {
     var bg: RainbowEffect?
     var gameOver: Bool = false
     var gameOverScreenCreated: Bool = false
+    var gameOverScreen: GameOverScreen?
     
     override init() {
         super.init()
@@ -34,6 +35,8 @@ class ClassicScene: SKScene {
         self.bg?.zPosition = -2
         self.addChild(self.bg!)
         
+        self.gameOverScreen = GameOverScreen(myFrame: self.frame)
+        
         checkGameState()
     }
     
@@ -42,7 +45,17 @@ class ClassicScene: SKScene {
         let touchLocation = myTouch.locationInNode(self)
         
         if (gameOver && gameOverScreenCreated) {
-            return
+            switch(gameOverScreen!.getUserChoice(touchLocation)) {
+            case 0:
+                // we don't it to go to default
+                break
+            case 1:
+                print("restart game")
+            case 2:
+                print("go to main menu")
+            default:
+                print("god damn it swift, there are no other possible choices")
+            }
         }
         
         for var i = 0; i < self.circles!.count; ++i {
@@ -64,20 +77,17 @@ class ClassicScene: SKScene {
         
         if gameOver {
             if gameOverScreenCreated {
-                // check input of game over
                 return
             }
             else {
                 // create game over screen
-                let screen: GameOverScreen = GameOverScreen(myFrame: self.frame)
+                self.gameOverScreen!.position.x = 0
+                self.gameOverScreen!.position.y = 0
+                self.gameOverScreen!.zPosition = 10
                 
-                screen.position.x = 0
-                screen.position.y = 0
-                screen.zPosition = 10
+                self.addChild(self.gameOverScreen!)
                 
-                self.addChild(screen)
-                
-                screen.initialize()
+                self.gameOverScreen!.initialize()
                 
                 gameOverScreenCreated = true
             }
