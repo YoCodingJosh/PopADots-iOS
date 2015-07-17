@@ -18,6 +18,8 @@ class ClassicScene: SKScene {
     var gameOver: Bool = false
     var gameOverScreenCreated: Bool = false
     var gameOverScreen: GameOverScreen?
+    var score: UInt64 = 0
+    var scoreLabel: SKLabelNode?
     
     override init() {
         super.init()
@@ -36,6 +38,13 @@ class ClassicScene: SKScene {
         self.addChild(self.bg!)
         
         self.gameOverScreen = GameOverScreen(myFrame: self.frame)
+        
+        self.scoreLabel = SKLabelNode(fontNamed: "Orbitron Black")
+        self.scoreLabel?.text = "Score: 0"
+        self.scoreLabel!.fontColor = UIColor.blackColor()
+        self.scoreLabel!.position.y = Utils.getScreenResolution().height - self.scoreLabel!.fontSize
+        self.scoreLabel!.position.x += self.scoreLabel!.frame.width / 2
+        self.addChild(self.scoreLabel!)
         
         checkGameState()
     }
@@ -62,6 +71,8 @@ class ClassicScene: SKScene {
             if self.circles?[i].checkTouch(touchLocation) == true {
                 self.circles?[i].removeFromParent()
                 self.circles?.removeAtIndex(i)
+                
+                self.score++
             }
         }
         
@@ -70,6 +81,8 @@ class ClassicScene: SKScene {
                 self.gameOver = true
             }
         }
+        
+        self.scoreLabel!.text = "Score: \(self.score)"
     }
     
     override func update(currentTime: NSTimeInterval) {

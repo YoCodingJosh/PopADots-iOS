@@ -28,7 +28,7 @@ class GameOverScreen: SKShapeNode {
     
     var restartCircle: MenuCircle = MenuCircle(radius: Utils.scaleRadius(225), pos: CGPointMake(Utils.getScreenResolution().width / 4, Utils.getScreenResolution().height / 6), color: Utils.getColor(1), label: "Restart")
     
-    var menuCircle: MenuCircle = MenuCircle(radius: Utils.scaleRadius(225), pos: CGPointMake(Utils.getScreenResolution().width - (Utils.getScreenResolution().width / 6), Utils.getScreenResolution().height / 6), color: Utils.getColor(4), label: "Menu")
+    var menuCircle: MenuCircle = MenuCircle(radius: Utils.scaleRadius(225), pos: CGPointMake(Utils.getScreenResolution().width - (Utils.getScreenResolution().width / 4), Utils.getScreenResolution().height / 6), color: Utils.getColor(8), label: "Menu") // used to be 4
     
     init(myFrame: CGRect, myData: GameData? = nil) {
         super.init()
@@ -63,6 +63,7 @@ class GameOverScreen: SKShapeNode {
         menuCircle.initialize()
         
         restartCircle.labelNode?.fontSize = Utils.getScaledFontSize(19)
+        menuCircle.labelNode?.fontSize = Utils.getScaledFontSize(19)
     }
 
     required init?(coder aDecoder: NSCoder) {
