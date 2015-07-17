@@ -34,19 +34,7 @@ class ClassicScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        self.bg?.zPosition = -2
-        self.addChild(self.bg!)
-        
-        self.gameOverScreen = GameOverScreen(myFrame: self.frame)
-        
-        self.scoreLabel = SKLabelNode(fontNamed: "Orbitron Black")
-        self.scoreLabel?.text = "Score: 0"
-        self.scoreLabel!.fontColor = UIColor.blackColor()
-        self.scoreLabel!.position.y = Utils.getScreenResolution().height - self.scoreLabel!.fontSize
-        self.scoreLabel!.position.x += self.scoreLabel!.frame.width / 2
-        self.addChild(self.scoreLabel!)
-        
-        checkGameState()
+        startNewGame()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -60,6 +48,8 @@ class ClassicScene: SKScene {
                 break
             case 1:
                 print("restart game")
+                self.resetGame()
+                self.startNewGame()
             case 2:
                 print("go to main menu")
             default:
@@ -165,5 +155,37 @@ class ClassicScene: SKScene {
             self.badCircles!.append(tempCircle)
             self.addChild(tempCircle)
         }
+    }
+    
+    
+    func startNewGame() {
+        self.bg?.zPosition = -2
+        self.addChild(self.bg!)
+        
+        self.gameOverScreen = GameOverScreen(myFrame: self.frame)
+        
+        self.scoreLabel = SKLabelNode(fontNamed: "Orbitron Black")
+        self.scoreLabel?.text = "Score: 0"
+        self.scoreLabel!.fontColor = UIColor.blackColor()
+        self.scoreLabel!.position.y = Utils.getScreenResolution().height - self.scoreLabel!.fontSize
+        self.scoreLabel!.position.x += self.scoreLabel!.frame.width / 2
+        self.addChild(self.scoreLabel!)
+        
+        checkGameState()
+    }
+    
+    func resetGame() {
+        self.removeAllChildren()
+        
+        self.numCircles = 0
+        self.numBadCircles = 0
+        
+        self.score = 0
+        
+        self.circles!.removeAll()
+        self.badCircles!.removeAll()
+        
+        self.gameOver = false
+        self.gameOverScreenCreated = false
     }
 }

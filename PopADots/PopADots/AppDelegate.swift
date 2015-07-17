@@ -8,8 +8,8 @@
 
 import UIKit
 
-import Fabric
-import Crashlytics
+import Parse
+import ParseCrashReporting
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("Pop a Dots\t(C) 2014-2015 Sirkles LLC.\n")
         
-        //Fabric.with([Crashlytics()])
+        ParseCrashReporting.enable()
+        Parse.setApplicationId("Dgslq8ed2n2fTKkB2BZ8PBHAgMHcsC8WP2qHDe0e",
+            clientKey: "UgYs80wpGTaDPqjpZZSn1s146MhKvYPPshZLUVeC")
 
         if !Utils.connectedToNetwork() {
             print("Not connected to network. :(")

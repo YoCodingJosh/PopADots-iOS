@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.5.0"
+  },
+  "applications": {
+    "Pop a Dots": {
+      "applicationId": "Dgslq8ed2n2fTKkB2BZ8PBHAgMHcsC8WP2qHDe0e",
+      "masterKey": "D894ZvKNz47lk0ghRUU15MluPiYgaDAy4j3VMpJp"
+    },
+    "_default": {
+      "link": "Pop a Dots"
+    }
+  }
+}
