@@ -19,18 +19,19 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
         
         self.initGameCenter()
         
-        if let scene = GameScene(fileNamed:"GameScene") {
+        if let scene: MainMenuScene? = MainMenuScene() {
+        //if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = false
             skView.showsNodeCount = false
-            scene.size = skView.bounds.size;
+            scene!.size = skView.bounds.size;
             
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
             
             /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .Fill
+            scene!.scaleMode = .Fill
             
             skView.presentScene(scene)
         }

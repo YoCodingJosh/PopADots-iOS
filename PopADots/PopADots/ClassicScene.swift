@@ -52,6 +52,22 @@ class ClassicScene: SKScene {
                 self.startNewGame()
             case 2:
                 print("go to main menu")
+                
+                let transition: SKTransition = SKTransition.fadeWithDuration(1)
+                let menu: MainMenuScene = MainMenuScene(size: self.frame.size)
+                let newBG: RainbowEffect = RainbowEffect(frame: self.frame)
+                
+                menu.backgroundColor = self.backgroundColor
+                newBG.r = self.bg!.r
+                newBG.g = self.bg!.g
+                newBG.b = self.bg!.b
+                newBG.color = self.bg!.color
+                
+                menu.bg = newBG
+                
+                //self.disposeGame()
+                
+                self.view?.presentScene(menu, transition: transition)
             default:
                 print("god damn it swift, there are no other possible choices")
             }
@@ -187,5 +203,17 @@ class ClassicScene: SKScene {
         
         self.gameOver = false
         self.gameOverScreenCreated = false
+    }
+    
+    func disposeGame() {
+        self.removeAllChildren()
+        
+        self.numCircles = 0
+        self.numBadCircles = 0
+        
+        self.score = 0
+        
+        self.circles!.removeAll()
+        self.badCircles!.removeAll()
     }
 }

@@ -25,6 +25,8 @@ class RainbowEffect: BackgroundEffect {
         super.init(frame: frame)
         
         self.color = UIColor()
+        
+        self.name = "Rainbow Background Effect"
     }
     
     required init?(coder aDecoder: NSCoder) {

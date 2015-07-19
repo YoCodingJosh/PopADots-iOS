@@ -12,25 +12,47 @@ enum GameState {
     case MainMenu, ClassicMode, ArcadeMode, VoidsMode
 }
 
-class GameScene: SKScene {
+class MainMenuScene: SKScene {
     var numCircles:UInt32 = 4
     var circles:Array<MenuCircle>? = Array<MenuCircle>()
     var bg: RainbowEffect?
     
     var gameState: GameState = GameState.MainMenu;
     
+    override init() {
+        super.init()
+    }
+    
+    override init(size: CGSize) {
+        super.init(size: size)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func didMoveToView(view: SKView) {
-        self.scene?.backgroundColor = SKColor.whiteColor()
-        
-        self.bg = RainbowEffect(frame: self.frame)
+        if self.bg == nil {
+            self.bg = RainbowEffect(frame: self.frame)
+            self.scene?.backgroundColor = SKColor.whiteColor()
+        }
         self.bg!.zPosition = -2
         
         self.addChild(self.bg!)
         
+        self.numCircles = 4
+        self.circles = Array<MenuCircle>()
+        
         self.generateCircles()
         
-        print("Screen Resolution (x,y,w,h): \(Utils.getScreenResolution())")
-        print("Aspect Ratio: \(Utils.getAspectRatio())")
+        print("at main menu")
+        
+        for node in self.children {
+            print(node)
+        }
+        
+        //print("Screen Resolution (x,y,w,h): \(Utils.getScreenResolution())")
+        //print("Aspect Ratio: \(Utils.getAspectRatio())")
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -105,6 +127,8 @@ class GameScene: SKScene {
         }
         
         circle?.initialize()
+        
+        print("\(circle!)")
         
         return circle!
     }

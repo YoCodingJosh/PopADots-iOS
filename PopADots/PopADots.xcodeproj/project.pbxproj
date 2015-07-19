@@ -26,8 +26,8 @@
 		5C13290E1B5969B900059A43 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328EF1B595BE400059A43 /* Parse.framework */; };
 		5C1329101B5969C600059A43 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C13290F1B5969C600059A43 /* libz.tbd */; };
 		5C5FE2D51B2A35530029EC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D41B2A35530029EC23 /* AppDelegate.swift */; };
-		5C5FE2D71B2A35530029EC23 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D61B2A35530029EC23 /* GameScene.sks */; };
-		5C5FE2D91B2A35530029EC23 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D81B2A35530029EC23 /* GameScene.swift */; };
+		5C5FE2D71B2A35530029EC23 /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D61B2A35530029EC23 /* MainMenuScene.sks */; };
+		5C5FE2D91B2A35530029EC23 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D81B2A35530029EC23 /* MainMenuScene.swift */; };
 		5C5FE2DB1B2A35530029EC23 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FE2DA1B2A35530029EC23 /* GameViewController.swift */; };
 		5C5FE2DE1B2A35530029EC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C5FE2DC1B2A35530029EC23 /* Main.storyboard */; };
 		5C5FE2E01B2A35530029EC23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C5FE2DF1B2A35530029EC23 /* Assets.xcassets */; };
@@ -75,8 +75,8 @@
 		5C13290F1B5969C600059A43 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5C5FE2D11B2A35530029EC23 /* PopADots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopADots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C5FE2D41B2A35530029EC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5C5FE2D61B2A35530029EC23 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		5C5FE2D81B2A35530029EC23 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		5C5FE2D61B2A35530029EC23 /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
+		5C5FE2D81B2A35530029EC23 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		5C5FE2DA1B2A35530029EC23 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5C5FE2DD1B2A35530029EC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C5FE2DF1B2A35530029EC23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -185,8 +185,8 @@
 				5CE66C3F1B33A03B0078B9A5 /* Orbitron Black.otf */,
 				5CE66C401B33A03B0078B9A5 /* Orbitron Medium.ttf */,
 				5C5FE2D41B2A35530029EC23 /* AppDelegate.swift */,
-				5C5FE2D61B2A35530029EC23 /* GameScene.sks */,
-				5C5FE2D81B2A35530029EC23 /* GameScene.swift */,
+				5C5FE2D81B2A35530029EC23 /* MainMenuScene.swift */,
+				5C5FE2D61B2A35530029EC23 /* MainMenuScene.sks */,
 				5C5FE2DA1B2A35530029EC23 /* GameViewController.swift */,
 				5C5FE2DC1B2A35530029EC23 /* Main.storyboard */,
 				5C5FE2DF1B2A35530029EC23 /* Assets.xcassets */,
@@ -277,7 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CE66C591B379D080078B9A5 /* jaguar.wav in Resources */,
-				5C5FE2D71B2A35530029EC23 /* GameScene.sks in Resources */,
+				5C5FE2D71B2A35530029EC23 /* MainMenuScene.sks in Resources */,
 				5CE66C411B33A03B0078B9A5 /* Orbitron Black.otf in Resources */,
 				5C5FE2E31B2A35530029EC23 /* LaunchScreen.storyboard in Resources */,
 				5CE66C5A1B379D080078B9A5 /* lowpop.wav in Resources */,
@@ -316,7 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C5FE2ED1B2A7E520029EC23 /* Utils.swift in Sources */,
-				5C5FE2D91B2A35530029EC23 /* GameScene.swift in Sources */,
+				5C5FE2D91B2A35530029EC23 /* MainMenuScene.swift in Sources */,
 				5CE66C3E1B31D78E0078B9A5 /* MenuCircle.swift in Sources */,
 				5C5FE2EB1B2A785F0029EC23 /* Circle.swift in Sources */,
 				5C065D451B3091D8001A4CF3 /* ClassicScene.swift in Sources */,
@@ -443,6 +443,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = PopADots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -461,6 +462,7 @@
 				CODE_SIGN_ENTITLEMENTS = PopADots/PopADots.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = PopADots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
