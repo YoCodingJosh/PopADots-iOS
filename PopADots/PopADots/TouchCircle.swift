@@ -100,4 +100,12 @@ class TouchCircle : Circle {
         
         return ((touch.x - self.position.x) * (touch.x - self.position.x)) + ((touch.y - self.position.y) * (touch.y - self.position.y)) < ((self.radius * self.radius));
     }
+    
+    func convertToBad(state: BadCircleState = BadCircleState.Original) -> BadCircle {
+        let bad: BadCircle = BadCircle(radius: self.radius, pos: self.position, xVel: self.velocity.xVel, yVel: self.velocity.yVel)
+        
+        bad.state = state
+        
+        return bad
+    }
 }

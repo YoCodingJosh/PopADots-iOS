@@ -1,27 +1,27 @@
 //
-//  ClassicScene.swift
+//  ArcadeScene.swift
 //  Pop a Dots
 //
-//  Created by Josh Kennedy on 6/16/15.
+//  Created by Josh Kennedy on 7/19/15.
 //  Copyright © 2015 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
-class ClassicScene: SKScene {
-    var numCircles: UInt32 = 0
+class ArcadeScene: SKScene {
+    var numCircles: UInt32 = 5
     var numBadCircles: UInt32 = 0
     var circles: Array<TouchCircle>? = Array<TouchCircle>()
     var badCircles: Array<BadCircle>? = Array<BadCircle>()
-    var bg: RainbowEffect?
     var gameOver: Bool = false
     var gameOverScreenCreated: Bool = false
     var gameOverScreen: GameOverScreen?
     var score: UInt64 = 0
     var scoreLabel: SKLabelNode?
     var scoreShadowLabel: SKLabelNode?
-    
+    var newGame: Bool = true
+
     override init() {
         super.init()
     }
@@ -61,42 +61,44 @@ class ClassicScene: SKScene {
                 let menu: MainMenuScene = MainMenuScene(size: self.frame.size)
                 let newBG: RainbowEffect = RainbowEffect(frame: self.frame)
                 
-                menu.backgroundColor = self.backgroundColor
-                newBG.r = self.bg!.r
-                newBG.g = self.bg!.g
-                newBG.b = self.bg!.b
-                newBG.color = self.bg!.color
-                
-                menu.bg = newBG
+                menu.bg = newBG // For some reason, I need to set this before transitioning. :\
                 
                 self.view?.presentScene(menu, transition: transition)
             default:
-                print("god damn it swift, there are no other possible choices")
+                fatalError("you should not be here")
             }
         }
         
         for var i = 0; i < self.circles!.count; ++i {
             if self.circles?[i].checkTouch(touchLocation) == true {
                 self.circles?[i].removeFromParent()
+                
+                let bad: BadCircle = (self.circles?[i].convertToBad())!
+                bad.velocity = (0, 0)
+                bad.touchable = true
+                
+                self.badCircles!.append(bad)
+                self.addChild(bad)
+                
                 self.circles?.removeAtIndex(i)
                 
                 self.score++
+                
+                return; // Don't want to trigger game over.
             }
         }
         
         for var i = 0; i < self.badCircles!.count; ++i {
-            if self.badCircles?[i].checkTouch(touchLocation) == true {
+            if self.badCircles![i].checkTouch(touchLocation) == true {
                 self.gameOver = true
             }
         }
-        
+
         self.scoreLabel!.text = "Score: \(self.score)"
         self.scoreShadowLabel!.text = "Score: \(self.score)"
     }
     
     override func update(currentTime: NSTimeInterval) {
-        /* Called before each frame is rendered */
-        
         if gameOver {
             if gameOverScreenCreated {
                 return
@@ -115,8 +117,6 @@ class ClassicScene: SKScene {
             }
         }
         
-        self.bg?.update(currentTime)
-        
         for var i = 0; i < self.circles!.count; ++i {
             self.circles?[i].update(currentTime)
         }
@@ -124,32 +124,75 @@ class ClassicScene: SKScene {
         for var i = 0; i < self.badCircles!.count; ++i {
             self.badCircles?[i].update(currentTime)
         }
+
+        checkGameState()
+    }
+    
+    func resetGame() {
+        self.removeAllChildren()
         
-        self.checkGameState()
+        self.numCircles = 5
+        self.numBadCircles = 0
+        
+        self.score = 0
+        
+        self.circles!.removeAll()
+        self.badCircles!.removeAll()
+        
+        self.gameOver = false
+        self.gameOverScreenCreated = false
+    }
+    
+    func startNewGame() {
+        self.newGame = true
+        self.backgroundColor = UIColor.whiteColor()
+        
+        self.gameOverScreen = GameOverScreen(myFrame: self.frame)
+        
+        self.scoreShadowLabel = SKLabelNode(fontNamed: "Orbitron Black")
+        self.scoreShadowLabel!.fontSize = Utils.getScaledFontSize(19)
+        self.scoreShadowLabel?.text = "Score: 0"
+        self.scoreShadowLabel!.fontColor = UIColor.blackColor()
+        self.scoreShadowLabel!.position.y = Utils.getScreenResolution().height - self.scoreShadowLabel!.fontSize
+        self.scoreShadowLabel!.position.x += (self.scoreShadowLabel!.frame.width / 2)
+        self.addChild(self.scoreShadowLabel!)
+        
+        self.scoreLabel = SKLabelNode(fontNamed: "Orbitron Medium")
+        self.scoreLabel!.fontSize = Utils.getScaledFontSize(19)
+        self.scoreLabel?.text = "Score: 0"
+        self.scoreLabel!.fontColor = UIColor.whiteColor()
+        self.scoreShadowLabel!.addChild(self.scoreLabel!)
+        
+        checkGameState()
     }
     
     func checkGameState() {
-        if self.circles!.count == 0 {
-            ++numCircles
-            
-            if (numCircles == 1) {
-                numBadCircles = 0
-            }
-            else if (numCircles <= 4) {
-                numBadCircles = 1
+        if (self.circles?.count == 0) {
+            if (numCircles > 1) {
+                --numCircles
             }
             else {
-                numBadCircles = (numCircles) / 5 + 1;
+                numCircles = 5
             }
+            
+            numBadCircles = 1 + UInt32(self.score) / 15
             
             generateCircles()
         }
     }
     
     func generateCircles() {
+        /*
         for var i = 0; i < self.badCircles!.count; ++i {
             self.badCircles?[i].removeFromParent()
             self.badCircles!.removeAtIndex(i)
+        }
+        */
+        
+        for child in self.children {
+            if child is TouchCircle || child is BadCircle {
+                child.removeFromParent()
+            }
         }
         
         for var i: UInt32 = 0; i < self.numCircles; ++i {
@@ -174,43 +217,5 @@ class ClassicScene: SKScene {
             self.badCircles!.append(tempCircle)
             self.addChild(tempCircle)
         }
-    }
-    
-    func startNewGame() {
-        self.bg?.zPosition = -2
-        self.addChild(self.bg!)
-        
-        self.gameOverScreen = GameOverScreen(myFrame: self.frame)
-        
-        self.scoreShadowLabel = SKLabelNode(fontNamed: "Orbitron Black")
-        self.scoreShadowLabel!.fontSize = Utils.getScaledFontSize(19)
-        self.scoreShadowLabel?.text = "Score: 0"
-        self.scoreShadowLabel!.fontColor = UIColor.blackColor()
-        self.scoreShadowLabel!.position.y = Utils.getScreenResolution().height - self.scoreShadowLabel!.fontSize
-        self.scoreShadowLabel!.position.x += (self.scoreShadowLabel!.frame.width / 2)
-        self.addChild(self.scoreShadowLabel!)
-        
-        self.scoreLabel = SKLabelNode(fontNamed: "Orbitron Medium")
-        self.scoreLabel!.fontSize = Utils.getScaledFontSize(19)
-        self.scoreLabel?.text = "Score: 0"
-        self.scoreLabel!.fontColor = UIColor.whiteColor()
-        self.scoreShadowLabel!.addChild(self.scoreLabel!)
-        
-        checkGameState()
-    }
-    
-    func resetGame() {
-        self.removeAllChildren()
-        
-        self.numCircles = 0
-        self.numBadCircles = 0
-        
-        self.score = 0
-        
-        self.circles!.removeAll()
-        self.badCircles!.removeAll()
-        
-        self.gameOver = false
-        self.gameOverScreenCreated = false
     }
 }

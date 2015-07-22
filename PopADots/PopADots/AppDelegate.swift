@@ -8,6 +8,7 @@
 
 import UIKit
 
+import Bolts
 import Parse
 import ParseCrashReporting
 
@@ -22,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ParseCrashReporting.enable()
         Parse.setApplicationId("Dgslq8ed2n2fTKkB2BZ8PBHAgMHcsC8WP2qHDe0e",
             clientKey: "UgYs80wpGTaDPqjpZZSn1s146MhKvYPPshZLUVeC")
+        
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
 
         if !Utils.connectedToNetwork() {
             print("Not connected to network. :(")

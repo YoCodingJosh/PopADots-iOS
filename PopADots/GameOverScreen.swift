@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 7/6/15.
-//  Copyright © 2015 Sirkles. All rights reserved.
+//  Copyright © 2015 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -12,9 +12,17 @@ import SpriteKit
 
 struct GameData {
     // score
+    var score: Int64 = 0
+    
     // time in game
+    // TODO:
+    
     // circles popped
+    var numCirclesPopped: Int64 = 0
+    
     // game mode
+    var gameState: GameState
+    
     // etc. for analytics and score posting.
 }
 
@@ -43,7 +51,6 @@ class GameOverScreen: SKShapeNode {
         
         self.strokeColor = SKColor.clearColor()
         
-        //self.fillColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 150/255.0)
         self.background = BackgroundEffect(frame: self.frame)
         self.background!.fillColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 150/255.0)
         self.background!.zPosition = -2
@@ -75,7 +82,6 @@ class GameOverScreen: SKShapeNode {
     //  1 if the user wants to retry
     //  2 if the user wants to go back to the menu
     func getUserChoice(touch: CGPoint) -> Int {
-        //TODO: Implement. lmao
         if (restartCircle.checkTouch(touch)) {
             return 1
         }

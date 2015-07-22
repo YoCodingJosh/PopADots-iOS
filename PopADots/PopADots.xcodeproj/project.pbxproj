@@ -25,6 +25,7 @@
 		5C13290D1B59698D00059A43 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C13290C1B59698D00059A43 /* libsqlite3.tbd */; };
 		5C13290E1B5969B900059A43 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328EF1B595BE400059A43 /* Parse.framework */; };
 		5C1329101B5969C600059A43 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C13290F1B5969C600059A43 /* libz.tbd */; };
+		5C1329121B5C754C00059A43 /* ArcadeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C1329111B5C754C00059A43 /* ArcadeScene.sks */; };
 		5C5FE2D51B2A35530029EC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D41B2A35530029EC23 /* AppDelegate.swift */; };
 		5C5FE2D71B2A35530029EC23 /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D61B2A35530029EC23 /* MainMenuScene.sks */; };
 		5C5FE2D91B2A35530029EC23 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D81B2A35530029EC23 /* MainMenuScene.swift */; };
@@ -37,6 +38,7 @@
 		5C5FE2F31B2A833C0029EC23 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5FE2F21B2A833C0029EC23 /* StoreKit.framework */; };
 		5C66757F1B431409007E352F /* BadCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C66757E1B431409007E352F /* BadCircle.swift */; };
 		5C6756FE1B56BE1400991F14 /* GameCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6756FD1B56BE1400991F14 /* GameCenter.framework */; };
+		5C7178E21B5C758600913122 /* ArcadeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7178E11B5C758600913122 /* ArcadeScene.swift */; };
 		5C8CD1BC1B4178BA00C2D3C2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8CD1BB1B4178BA00C2D3C2 /* Social.framework */; };
 		5C99556C1B4B034900A3E3FE /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C99556B1B4B034900A3E3FE /* GameOverScreen.swift */; };
 		5CB6AE611B2B3D9E009D5CA7 /* TouchCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6AE601B2B3D9E009D5CA7 /* TouchCircle.swift */; };
@@ -73,6 +75,7 @@
 		5C13290A1B59697A00059A43 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		5C13290C1B59698D00059A43 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		5C13290F1B5969C600059A43 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		5C1329111B5C754C00059A43 /* ArcadeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ArcadeScene.sks; sourceTree = "<group>"; };
 		5C5FE2D11B2A35530029EC23 /* PopADots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopADots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C5FE2D41B2A35530029EC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C5FE2D61B2A35530029EC23 /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 		5C5FE2F21B2A833C0029EC23 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5C66757E1B431409007E352F /* BadCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadCircle.swift; sourceTree = "<group>"; };
 		5C6756FD1B56BE1400991F14 /* GameCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameCenter.framework; path = System/Library/Frameworks/GameCenter.framework; sourceTree = SDKROOT; };
+		5C7178E11B5C758600913122 /* ArcadeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcadeScene.swift; sourceTree = "<group>"; };
 		5C8CD1BA1B3C729D00C2D3C2 /* PopADots.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PopADots.entitlements; sourceTree = "<group>"; };
 		5C8CD1BB1B4178BA00C2D3C2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5C99556B1B4B034900A3E3FE /* GameOverScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOverScreen.swift; path = ../GameOverScreen.swift; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 				5CE66C4D1B379C660078B9A5 /* BackgroundEffect.swift */,
 				5C66757E1B431409007E352F /* BadCircle.swift */,
 				5C99556B1B4B034900A3E3FE /* GameOverScreen.swift */,
+				5C7178E11B5C758600913122 /* ArcadeScene.swift */,
+				5C1329111B5C754C00059A43 /* ArcadeScene.sks */,
 			);
 			path = PopADots;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 				5C5FE2E01B2A35530029EC23 /* Assets.xcassets in Resources */,
 				5CE2AF4D1B30CA2C005C2989 /* ClassicScene.sks in Resources */,
 				5CE66C421B33A03B0078B9A5 /* Orbitron Medium.ttf in Resources */,
+				5C1329121B5C754C00059A43 /* ArcadeScene.sks in Resources */,
 				5CE66C511B379CF70078B9A5 /* highpop.wav in Resources */,
 				5C5FE2DE1B2A35530029EC23 /* Main.storyboard in Resources */,
 				5CE66C581B379D080078B9A5 /* Icon_Full.png in Resources */,
@@ -315,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C7178E21B5C758600913122 /* ArcadeScene.swift in Sources */,
 				5C5FE2ED1B2A7E520029EC23 /* Utils.swift in Sources */,
 				5C5FE2D91B2A35530029EC23 /* MainMenuScene.swift in Sources */,
 				5CE66C3E1B31D78E0078B9A5 /* MenuCircle.swift in Sources */,

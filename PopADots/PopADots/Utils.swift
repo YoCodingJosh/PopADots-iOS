@@ -12,6 +12,12 @@ import SpriteKit
 import UIKit
 import SystemConfiguration
 
+enum GameState {
+    case MainMenu, ClassicMode, ArcadeMode, VoidsMode
+}
+
+var globalGameState: GameState = GameState.MainMenu
+
 extension SKNode {
     class func unarchiveFromFile(file : NSString) -> SKNode? {
         

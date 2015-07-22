@@ -8,16 +8,10 @@
 
 import SpriteKit
 
-enum GameState {
-    case MainMenu, ClassicMode, ArcadeMode, VoidsMode
-}
-
 class MainMenuScene: SKScene {
     var numCircles:UInt32 = 4
     var circles:Array<MenuCircle>? = Array<MenuCircle>()
     var bg: RainbowEffect?
-    
-    var gameState: GameState = GameState.MainMenu;
     
     override init() {
         super.init()
@@ -32,7 +26,11 @@ class MainMenuScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
+        print("loading main menu")
+        globalGameState = GameState.MainMenu;
+        
         if self.bg == nil {
+            print("instantiating new bg for menu")
             self.bg = RainbowEffect(frame: self.frame)
             self.scene?.backgroundColor = SKColor.whiteColor()
         }
@@ -46,10 +44,6 @@ class MainMenuScene: SKScene {
         self.generateCircles()
         
         print("at main menu")
-        
-        for node in self.children {
-            print(node)
-        }
         
         //print("Screen Resolution (x,y,w,h): \(Utils.getScreenResolution())")
         //print("Aspect Ratio: \(Utils.getAspectRatio())")
@@ -128,8 +122,6 @@ class MainMenuScene: SKScene {
         
         circle?.initialize()
         
-        print("\(circle!)")
-        
         return circle!
     }
     
@@ -160,6 +152,10 @@ class MainMenuScene: SKScene {
         case 1:
             // Arcade Mode
             print("Arcade Mode pressed!")
+            let transition: SKTransition = SKTransition.fadeWithDuration(1)
+            let arcade: ArcadeScene = ArcadeScene(size: self.frame.size)
+            
+            self.view?.presentScene(arcade, transition: transition)
         case 2:
             // Voids Mode
             print("Voids Mode pressed!")
