@@ -10,8 +10,9 @@ import SpriteKit
 
 class MainMenuScene: SKScene {
     var numCircles:UInt32 = 4
-    var circles:Array<MenuCircle>? = Array<MenuCircle>()
+    var circles:Array<TouchCircle>? = Array<TouchCircle>()
     var bg: RainbowEffect?
+    var numBackgroundCircles = 10
     
     override init() {
         super.init()
@@ -56,9 +57,9 @@ class MainMenuScene: SKScene {
         let myTouch: UITouch = touches.first!
         let touchLocation = myTouch.locationInNode(self)
         
-        for var i = 0; i < self.circles!.count; ++i {
-            if self.circles![i].checkTouch(touchLocation) == true {
-                self.menuAction(i)
+        for var i = numBackgroundCircles; i < self.circles!.count; ++i {
+            if self.circles![i] is MenuCircle && self.circles![i].checkTouch(touchLocation) == true {
+                self.menuAction(i - numBackgroundCircles)
             }
         }
         
@@ -92,8 +93,22 @@ class MainMenuScene: SKScene {
     }
     
     func generateCircles() {
+        for var i = 0; i < self.numBackgroundCircles; ++i {
+            let tempCircle: TouchCircle = TouchCircle()
+            
+            tempCircle.active = true
+            tempCircle.touchable = false
+            
+            tempCircle.zPosition = CGFloat(i)
+            
+            self.circles!.append(tempCircle)
+            self.addChild(tempCircle)
+        }
+        
         for var i: UInt32 = 0; i < self.numCircles; ++i {
             let tempCircle: MenuCircle = createMenuButton(Int(i))
+            
+            tempCircle.zPosition = CGFloat(UInt32(numBackgroundCircles) + (i + 1))
             
             self.circles?.append(tempCircle)
             self.addChild(tempCircle)
@@ -126,6 +141,7 @@ class MainMenuScene: SKScene {
     }
     
     func menuAction(button: Int) {
+        print("Triggering button: \(button)")
         switch button {
         case 0:
             // Classic Mode
@@ -163,7 +179,7 @@ class MainMenuScene: SKScene {
             // Insane Mode
             print("Insane Mode pressed!")
         default:
-            fatalError("Button index is invalid.")
+            fatalError("Button index \(button) is invalid.")
         }
     }
 }

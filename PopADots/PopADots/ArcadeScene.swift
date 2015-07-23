@@ -35,7 +35,7 @@ class ArcadeScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        globalGameState = GameState.ClassicMode
+        globalGameState = GameState.ArcadeMode
         
         startNewGame()
     }

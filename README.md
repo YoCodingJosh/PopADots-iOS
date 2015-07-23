@@ -5,11 +5,11 @@
 ### Requirements ###
 
 * A Mac running 10.10 (Yosemite) or later
-* Latest Xcode 7 beta from Apple Developer Center
-* An iOS device running iOS 7.1.2 or later.
-    * Why iOS 7?
-        * It's the earliest version that SpriteKit supports.
-        * Roughly 94% of all iOS devices run iOS 7 and above.
+* Latest Xcode 7 beta from Apple Developer Center (latest version 4)
+* An iOS device running iOS 9 or later.
+    * Why iOS 9?
+        * It's mandatory to support the latest stable APIs like SpriteKit and GameCenter (to name a few).
+        * It will support the same devices that run iOS 8.
 
 ### How do I get set up? ###
 
