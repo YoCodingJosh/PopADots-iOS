@@ -101,11 +101,23 @@ class TouchCircle : Circle {
         return ((touch.x - self.position.x) * (touch.x - self.position.x)) + ((touch.y - self.position.y) * (touch.y - self.position.y)) < ((self.radius * self.radius));
     }
     
+    /*
+     * Note: this does not convert this instance into a BadCircle instance IN PLACE.
+     *  That requires some magic that is waaaayyy out of scope of this function.
+     */
     func convertToBad(state: BadCircleState = BadCircleState.Original) -> BadCircle {
         let bad: BadCircle = BadCircle(radius: self.radius, pos: self.position, xVel: self.velocity.xVel, yVel: self.velocity.yVel)
         
         bad.state = state
         
         return bad
+    }
+    
+    func checkCollision(circle: TouchCircle) -> Bool {
+        var distX = circle.position.x - self.position.x
+        var distY = circle.position.y - self.position.y
+        var radii = circle.radius + self.radius
+        
+        return (distX * distX) + (distY * distY) < (radii * radii)
     }
 }

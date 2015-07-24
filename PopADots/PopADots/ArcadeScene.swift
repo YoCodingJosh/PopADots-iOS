@@ -44,6 +44,9 @@ class ArcadeScene: SKScene {
         let myTouch: UITouch = touches.first!
         let touchLocation = myTouch.locationInNode(self)
         
+        self.scoreLabel!.text = "Score: \(self.score)"
+        self.scoreShadowLabel!.text = "Score: \(self.score)"
+        
         if (gameOver && gameOverScreenCreated) {
             switch(gameOverScreen!.getUserChoice(touchLocation)) {
             case 0:
@@ -93,9 +96,6 @@ class ArcadeScene: SKScene {
                 self.gameOver = true
             }
         }
-
-        self.scoreLabel!.text = "Score: \(self.score)"
-        self.scoreShadowLabel!.text = "Score: \(self.score)"
     }
     
     override func update(currentTime: NSTimeInterval) {
