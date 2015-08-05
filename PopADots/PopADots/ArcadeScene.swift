@@ -20,7 +20,6 @@ class ArcadeScene: SKScene {
     var score: UInt64 = 0
     var scoreLabel: SKLabelNode?
     var scoreShadowLabel: SKLabelNode?
-    var newGame: Bool = true
 
     override init() {
         super.init()
@@ -50,7 +49,7 @@ class ArcadeScene: SKScene {
         if (gameOver && gameOverScreenCreated) {
             switch(gameOverScreen!.getUserChoice(touchLocation)) {
             case 0:
-                // we don't it to go to default
+                // we don't want it to go to default
                 break
             case 1:
                 print("restart game")
@@ -144,23 +143,24 @@ class ArcadeScene: SKScene {
     }
     
     func startNewGame() {
-        self.newGame = true
         self.backgroundColor = UIColor.whiteColor()
         
         self.gameOverScreen = GameOverScreen(myFrame: self.frame)
         
         self.scoreShadowLabel = SKLabelNode(fontNamed: "Orbitron Black")
-        self.scoreShadowLabel!.fontSize = Utils.getScaledFontSize(19)
+        self.scoreShadowLabel!.fontSize = Utils.getScaledFontSize(19) // or 20.5
         self.scoreShadowLabel?.text = "Score: 0"
         self.scoreShadowLabel!.fontColor = UIColor.blackColor()
         self.scoreShadowLabel!.position.y = Utils.getScreenResolution().height - self.scoreShadowLabel!.fontSize
-        self.scoreShadowLabel!.position.x += (self.scoreShadowLabel!.frame.width / 2)
+        //self.scoreShadowLabel!.position.x += (self.scoreShadowLabel!.frame.width / 2) + 2
+        self.scoreShadowLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left;
         self.addChild(self.scoreShadowLabel!)
         
         self.scoreLabel = SKLabelNode(fontNamed: "Orbitron Medium")
         self.scoreLabel!.fontSize = Utils.getScaledFontSize(19)
         self.scoreLabel?.text = "Score: 0"
         self.scoreLabel!.fontColor = UIColor.whiteColor()
+        self.scoreLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left;
         self.scoreShadowLabel!.addChild(self.scoreLabel!)
         
         checkGameState()

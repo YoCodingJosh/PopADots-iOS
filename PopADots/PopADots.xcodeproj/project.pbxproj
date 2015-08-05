@@ -52,6 +52,7 @@
 		5CE66C5A1B379D080078B9A5 /* lowpop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CE66C561B379D080078B9A5 /* lowpop.wav */; };
 		5CFCF56B1B628D9B00E63356 /* VoidsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */; };
 		5CFCF56D1B62DE5700E63356 /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */; };
+		5CFCF56F1B6A97D000E63356 /* FlashyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		5CE66C561B379D080078B9A5 /* lowpop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lowpop.wav; sourceTree = "<group>"; };
 		5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoidsScene.swift; sourceTree = "<group>"; };
 		5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScreen.swift; sourceTree = "<group>"; };
+		5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashyScore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */,
 				5C7178E11B5C758600913122 /* ArcadeScene.swift */,
 				5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */,
+				5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */,
 			);
 			path = PopADots;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			files = (
 				5C7178E21B5C758600913122 /* ArcadeScene.swift in Sources */,
 				5C5FE2ED1B2A7E520029EC23 /* Utils.swift in Sources */,
+				5CFCF56F1B6A97D000E63356 /* FlashyScore.swift in Sources */,
 				5C5FE2D91B2A35530029EC23 /* MainMenuScene.swift in Sources */,
 				5CE66C3E1B31D78E0078B9A5 /* MenuCircle.swift in Sources */,
 				5C5FE2EB1B2A785F0029EC23 /* Circle.swift in Sources */,

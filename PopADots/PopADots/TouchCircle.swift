@@ -114,9 +114,9 @@ class TouchCircle : Circle {
     }
     
     func checkCollision(circle: TouchCircle) -> Bool {
-        var distX = circle.position.x - self.position.x
-        var distY = circle.position.y - self.position.y
-        var radii = circle.radius + self.radius
+        let distX = circle.position.x - self.position.x
+        let distY = circle.position.y - self.position.y
+        let radii = circle.radius + self.radius
         
         return (distX * distX) + (distY * distY) < (radii * radii)
     }

@@ -10,5 +10,133 @@ import Foundation
 import SpriteKit
 
 class VoidsScene: SKScene {
+    var numCircles: UInt32 = 5
+    var numBadCircles: UInt32 = 0
+    var circles: Array<TouchCircle>? = Array<TouchCircle>()
+    var badCircles: Array<BadCircle>? = Array<BadCircle>()
+    var gameOver: Bool = false
+    var gameOverScreenCreated: Bool = false
+    var gameOverScreen: GameOverScreen?
+    var score: UInt64 = 0
+    var scoreLabel: SKLabelNode?
+    var scoreShadowLabel: SKLabelNode?
     
+    override init() {
+        super.init()
+    }
+    
+    override init(size: CGSize) {
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func didMoveToView(view: SKView) {
+        globalGameState = GameState.ArcadeMode
+        
+        startNewGame()
+    }
+    
+    func generateCircles() {
+        for child in self.children {
+            if child is TouchCircle || child is BadCircle {
+                child.removeFromParent()
+            }
+        }
+        
+        for var i: UInt32 = 0; i < self.numCircles; ++i {
+            let tempCircle: TouchCircle = TouchCircle()
+            tempCircle.active = true
+            tempCircle.touchable = true
+            
+            tempCircle.zPosition = CGFloat(i)
+            
+            self.circles!.append(tempCircle)
+            self.addChild(tempCircle)
+        }
+        
+        for var i: UInt32 = 0; i < self.numBadCircles; ++i {
+            let tempCircle: BadCircle = BadCircle()
+            tempCircle.active = true
+            tempCircle.touchable = true
+            tempCircle.state = BadCircleState.Original
+            
+            tempCircle.zPosition = CGFloat(i)
+            
+            self.badCircles!.append(tempCircle)
+            self.addChild(tempCircle)
+        }
+    }
+
+    
+    func checkGameState() {
+        if (self.circles?.count == 0) {
+            if (numCircles > 1) {
+                --numCircles
+            }
+            else {
+                numCircles = 5
+            }
+            
+            numBadCircles = 1 + UInt32(self.score) / 15
+            
+            generateCircles()
+        }
+    }
+    
+    func startNewGame() {
+        self.backgroundColor = UIColor.whiteColor()
+        
+        self.gameOverScreen = GameOverScreen(myFrame: self.frame)
+        
+        self.scoreShadowLabel = SKLabelNode(fontNamed: "Orbitron Black")
+        self.scoreShadowLabel!.fontSize = Utils.getScaledFontSize(19) // or 20.5
+        self.scoreShadowLabel?.text = "Score: 0"
+        self.scoreShadowLabel!.fontColor = UIColor.blackColor()
+        self.scoreShadowLabel!.position.y = Utils.getScreenResolution().height - self.scoreShadowLabel!.fontSize
+        //self.scoreShadowLabel!.position.x += (self.scoreShadowLabel!.frame.width / 2) + 2
+        self.scoreShadowLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left;
+        self.addChild(self.scoreShadowLabel!)
+        
+        self.scoreLabel = SKLabelNode(fontNamed: "Orbitron Medium")
+        self.scoreLabel!.fontSize = Utils.getScaledFontSize(19)
+        self.scoreLabel?.text = "Score: 0"
+        self.scoreLabel!.fontColor = UIColor.whiteColor()
+        self.scoreLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left;
+        self.scoreShadowLabel!.addChild(self.scoreLabel!)
+        
+        checkGameState()
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
+        if gameOver {
+            if gameOverScreenCreated {
+                return
+            }
+            else {
+                // create game over screen
+                self.gameOverScreen!.position.x = 0
+                self.gameOverScreen!.position.y = 0
+                self.gameOverScreen!.zPosition = 10
+                
+                self.addChild(self.gameOverScreen!)
+                
+                self.gameOverScreen!.initialize()
+                
+                gameOverScreenCreated = true
+            }
+        }
+        
+        for var i = 0; i < self.circles!.count; ++i {
+            self.circles?[i].update(currentTime)
+        }
+        
+        for var i = 0; i < self.badCircles!.count; ++i {
+            self.badCircles?[i].update(currentTime)
+        }
+        
+        self.checkGameState()
+    }
 }

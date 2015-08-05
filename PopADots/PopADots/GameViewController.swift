@@ -57,7 +57,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
         print("done with game center for now...")
     }
-
+    
+    func gameCenterStateChanged() {
+        // do something?
+    }
+    
     override func shouldAutorotate() -> Bool {
         return true
     }
