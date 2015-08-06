@@ -9,7 +9,7 @@
 import SpriteKit
 
 class MainMenuScene: SKScene {
-    var numCircles:UInt32 = 4
+    var numCircles = 4
     var circles:Array<TouchCircle>? = Array<TouchCircle>()
     var bg: RainbowEffect?
     var numBackgroundCircles = 10
@@ -105,10 +105,10 @@ class MainMenuScene: SKScene {
             self.addChild(tempCircle)
         }
         
-        for var i: UInt32 = 0; i < self.numCircles; ++i {
+        for var i = 0; i < self.numCircles; ++i {
             let tempCircle: MenuCircle = createMenuButton(Int(i))
             
-            tempCircle.zPosition = CGFloat(UInt32(numBackgroundCircles) + (i + 1))
+            tempCircle.zPosition = CGFloat(numBackgroundCircles + (i + 1))
             
             self.circles?.append(tempCircle)
             self.addChild(tempCircle)

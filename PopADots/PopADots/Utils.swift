@@ -183,7 +183,7 @@ class Utils {
         }
         
         var flags : SCNetworkReachabilityFlags = []
-        if SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) == 0 {
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) == false {
             return false
         }
         
@@ -191,5 +191,16 @@ class Utils {
         let needsConnection = flags.contains(.ConnectionRequired)
         
         return (isReachable && !needsConnection)
+    }
+    
+    static func lerp(value1: CGFloat, value2: CGFloat, amount: CGFloat) -> CGFloat {
+        return ((1 - value1) * value2) + (value1 * amount);
+    }
+    
+    static func lerp(color1: UIColor, color2: UIColor, amount: CGFloat) -> UIColor {
+        let val1: CIColor = CIColor(color: color1)
+        let val2: CIColor = CIColor(color: color2)
+        
+        return UIColor(red: lerp(val1.red, value2: val2.red, amount: amount), green: lerp(val1.green, value2: val2.green, amount: amount), blue: lerp(val1.blue, value2: val2.blue, amount: amount), alpha: lerp(val1.alpha, value2: val2.alpha, amount: amount))
     }
 }

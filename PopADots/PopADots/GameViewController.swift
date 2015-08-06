@@ -8,7 +8,7 @@
 
 import UIKit
 import SpriteKit
-import GameCenter
+import GameKit
 
 import iAd
 
@@ -31,7 +31,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
             skView.ignoresSiblingOrder = true
             
             /* Set the scale mode to scale to fit the window */
-            scene!.scaleMode = .Fill
+            scene!.scaleMode = .ResizeFill
             
             skView.presentScene(scene)
         }

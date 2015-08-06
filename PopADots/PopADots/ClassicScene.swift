@@ -76,7 +76,7 @@ class ClassicScene: SKScene {
         }
         
         for var i = 0; i < self.circles!.count; ++i {
-            if self.circles?[i].checkTouch(touchLocation) == true {
+            if self.circles?[i].checkTouch(touchLocation) == true {                
                 self.circles?[i].removeFromParent()
                 self.circles?.removeAtIndex(i)
                 
@@ -105,7 +105,7 @@ class ClassicScene: SKScene {
                 // create game over screen
                 self.gameOverScreen!.position.x = 0
                 self.gameOverScreen!.position.y = 0
-                self.gameOverScreen!.zPosition = 10
+                self.gameOverScreen!.zPosition = 50
                 
                 self.addChild(self.gameOverScreen!)
                 

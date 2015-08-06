@@ -35,7 +35,7 @@
 		5C5FE2ED1B2A7E520029EC23 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FE2EC1B2A7E520029EC23 /* Utils.swift */; };
 		5C5FE2F31B2A833C0029EC23 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5FE2F21B2A833C0029EC23 /* StoreKit.framework */; };
 		5C66757F1B431409007E352F /* BadCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C66757E1B431409007E352F /* BadCircle.swift */; };
-		5C6756FE1B56BE1400991F14 /* GameCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6756FD1B56BE1400991F14 /* GameCenter.framework */; };
+		5C7108DF1B74261A00A31D77 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7108DE1B74261A00A31D77 /* GameKit.framework */; };
 		5C7178E21B5C758600913122 /* ArcadeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7178E11B5C758600913122 /* ArcadeScene.swift */; };
 		5C8CD1BC1B4178BA00C2D3C2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8CD1BB1B4178BA00C2D3C2 /* Social.framework */; };
 		5CB6AE611B2B3D9E009D5CA7 /* TouchCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB6AE601B2B3D9E009D5CA7 /* TouchCircle.swift */; };
@@ -86,7 +86,7 @@
 		5C5FE2EC1B2A7E520029EC23 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		5C5FE2F21B2A833C0029EC23 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5C66757E1B431409007E352F /* BadCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadCircle.swift; sourceTree = "<group>"; };
-		5C6756FD1B56BE1400991F14 /* GameCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameCenter.framework; path = System/Library/Frameworks/GameCenter.framework; sourceTree = SDKROOT; };
+		5C7108DE1B74261A00A31D77 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		5C7178E11B5C758600913122 /* ArcadeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcadeScene.swift; sourceTree = "<group>"; };
 		5C8CD1BA1B3C729D00C2D3C2 /* PopADots.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PopADots.entitlements; sourceTree = "<group>"; };
 		5C8CD1BB1B4178BA00C2D3C2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -112,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C7108DF1B74261A00A31D77 /* GameKit.framework in Frameworks */,
 				5C1329101B5969C600059A43 /* libz.tbd in Frameworks */,
 				5C13290D1B59698D00059A43 /* libsqlite3.tbd in Frameworks */,
 				5C13290B1B59697A00059A43 /* libstdc++.6.tbd in Frameworks */,
@@ -124,7 +125,6 @@
 				5C1329081B59679700059A43 /* Security.framework in Frameworks */,
 				5C1329091B59679700059A43 /* SystemConfiguration.framework in Frameworks */,
 				5C1328F91B595BFA00059A43 /* ParseUI.framework in Frameworks */,
-				5C6756FE1B56BE1400991F14 /* GameCenter.framework in Frameworks */,
 				5C8CD1BC1B4178BA00C2D3C2 /* Social.framework in Frameworks */,
 				5C1328F81B595BFA00059A43 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				5C1328F31B595BE400059A43 /* ParseFacebookUtils.framework in Frameworks */,
@@ -141,6 +141,7 @@
 		5C5FE2C81B2A35530029EC23 = {
 			isa = PBXGroup;
 			children = (
+				5C7108DE1B74261A00A31D77 /* GameKit.framework */,
 				5C13290F1B5969C600059A43 /* libz.tbd */,
 				5C13290C1B59698D00059A43 /* libsqlite3.tbd */,
 				5C13290A1B59697A00059A43 /* libstdc++.6.tbd */,
@@ -152,7 +153,6 @@
 				5C1328FF1B59679700059A43 /* QuartzCore.framework */,
 				5C1329001B59679700059A43 /* Security.framework */,
 				5C1329011B59679700059A43 /* SystemConfiguration.framework */,
-				5C6756FD1B56BE1400991F14 /* GameCenter.framework */,
 				5C8CD1BB1B4178BA00C2D3C2 /* Social.framework */,
 				5C5FE2F21B2A833C0029EC23 /* StoreKit.framework */,
 				5C5FE2D31B2A35530029EC23 /* PopADots */,
