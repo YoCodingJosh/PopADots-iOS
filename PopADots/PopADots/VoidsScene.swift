@@ -39,6 +39,38 @@ class VoidsScene: SKScene {
         startNewGame()
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let myTouch: UITouch = touches.first!
+        let touchLocation = myTouch.locationInNode(self)
+        
+        if (gameOver && gameOverScreenCreated) {
+            switch(gameOverScreen!.getUserChoice(touchLocation)) {
+            case 0:
+                // we don't want it to go to default
+                break
+            case 1:
+                print("restart game")
+                
+                //self.resetGame()
+                self.startNewGame()
+            case 2:
+                print("go to main menu")
+                
+                let transition: SKTransition = SKTransition.fadeWithDuration(1)
+                let menu: MainMenuScene = MainMenuScene(size: self.frame.size)
+                let newBG: RainbowEffect = RainbowEffect(frame: self.frame)
+                
+                menu.bg = newBG // For some reason, I need to set this before transitioning. :\
+                
+                self.view?.presentScene(menu, transition: transition)
+            default:
+                fatalError("you should not be here")
+            }
+            
+            return
+        }
+    }
+    
     func generateCircles() {
         for child in self.children {
             if child is TouchCircle || child is BadCircle {

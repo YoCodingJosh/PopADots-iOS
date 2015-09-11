@@ -69,6 +69,8 @@ class ArcadeScene: SKScene {
             default:
                 fatalError("you should not be here")
             }
+            
+            return
         }
         
         for var i = 0; i < self.circles!.count; ++i {

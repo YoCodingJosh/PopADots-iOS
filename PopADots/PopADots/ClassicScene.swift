@@ -73,6 +73,8 @@ class ClassicScene: SKScene {
             default:
                 print("god damn it swift, there are no other possible choices")
             }
+            
+            return
         }
         
         for var i = 0; i < self.circles!.count; ++i {
