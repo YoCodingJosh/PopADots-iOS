@@ -82,6 +82,8 @@ class ClassicScene: SKScene {
                 self.circles?[i].removeFromParent()
                 self.circles?.removeAtIndex(i)
                 
+                self.runAction(Utils.getPopSound())
+                
                 self.score++
             }
         }
@@ -89,6 +91,7 @@ class ClassicScene: SKScene {
         for var i = 0; i < self.badCircles!.count; ++i {
             if self.badCircles?[i].checkTouch(touchLocation) == true {
                 self.gameOver = true
+                self.runAction(Utils.getBadPopSound())
             }
         }
         

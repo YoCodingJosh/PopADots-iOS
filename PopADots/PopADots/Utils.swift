@@ -33,6 +33,24 @@ extension SKNode {
     }
 }
 
+extension Int
+{
+    static func random(range: Range<Int> ) -> Int
+    {
+        var offset = 0
+        
+        if range.startIndex < 0   // allow negative ranges
+        {
+            offset = abs(range.startIndex)
+        }
+        
+        let mini = UInt32(range.startIndex + offset)
+        let maxi = UInt32(range.endIndex   + offset)
+        
+        return Int(mini + arc4random_uniform(maxi - mini)) - offset
+    }
+}
+
 class Utils {
     static func randomFloat() -> CGFloat {
         return CGFloat(Float(arc4random()) / Float(UINT32_MAX))
@@ -202,5 +220,30 @@ class Utils {
         let val2: CIColor = CIColor(color: color2)
         
         return UIColor(red: lerp(val1.red, value2: val2.red, amount: amount), green: lerp(val1.green, value2: val2.green, amount: amount), blue: lerp(val1.blue, value2: val2.blue, amount: amount), alpha: lerp(val1.alpha, value2: val2.alpha, amount: amount))
+    }
+    
+    static func getPopSound(val: Int = 0) -> SKAction {
+        if (val > 2 || val < 0) {
+            fatalError("Bounds checking failed for Utils::getPopSound()")
+        }
+        
+        if (val == 0) {
+            return getPopSound(Int.random(0...2))
+        }
+        
+        switch (val) {
+        case 0:
+            return SKAction.playSoundFileNamed("lowpop.wav", waitForCompletion: false)
+        case 1:
+            return SKAction.playSoundFileNamed("highpop.wav", waitForCompletion: false)
+        case 2:
+            return SKAction.playSoundFileNamed("highpop2.wav", waitForCompletion: false)
+        default:
+            return getPopSound(Int.random(0...2))
+        }
+    }
+    
+    static func getBadPopSound() -> SKAction {
+        return SKAction.playSoundFileNamed("badpop.wav", waitForCompletion: false)
     }
 }
