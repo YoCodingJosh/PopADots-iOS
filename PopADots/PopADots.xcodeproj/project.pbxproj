@@ -54,6 +54,7 @@
 		5CFCF56B1B628D9B00E63356 /* VoidsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */; };
 		5CFCF56D1B62DE5700E63356 /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */; };
 		5CFCF56F1B6A97D000E63356 /* FlashyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */; };
+		84BB8E241C1511F00044D8FB /* MKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoidsScene.swift; sourceTree = "<group>"; };
 		5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScreen.swift; sourceTree = "<group>"; };
 		5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashyScore.swift; sourceTree = "<group>"; };
+		84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKOutlinedLabelNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 				5C7178E11B5C758600913122 /* ArcadeScene.swift */,
 				5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */,
 				5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */,
+				84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */,
 			);
 			path = PopADots;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				5C5FE2D91B2A35530029EC23 /* MainMenuScene.swift in Sources */,
 				5CE66C3E1B31D78E0078B9A5 /* MenuCircle.swift in Sources */,
 				5C5FE2EB1B2A785F0029EC23 /* Circle.swift in Sources */,
+				84BB8E241C1511F00044D8FB /* MKOutlinedLabelNode.swift in Sources */,
 				5C065D451B3091D8001A4CF3 /* ClassicScene.swift in Sources */,
 				5C66757F1B431409007E352F /* BadCircle.swift in Sources */,
 				5C5FE2DB1B2A35530029EC23 /* GameViewController.swift in Sources */,

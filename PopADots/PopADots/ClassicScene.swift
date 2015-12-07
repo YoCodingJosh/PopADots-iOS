@@ -19,7 +19,7 @@ class ClassicScene: SKScene {
     var gameOverScreenCreated: Bool = false
     var gameOverScreen: GameOverScreen?
     var score: UInt64 = 0
-    var scoreLabel: SKLabelNode?
+    var scoreLabel: MKOutlinedLabelNode?
     var scoreShadowLabel: SKLabelNode?
     
     override init() {
@@ -85,6 +85,8 @@ class ClassicScene: SKScene {
                 self.runAction(Utils.getPopSound())
                 
                 self.score++
+                
+                return
             }
         }
         
@@ -94,13 +96,14 @@ class ClassicScene: SKScene {
                 self.runAction(Utils.getBadPopSound())
             }
         }
-        
-        self.scoreLabel!.text = "Score: \(self.score)"
-        self.scoreShadowLabel!.text = "Score: \(self.score)"
     }
     
     override func update(currentTime: NSTimeInterval) {
         /* Called before each frame is rendered */
+        
+        self.scoreLabel!.outlinedText = "\(self.score) pts"
+        //self.scoreLabel!.outlinedText = "Score: \(self.score)"
+        //self.scoreShadowLabel!.text = "Score: \(self.score)"
         
         if gameOver {
             if gameOverScreenCreated {
@@ -187,6 +190,7 @@ class ClassicScene: SKScene {
         
         self.gameOverScreen = GameOverScreen(myFrame: self.frame)
         
+        /*
         self.scoreShadowLabel = SKLabelNode(fontNamed: "Orbitron Black")
         self.scoreShadowLabel!.fontSize = Utils.getScaledFontSize(19) // or 20.5
         self.scoreShadowLabel?.text = "Score: 0"
@@ -195,13 +199,17 @@ class ClassicScene: SKScene {
         //self.scoreShadowLabel!.position.x += (self.scoreShadowLabel!.frame.width / 2) + 2
         self.scoreShadowLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left;
         self.addChild(self.scoreShadowLabel!)
+        */
         
-        self.scoreLabel = SKLabelNode(fontNamed: "Orbitron Medium")
-        self.scoreLabel!.fontSize = Utils.getScaledFontSize(19)
-        self.scoreLabel?.text = "Score: 0"
+        self.scoreLabel = MKOutlinedLabelNode(fontNamed: "Orbitron Medium", fontSize: Utils.getScaledFontSize(19))
+        //self.scoreLabel!.fontSize = Utils.getScaledFontSize(19)
+        self.scoreLabel!.outlinedText = "0 pts" // has to be less than 8 chars so it wont crash
+        self.scoreLabel!.position.y = Utils.getScreenResolution().height - self.scoreLabel!.fontSize
         self.scoreLabel!.fontColor = UIColor.whiteColor()
+        self.scoreLabel!.borderColor = UIColor.blackColor()
         self.scoreLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left;
-        self.scoreShadowLabel!.addChild(self.scoreLabel!)
+        //self.scoreShadowLabel!.addChild(self.scoreLabel!)
+        self.addChild(self.scoreLabel!)
         
         checkGameState()
     }
