@@ -69,6 +69,8 @@ class ClassicScene: SKScene {
                 
                 menu.bg = newBG
                 
+                self.removeAllChildren()
+                
                 self.view?.presentScene(menu, transition: transition)
             default:
                 print("god damn it swift, there are no other possible choices")
@@ -101,7 +103,6 @@ class ClassicScene: SKScene {
     override func update(currentTime: NSTimeInterval) {
         /* Called before each frame is rendered */
         
-        self.scoreLabel!.outlinedText = "\(self.score) pts"
         //self.scoreLabel!.outlinedText = "Score: \(self.score)"
         //self.scoreShadowLabel!.text = "Score: \(self.score)"
         
@@ -122,6 +123,8 @@ class ClassicScene: SKScene {
                 gameOverScreenCreated = true
             }
         }
+        
+        self.scoreLabel!.outlinedText = "\(self.score)"
         
         self.bg?.update(currentTime)
         
@@ -201,9 +204,9 @@ class ClassicScene: SKScene {
         self.addChild(self.scoreShadowLabel!)
         */
         
-        self.scoreLabel = MKOutlinedLabelNode(fontNamed: "Orbitron Medium", fontSize: Utils.getScaledFontSize(19))
+        self.scoreLabel = MKOutlinedLabelNode(fontNamed: "Orbitron-Medium", fontSize: Utils.getScaledFontSize(19))
         //self.scoreLabel!.fontSize = Utils.getScaledFontSize(19)
-        self.scoreLabel!.outlinedText = "0 pts" // has to be less than 8 chars so it wont crash
+        self.scoreLabel!.outlinedText = "0" // has to be less than 8 chars so it wont crash
         self.scoreLabel!.position.y = Utils.getScreenResolution().height - self.scoreLabel!.fontSize
         self.scoreLabel!.fontColor = UIColor.whiteColor()
         self.scoreLabel!.borderColor = UIColor.blackColor()

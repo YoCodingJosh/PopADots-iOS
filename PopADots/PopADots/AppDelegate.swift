@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        print("Pop a Dots\t(C) 2014-2015 Sirkles LLC.\n")
+        print("Pop a Dots\t(C) 2015-2016 Sirkles LLC.\n")
         
         ParseCrashReporting.enable()
         Parse.setApplicationId("Dgslq8ed2n2fTKkB2BZ8PBHAgMHcsC8WP2qHDe0e",
