@@ -57,7 +57,7 @@ class MainMenuScene: SKScene {
         let myTouch: UITouch = touches.first!
         let touchLocation = myTouch.locationInNode(self)
         
-        for var i = numBackgroundCircles; i < self.circles!.count; ++i {
+        for var i in numBackgroundCircles..<self.circles!.count {
             if self.circles![i] is MenuCircle && self.circles![i].checkTouch(touchLocation) == true {
                 self.menuAction(i - numBackgroundCircles)
             }
@@ -87,13 +87,13 @@ class MainMenuScene: SKScene {
         
         self.bg!.update(currentTime)
         
-        for var i = 0; i < self.circles!.count; ++i {
-            self.circles?[i].update(currentTime)
+        for var i in 0..<self.circles!.count {
+            self.circles![i].update(currentTime)
         }
     }
     
     func generateCircles() {
-        for var i = 0; i < self.numBackgroundCircles; ++i {
+        for var i in 0..<self.numBackgroundCircles {
             let tempCircle: TouchCircle = TouchCircle()
             
             tempCircle.active = true
@@ -105,12 +105,12 @@ class MainMenuScene: SKScene {
             self.addChild(tempCircle)
         }
         
-        for var i = 0; i < self.numCircles; ++i {
+        for var i in 0..<self.numCircles {
             let tempCircle: MenuCircle = createMenuButton(Int(i))
             
             tempCircle.zPosition = CGFloat(numBackgroundCircles + (i + 1))
             
-            self.circles?.append(tempCircle)
+            self.circles!.append(tempCircle)
             self.addChild(tempCircle)
         }
     }

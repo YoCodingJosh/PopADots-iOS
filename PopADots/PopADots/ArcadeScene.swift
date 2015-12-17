@@ -73,7 +73,7 @@ class ArcadeScene: SKScene {
             return
         }
         
-        for var i = 0; i < self.circles!.count; ++i {
+        for var i in 0..<self.circles!.count {
             if self.circles?[i].checkTouch(touchLocation) == true {
                 self.circles?[i].removeFromParent()
                 
@@ -92,7 +92,7 @@ class ArcadeScene: SKScene {
             }
         }
         
-        for var i = 0; i < self.badCircles!.count; ++i {
+        for var i in 0..<self.badCircles!.count {
             if self.badCircles![i].checkTouch(touchLocation) == true {
                 self.gameOver = true
             }
@@ -197,7 +197,7 @@ class ArcadeScene: SKScene {
             }
         }
         
-        for var i: UInt32 = 0; i < self.numCircles; ++i {
+        for var i in 0..<self.numCircles {
             let tempCircle: TouchCircle = TouchCircle()
             tempCircle.active = true
             tempCircle.touchable = true
@@ -208,7 +208,7 @@ class ArcadeScene: SKScene {
             self.addChild(tempCircle)
         }
         
-        for var i: UInt32 = 0; i < self.numBadCircles; ++i {
+        for var i in 0..<self.numBadCircles {
             let tempCircle: BadCircle = BadCircle()
             tempCircle.active = true
             tempCircle.touchable = true

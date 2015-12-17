@@ -18,6 +18,12 @@ enum GameState {
 
 var globalGameState: GameState = GameState.MainMenu
 
+// Cache the sound actions to prevent a delay when popping circles.
+var lowPopSoundAction = SKAction.playSoundFileNamed("lowpop.wav", waitForCompletion: false)
+var highPopSoundAction = SKAction.playSoundFileNamed("highpop.wav", waitForCompletion: false)
+var highPop2SoundAction = SKAction.playSoundFileNamed("highpop2.wav", waitForCompletion: false)
+var badPopSoundAction = SKAction.playSoundFileNamed("badpop.wav", waitForCompletion: false)
+
 extension SKNode {
     class func unarchiveFromFile(file : NSString) -> SKNode? {
         
@@ -233,17 +239,17 @@ class Utils {
         
         switch (val) {
         case 0:
-            return SKAction.playSoundFileNamed("lowpop.wav", waitForCompletion: false)
+            return lowPopSoundAction
         case 1:
-            return SKAction.playSoundFileNamed("highpop.wav", waitForCompletion: false)
+            return highPopSoundAction
         case 2:
-            return SKAction.playSoundFileNamed("highpop2.wav", waitForCompletion: false)
+            return highPop2SoundAction
         default:
             return getPopSound(Int.random(0...2))
         }
     }
     
     static func getBadPopSound() -> SKAction {
-        return SKAction.playSoundFileNamed("badpop.wav", waitForCompletion: false)
+        return badPopSoundAction
     }
 }

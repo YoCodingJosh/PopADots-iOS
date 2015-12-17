@@ -79,7 +79,7 @@ class ClassicScene: SKScene {
             return
         }
         
-        for var i = 0; i < self.circles!.count; ++i {
+        for var i in 0..<self.circles!.count {
             if self.circles?[i].checkTouch(touchLocation) == true {                
                 self.circles?[i].removeFromParent()
                 self.circles?.removeAtIndex(i)
@@ -92,7 +92,7 @@ class ClassicScene: SKScene {
             }
         }
         
-        for var i = 0; i < self.badCircles!.count; ++i {
+        for var i in 0..<self.badCircles!.count {
             if self.badCircles?[i].checkTouch(touchLocation) == true {
                 self.gameOver = true
                 self.runAction(Utils.getBadPopSound())
@@ -128,11 +128,11 @@ class ClassicScene: SKScene {
         
         self.bg?.update(currentTime)
         
-        for var i = 0; i < self.circles!.count; ++i {
+        for var i in 0..<self.circles!.count {
             self.circles?[i].update(currentTime)
         }
         
-        for var i = 0; i < self.badCircles!.count; ++i {
+        for var i in 0..<self.badCircles!.count {
             self.badCircles?[i].update(currentTime)
         }
         
@@ -158,12 +158,20 @@ class ClassicScene: SKScene {
     }
     
     func generateCircles() {
-        for var i = 0; i < self.badCircles!.count; ++i {
-            self.badCircles?[i].removeFromParent()
+        /*
+        // Crashes! Array access out of bounds. Why?! wtf
+        for var i in 0..<self.badCircles!.count {
+            self.badCircles![i].removeFromParent()
             self.badCircles!.removeAtIndex(i)
         }
+        */
         
-        for var i: UInt32 = 0; i < self.numCircles; ++i {
+        // A bit more inefficent, as it takes two passes rather than one.
+        // At least it doesn't crash! :^)
+        self.removeChildrenInArray(self.badCircles!)
+        self.badCircles!.removeAll();
+        
+        for var i in 0..<self.numCircles {
             let tempCircle: TouchCircle = TouchCircle()
             tempCircle.active = true
             tempCircle.touchable = true
@@ -174,7 +182,7 @@ class ClassicScene: SKScene {
             self.addChild(tempCircle)
         }
         
-        for var i: UInt32 = 0; i < self.numBadCircles; ++i {
+        for var i in 0..<self.numBadCircles {
             let tempCircle: BadCircle = BadCircle()
             tempCircle.active = true
             tempCircle.touchable = true
