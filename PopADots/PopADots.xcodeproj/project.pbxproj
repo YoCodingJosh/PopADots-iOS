@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5C065D451B3091D8001A4CF3 /* ClassicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C065D441B3091D8001A4CF3 /* ClassicScene.swift */; };
-		5C1328F11B595BE400059A43 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328EE1B595BE400059A43 /* Bolts.framework */; };
-		5C1328F31B595BE400059A43 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328F01B595BE400059A43 /* ParseFacebookUtils.framework */; };
-		5C1328F71B595BFA00059A43 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328F41B595BFA00059A43 /* ParseCrashReporting.framework */; };
-		5C1328F81B595BFA00059A43 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328F51B595BFA00059A43 /* ParseFacebookUtilsV4.framework */; };
-		5C1328F91B595BFA00059A43 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328F61B595BFA00059A43 /* ParseUI.framework */; };
 		5C1329021B59679700059A43 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328FA1B59679700059A43 /* AudioToolbox.framework */; };
 		5C1329031B59679700059A43 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328FB1B59679700059A43 /* CFNetwork.framework */; };
 		5C1329041B59679700059A43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328FC1B59679700059A43 /* CoreGraphics.framework */; };
@@ -23,7 +18,6 @@
 		5C1329091B59679700059A43 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1329011B59679700059A43 /* SystemConfiguration.framework */; };
 		5C13290B1B59697A00059A43 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C13290A1B59697A00059A43 /* libstdc++.6.tbd */; };
 		5C13290D1B59698D00059A43 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C13290C1B59698D00059A43 /* libsqlite3.tbd */; };
-		5C13290E1B5969B900059A43 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328EF1B595BE400059A43 /* Parse.framework */; };
 		5C1329101B5969C600059A43 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C13290F1B5969C600059A43 /* libz.tbd */; };
 		5C5FE2D51B2A35530029EC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D41B2A35530029EC23 /* AppDelegate.swift */; };
 		5C5FE2D91B2A35530029EC23 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FE2D81B2A35530029EC23 /* MainMenuScene.swift */; };
@@ -54,18 +48,14 @@
 		5CFCF56B1B628D9B00E63356 /* VoidsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */; };
 		5CFCF56D1B62DE5700E63356 /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */; };
 		5CFCF56F1B6A97D000E63356 /* FlashyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */; };
+		849373411C5C526600E1E41B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8493733F1C5C526600E1E41B /* Fabric.framework */; };
+		849373421C5C526600E1E41B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849373401C5C526600E1E41B /* Crashlytics.framework */; };
 		84BB8E241C1511F00044D8FB /* MKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5C00C0A61B74E6B50076EE61 /* PopADots.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PopADots.entitlements; sourceTree = "<group>"; };
 		5C065D441B3091D8001A4CF3 /* ClassicScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassicScene.swift; sourceTree = "<group>"; };
-		5C1328EE1B595BE400059A43 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = SOURCE_ROOT; };
-		5C1328EF1B595BE400059A43 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = SOURCE_ROOT; };
-		5C1328F01B595BE400059A43 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = SOURCE_ROOT; };
-		5C1328F41B595BFA00059A43 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = SOURCE_ROOT; };
-		5C1328F51B595BFA00059A43 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = SOURCE_ROOT; };
-		5C1328F61B595BFA00059A43 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = SOURCE_ROOT; };
 		5C1328FA1B59679700059A43 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5C1328FB1B59679700059A43 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5C1328FC1B59679700059A43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -108,6 +98,8 @@
 		5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoidsScene.swift; sourceTree = "<group>"; };
 		5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScreen.swift; sourceTree = "<group>"; };
 		5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashyScore.swift; sourceTree = "<group>"; };
+		8493733F1C5C526600E1E41B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		849373401C5C526600E1E41B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKOutlinedLabelNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +112,7 @@
 				5C1329101B5969C600059A43 /* libz.tbd in Frameworks */,
 				5C13290D1B59698D00059A43 /* libsqlite3.tbd in Frameworks */,
 				5C13290B1B59697A00059A43 /* libstdc++.6.tbd in Frameworks */,
+				849373421C5C526600E1E41B /* Crashlytics.framework in Frameworks */,
 				5C1329021B59679700059A43 /* AudioToolbox.framework in Frameworks */,
 				5C1329031B59679700059A43 /* CFNetwork.framework in Frameworks */,
 				5C1329041B59679700059A43 /* CoreGraphics.framework in Frameworks */,
@@ -128,15 +121,10 @@
 				5C1329071B59679700059A43 /* QuartzCore.framework in Frameworks */,
 				5C1329081B59679700059A43 /* Security.framework in Frameworks */,
 				5C1329091B59679700059A43 /* SystemConfiguration.framework in Frameworks */,
-				5C1328F91B595BFA00059A43 /* ParseUI.framework in Frameworks */,
 				5C8CD1BC1B4178BA00C2D3C2 /* Social.framework in Frameworks */,
-				5C1328F81B595BFA00059A43 /* ParseFacebookUtilsV4.framework in Frameworks */,
-				5C1328F31B595BE400059A43 /* ParseFacebookUtils.framework in Frameworks */,
 				5C5FE2F31B2A833C0029EC23 /* StoreKit.framework in Frameworks */,
-				5C1328F11B595BE400059A43 /* Bolts.framework in Frameworks */,
-				5C1328F71B595BFA00059A43 /* ParseCrashReporting.framework in Frameworks */,
-				5C13290E1B5969B900059A43 /* Parse.framework in Frameworks */,
 				5C7108E11B742D7000A31D77 /* GameKit.framework in Frameworks */,
+				849373411C5C526600E1E41B /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +134,8 @@
 		5C5FE2C81B2A35530029EC23 = {
 			isa = PBXGroup;
 			children = (
+				8493733F1C5C526600E1E41B /* Fabric.framework */,
+				849373401C5C526600E1E41B /* Crashlytics.framework */,
 				5C692A051B7628DA00140B26 /* CloudKit.framework */,
 				5C7108E01B742D7000A31D77 /* GameKit.framework */,
 				5C13290F1B5969C600059A43 /* libz.tbd */,
@@ -178,12 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				5C00C0A61B74E6B50076EE61 /* PopADots.entitlements */,
-				5C1328F41B595BFA00059A43 /* ParseCrashReporting.framework */,
-				5C1328F51B595BFA00059A43 /* ParseFacebookUtilsV4.framework */,
-				5C1328F61B595BFA00059A43 /* ParseUI.framework */,
-				5C1328EE1B595BE400059A43 /* Bolts.framework */,
-				5C1328EF1B595BE400059A43 /* Parse.framework */,
-				5C1328F01B595BE400059A43 /* ParseFacebookUtils.framework */,
 				5CE66C531B379D080078B9A5 /* badpop.wav */,
 				5CE66C541B379D080078B9A5 /* Icon_Full.png */,
 				5CE66C551B379D080078B9A5 /* jaguar.wav */,
@@ -321,7 +305,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=/usr/local/bin:$PATH\ncd ../CloudCode/\n\nparse symbols -p \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"";
+			shellScript = "./Fabric.framework/run a203038f631f3fb657ffbf336118d4030dc08760 21684da65228c446bfe5733572d11141fc91a9c97cdb286528db6f3928284709";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -468,7 +452,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/**",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PopADots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -486,7 +473,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/**",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PopADots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

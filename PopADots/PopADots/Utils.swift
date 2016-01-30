@@ -228,12 +228,12 @@ class Utils {
         return UIColor(red: lerp(val1.red, value2: val2.red, amount: amount), green: lerp(val1.green, value2: val2.green, amount: amount), blue: lerp(val1.blue, value2: val2.blue, amount: amount), alpha: lerp(val1.alpha, value2: val2.alpha, amount: amount))
     }
     
-    static func getPopSound(val: Int = 0) -> SKAction {
-        if (val > 2 || val < 0) {
+    static func getPopSound(val: Int = -1) -> SKAction {
+        if (val > 2 || val < -1) {
             fatalError("Bounds checking failed for Utils::getPopSound()")
         }
         
-        if (val == 0) {
+        if (val == -1) {
             return getPopSound(Int.random(0...2))
         }
         
