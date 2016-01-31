@@ -18,9 +18,10 @@ class ClassicScene: SKScene {
     var gameOver: Bool = false
     var gameOverScreenCreated: Bool = false
     var gameOverScreen: GameOverScreen?
-    var score: UInt64 = 0
+    var score: Int64 = 0
     var scoreLabel: MKOutlinedLabelNode?
     var scoreShadowLabel: SKLabelNode?
+    var numCirclesPopped: Int64 = 0
     
     override init() {
         super.init()
@@ -87,6 +88,7 @@ class ClassicScene: SKScene {
                 self.runAction(Utils.getPopSound())
                 
                 self.score++
+                self.numCirclesPopped++;
                 
                 return
             }
@@ -117,6 +119,11 @@ class ClassicScene: SKScene {
                 self.gameOverScreen!.zPosition = 50
                 
                 self.addChild(self.gameOverScreen!)
+                
+                // Send the data for this session to the game over screen.
+                self.gameOverScreen!.myData?.numCirclesPopped = self.numCirclesPopped
+                self.gameOverScreen!.myData?.score = self.score
+                self.gameOverScreen!.myData?.gameState = GameState.ClassicMode
                 
                 self.gameOverScreen!.initialize()
                 

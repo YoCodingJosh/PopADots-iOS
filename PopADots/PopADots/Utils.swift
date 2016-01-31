@@ -12,8 +12,13 @@ import SpriteKit
 import UIKit
 import SystemConfiguration
 
+// MainMenu = Main Menu
+// ClassicMode = Classic Mode
+// ArcadeMode = Arcade Mode
+// Voids Mode = Voids Mode
+// None = Indeterminate state, usually when the container that holds this value has not been initialized.
 enum GameState {
-    case MainMenu, ClassicMode, ArcadeMode, VoidsMode
+    case MainMenu, ClassicMode, ArcadeMode, VoidsMode, None
 }
 
 var globalGameState: GameState = GameState.MainMenu
