@@ -80,21 +80,21 @@ class ClassicScene: SKScene {
             return
         }
         
-        for var i in 0..<self.circles!.count {
+        for i in 0..<self.circles!.count {
             if self.circles?[i].checkTouch(touchLocation) == true {                
                 self.circles?[i].removeFromParent()
                 self.circles?.removeAtIndex(i)
                 
                 self.runAction(Utils.getPopSound())
                 
-                self.score++
-                self.numCirclesPopped++;
+                self.score += 1
+                self.numCirclesPopped += 1;
                 
                 return
             }
         }
         
-        for var i in 0..<self.badCircles!.count {
+        for i in 0..<self.badCircles!.count {
             if self.badCircles?[i].checkTouch(touchLocation) == true {
                 self.gameOver = true
                 self.runAction(Utils.getBadPopSound())
@@ -135,11 +135,11 @@ class ClassicScene: SKScene {
         
         self.bg?.update(currentTime)
         
-        for var i in 0..<self.circles!.count {
+        for i in 0..<self.circles!.count {
             self.circles?[i].update(currentTime)
         }
         
-        for var i in 0..<self.badCircles!.count {
+        for i in 0..<self.badCircles!.count {
             self.badCircles?[i].update(currentTime)
         }
         
@@ -148,7 +148,7 @@ class ClassicScene: SKScene {
     
     func checkGameState() {
         if self.circles!.count == 0 {
-            ++numCircles
+            numCircles += 1
             
             if (numCircles == 1) {
                 numBadCircles = 0
@@ -178,7 +178,7 @@ class ClassicScene: SKScene {
         self.removeChildrenInArray(self.badCircles!)
         self.badCircles!.removeAll();
         
-        for var i in 0..<self.numCircles {
+        for i in 0..<self.numCircles {
             let tempCircle: TouchCircle = TouchCircle()
             tempCircle.active = true
             tempCircle.touchable = true
@@ -189,7 +189,7 @@ class ClassicScene: SKScene {
             self.addChild(tempCircle)
         }
         
-        for var i in 0..<self.numBadCircles {
+        for  i in 0..<self.numBadCircles {
             let tempCircle: BadCircle = BadCircle()
             tempCircle.active = true
             tempCircle.touchable = true

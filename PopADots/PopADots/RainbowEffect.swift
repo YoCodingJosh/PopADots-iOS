@@ -37,7 +37,7 @@ class RainbowEffect: BackgroundEffect {
         if (!black) {
             if (b == 0 && r == 0 && green) {
                 if (g <= 254) {
-                    ++g
+                    g += 1
                 }
                 
                 if (g == 255) {
@@ -48,21 +48,21 @@ class RainbowEffect: BackgroundEffect {
             else if (purple) {
                 if (g > 0) {
                     if (b < 128) {
-                        ++b
+                        b += 1
                     }
                     else if (r < 128) {
-                        ++r
+                        r += 1
                     }
                     else {
-                        --g
+                        g -= 1
                     }
                 }
                 else {
                     if (b >= 1) {
-                        --b
+                        b -= 1
                     }
                     else if (r >= 1) {
-                        --r
+                        r -= 1
                     }
                 }
                 
@@ -72,13 +72,13 @@ class RainbowEffect: BackgroundEffect {
                 }
             }
             else if (b < 255 && colorIncrement && !green && !purple) {
-                b++
+                b += 1
             }
             else if (b >= 254 && g <= 254) {
-                g++
+                g += 1
             }
             else if (g >= 254 && r <= 254) {
-                ++r
+                r += 1
                 
                 if (r == 255) {
                     colorIncrement = false
@@ -86,13 +86,13 @@ class RainbowEffect: BackgroundEffect {
             }
             else {
                 if (b > 0 && g != 0) {
-                    b--
+                    b -= 1
                 }
                 else if (b == 0 && g > 0) {
-                    g--
+                    g -= 1
                 }
                 else {
-                    --r
+                    r -= 1
                     
                     if (r == 0) {
                         green = true
@@ -117,15 +117,15 @@ class RainbowEffect: BackgroundEffect {
         purple = true
         
         if (b > 0) {
-            --b
+            b -= 1
         }
         
         if (g > 0) {
-            --g
+            g -= 1
         }
         
         if (r > 0) {
-            --r
+            r -= 1
         }
     }
 }

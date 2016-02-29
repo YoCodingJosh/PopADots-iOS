@@ -78,7 +78,7 @@ class VoidsScene: SKScene {
             }
         }
         
-        for var i: UInt32 = 0; i < self.numCircles; ++i {
+        for i: UInt32 in 0 ..< self.numCircles {
             let tempCircle: TouchCircle = TouchCircle()
             tempCircle.active = true
             tempCircle.touchable = true
@@ -89,7 +89,7 @@ class VoidsScene: SKScene {
             self.addChild(tempCircle)
         }
         
-        for var i: UInt32 = 0; i < self.numBadCircles; ++i {
+        for i: UInt32 in 0 ..< self.numBadCircles {
             let tempCircle: BadCircle = BadCircle()
             tempCircle.active = true
             tempCircle.touchable = true
@@ -106,7 +106,7 @@ class VoidsScene: SKScene {
     func checkGameState() {
         if (self.circles?.count == 0) {
             if (numCircles > 1) {
-                --numCircles
+                numCircles -= 1
             }
             else {
                 numCircles = 5
@@ -161,11 +161,11 @@ class VoidsScene: SKScene {
             }
         }
         
-        for var i = 0; i < self.circles!.count; ++i {
+        for i in 0 ..< self.circles!.count {
             self.circles?[i].update(currentTime)
         }
         
-        for var i = 0; i < self.badCircles!.count; ++i {
+        for i in 0 ..< self.badCircles!.count {
             self.badCircles?[i].update(currentTime)
         }
         

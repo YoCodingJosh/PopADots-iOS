@@ -48,7 +48,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
                     self.presentViewController(viewController!, animated: true, completion: nil)
                     // Add an observer which calls ‘gameCenterStateChanged’ to handle a changed game center state
                     let notificationCenter = NSNotificationCenter.defaultCenter()
-                    notificationCenter.addObserver(self, selector: "gameCenterStateChanged", name: "GKPlayerAuthenticationDidChangeNotificationName", object: nil)
+                    notificationCenter.addObserver(self, selector: #selector(GameViewController.gameCenterStateChanged), name: "GKPlayerAuthenticationDidChangeNotificationName", object: nil)
                 }
             }
         }

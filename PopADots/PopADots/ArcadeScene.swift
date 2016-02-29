@@ -73,7 +73,7 @@ class ArcadeScene: SKScene {
             return
         }
         
-        for var i in 0..<self.circles!.count {
+        for i in 0..<self.circles!.count {
             if self.circles?[i].checkTouch(touchLocation) == true {
                 self.circles?[i].removeFromParent()
                 
@@ -86,13 +86,13 @@ class ArcadeScene: SKScene {
                 
                 self.circles?.removeAtIndex(i)
                 
-                self.score++
+                self.score += 1
                 
                 return; // Don't want to trigger game over.
             }
         }
         
-        for var i in 0..<self.badCircles!.count {
+        for i in 0..<self.badCircles!.count {
             if self.badCircles![i].checkTouch(touchLocation) == true {
                 self.gameOver = true
             }
@@ -118,11 +118,11 @@ class ArcadeScene: SKScene {
             }
         }
         
-        for var i = 0; i < self.circles!.count; ++i {
+        for i in 0 ..< self.circles!.count {
             self.circles?[i].update(currentTime)
         }
         
-        for var i = 0; i < self.badCircles!.count; ++i {
+        for i in 0 ..< self.badCircles!.count {
             self.badCircles?[i].update(currentTime)
         }
 
@@ -171,7 +171,7 @@ class ArcadeScene: SKScene {
     func checkGameState() {
         if (self.circles?.count == 0) {
             if (numCircles > 1) {
-                --numCircles
+                numCircles -= 1
             }
             else {
                 numCircles = 5
@@ -197,7 +197,7 @@ class ArcadeScene: SKScene {
             }
         }
         
-        for var i in 0..<self.numCircles {
+        for i in 0..<self.numCircles {
             let tempCircle: TouchCircle = TouchCircle()
             tempCircle.active = true
             tempCircle.touchable = true
@@ -208,7 +208,7 @@ class ArcadeScene: SKScene {
             self.addChild(tempCircle)
         }
         
-        for var i in 0..<self.numBadCircles {
+        for i in 0..<self.numBadCircles {
             let tempCircle: BadCircle = BadCircle()
             tempCircle.active = true
             tempCircle.touchable = true
