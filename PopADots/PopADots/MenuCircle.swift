@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/17/15.
-//  Copyright © 2015 Sirkles LLC. All rights reserved.
+//  Copyright © 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -31,16 +31,16 @@ class MenuCircle: TouchCircle {
         self.labelNode = SKLabelNode(fontNamed: "Orbitron Medium")
         self.labelNode?.text = self.text
         self.labelNode?.fontSize = Utils.getScaledFontSize(23)
-        self.labelNode?.color = SKColor.whiteColor()
-        self.labelNode?.position = CGPointMake(0, 0)
+        self.labelNode?.color = SKColor.white
+        self.labelNode?.position = CGPoint(x: 0, y: 0)
         self.labelNode?.zPosition = 10
         
         // Just in case...
         self.labelShadowNode = SKLabelNode(fontNamed: "Orbitron Medium")
         self.labelShadowNode?.text = self.text
         self.labelShadowNode?.fontSize = Utils.getScaledFontSize(23)
-        self.labelShadowNode?.color = SKColor.blackColor()
-        self.labelShadowNode?.position = CGPointMake(0, 0)
+        self.labelShadowNode?.color = SKColor.black
+        self.labelShadowNode?.position = CGPoint(x: 0, y: 0)
         self.labelShadowNode?.zPosition = 9
         
         self.active = false
@@ -50,7 +50,7 @@ class MenuCircle: TouchCircle {
         //self.addChild(self.labelShadowNode!)
     }
     
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: CFTimeInterval) {
         // do nothing
     }
 }

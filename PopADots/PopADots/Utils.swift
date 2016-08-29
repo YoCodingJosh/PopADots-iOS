@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/11/15.
-//  Copyright © 2015 Sirkles LLC. All rights reserved.
+//  Copyright © 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -18,10 +18,10 @@ import SystemConfiguration
 // Voids Mode = Voids Mode
 // None = Indeterminate state, usually when the container that holds this value has not been initialized.
 enum GameState {
-    case MainMenu, ClassicMode, ArcadeMode, VoidsMode, None
+    case mainMenu, classicMode, arcadeMode, voidsMode, none
 }
 
-var globalGameState: GameState = GameState.MainMenu
+var globalGameState: GameState = GameState.mainMenu
 
 // Cache the sound actions to prevent a delay when popping circles.
 var lowPopSoundAction = SKAction.playSoundFileNamed("lowpop.wav", waitForCompletion: false)
@@ -30,15 +30,15 @@ var highPop2SoundAction = SKAction.playSoundFileNamed("highpop2.wav", waitForCom
 var badPopSoundAction = SKAction.playSoundFileNamed("badpop.wav", waitForCompletion: false)
 
 extension SKNode {
-    class func unarchiveFromFile(file : NSString) -> SKNode? {
+    class func unarchiveFromFile(_ file : NSString) -> SKNode? {
         
-        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: "sks")
+        let path = Bundle.main.path(forResource: file as String, ofType: "sks")
         
-        let sceneData = try! NSData(contentsOfFile: path!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-        let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
+        let sceneData = try! Data(contentsOf: URL(fileURLWithPath: path!), options: NSData.ReadingOptions.mappedIfSafe)
+        let archiver = NSKeyedUnarchiver(forReadingWith: sceneData)
         
         archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-        let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! MainMenuScene
+        let scene = archiver.decodeObject(forKey: NSKeyedArchiveRootObjectKey) as! MainMenuScene
         archiver.finishDecoding()
         return scene
     }
@@ -46,17 +46,17 @@ extension SKNode {
 
 extension Int
 {
-    static func random(range: Range<Int> ) -> Int
+    static func random(_ range: Range<Int> ) -> Int
     {
         var offset = 0
         
-        if range.startIndex < 0   // allow negative ranges
+        if range.lowerBound < 0   // allow negative ranges
         {
-            offset = abs(range.startIndex)
+            offset = Swift.abs(range.lowerBound)
         }
         
-        let mini = UInt32(range.startIndex + offset)
-        let maxi = UInt32(range.endIndex   + offset)
+        let mini = UInt32(range.lowerBound + offset)
+        let maxi = UInt32(range.upperBound   + offset)
         
         return Int(mini + arc4random_uniform(maxi - mini)) - offset
     }
@@ -68,7 +68,7 @@ class Utils {
     }
     
     static func getScreenResolution() -> CGRect {
-        return UIScreen.mainScreen().bounds
+        return UIScreen.main.bounds
     }
     
     static func getAspectRatio() -> CGFloat {
@@ -83,7 +83,7 @@ class Utils {
         return (getAspectRatio() * getTempScalar())
     }
     
-    static func scaleRadius(customSize: CGFloat = 0.0) -> CGFloat {
+    static func scaleRadius(_ customSize: CGFloat = 0.0) -> CGFloat {
         var tmpRadius: CGFloat = 0.0
         
         if (customSize == 0) {
@@ -98,7 +98,7 @@ class Utils {
         return tmpNumber * getScreenScalar()
     }
     
-    static func scaleVelocity(parBlack: Bool) -> (xVel: CGFloat, yVel: CGFloat) {
+    static func scaleVelocity(_ parBlack: Bool) -> (xVel: CGFloat, yVel: CGFloat) {
         let signedXVel: Int = (arc4random_uniform(1) == 0 ? -1 : 1)
         let signedYVel: Int = (arc4random_uniform(1) == 1 ? 1 : -1)
         
@@ -119,16 +119,16 @@ class Utils {
         return (tmpNumberX * getScreenScalar(), tmpNumberY * getScreenScalar())
     }
     
-    static func scaleXPos(customValue: CGFloat = 0.0) -> CGFloat {
+    static func scaleXPos(_ customValue: CGFloat = 0.0) -> CGFloat {
         return ((customValue == 0) ? floor(randomFloat() * getScreenResolution().width + 1) : customValue)
     }
     
-    static func scaleYPos(customValue: CGFloat = 0.0) -> CGFloat {
+    static func scaleYPos(_ customValue: CGFloat = 0.0) -> CGFloat {
         return ((customValue == 0) ? floor(randomFloat() * getScreenResolution().height + 1) : customValue)
     }
     
-    static func getColor(color: Int = -1) -> UIColor {
-        var myColor: UIColor = UIColor.blackColor()
+    static func getColor(_ color: Int = -1) -> UIColor {
+        var myColor: UIColor = UIColor.black
         
         if color == -1 {
             return getColor(Int(arc4random_uniform(16)) + 1)
@@ -187,13 +187,13 @@ class Utils {
             // Spring Green
             myColor = UIColor(red: 0.0/255.0, green: 255.0/255.0, blue: 127.0/255.0, alpha: 255.0/255.0)
         default:
-            myColor = UIColor.blackColor()
+            myColor = UIColor.black
         }
         
         return myColor
     }
     
-    static func getScaledFontSize(size: CGFloat) -> CGFloat {
+    static func getScaledFontSize(_ size: CGFloat) -> CGFloat {
         let dim: CGFloat = (self.getScreenResolution().width / size)
         
         return 1.3 * dim
@@ -201,45 +201,46 @@ class Utils {
     
     static func connectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in()
-        
-        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
         zeroAddress.sin_family = sa_family_t(AF_INET)
         
-        guard let defaultRouteReachability = withUnsafePointer(&zeroAddress, {
-            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
         }) else {
             return false
         }
         
-        var flags : SCNetworkReachabilityFlags = []
-        if SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) == false {
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
             return false
         }
         
-        let isReachable = flags.contains(.Reachable)
-        let needsConnection = flags.contains(.ConnectionRequired)
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
         
         return (isReachable && !needsConnection)
     }
     
-    static func lerp(value1: CGFloat, value2: CGFloat, amount: CGFloat) -> CGFloat {
+    static func lerp(_ value1: CGFloat, value2: CGFloat, amount: CGFloat) -> CGFloat {
         return ((1 - value1) * value2) + (value1 * amount);
     }
     
-    static func lerp(color1: UIColor, color2: UIColor, amount: CGFloat) -> UIColor {
+    static func lerp(_ color1: UIColor, color2: UIColor, amount: CGFloat) -> UIColor {
         let val1: CIColor = CIColor(color: color1)
         let val2: CIColor = CIColor(color: color2)
         
         return UIColor(red: lerp(val1.red, value2: val2.red, amount: amount), green: lerp(val1.green, value2: val2.green, amount: amount), blue: lerp(val1.blue, value2: val2.blue, amount: amount), alpha: lerp(val1.alpha, value2: val2.alpha, amount: amount))
     }
     
-    static func getPopSound(val: Int = -1) -> SKAction {
+    static func getPopSound(_ val: Int = -1) -> SKAction {
         if (val > 2 || val < -1) {
             fatalError("Bounds checking failed for Utils::getPopSound()")
         }
         
         if (val == -1) {
-            return getPopSound(Int.random(0...2))
+            return getPopSound(Int.random(Range<Int>(0...2)))
         }
         
         switch (val) {
@@ -250,7 +251,7 @@ class Utils {
         case 2:
             return highPop2SoundAction
         default:
-            return getPopSound(Int.random(0...2))
+            return getPopSound(Int.random(Range<Int>(0...2)))
         }
     }
     

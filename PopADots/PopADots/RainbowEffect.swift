@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/21/15.
-//  Copyright © 2015 Sirkles LLC. All rights reserved.
+//  Copyright © 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -33,7 +33,7 @@ class RainbowEffect: BackgroundEffect {
         super.init(coder: aDecoder)
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         if (!black) {
             if (b == 0 && r == 0 && green) {
                 if (g <= 254) {

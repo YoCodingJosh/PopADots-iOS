@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/11/15.
-//  Copyright © 2015 Sirkles LLC. All rights reserved.
+//  Copyright © 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -25,11 +25,11 @@ class Circle : SKShapeNode {
         
         self.radius = Utils.scaleRadius();
         self.fillColor = Utils.getColor()
-        self.strokeColor = SKColor.clearColor()
+        self.strokeColor = SKColor.clear
         self.position.x = Utils.scaleXPos()
         self.position.y = Utils.scaleYPos()
         
-        self.antialiased = true
+        self.isAntialiased = true
         
         self.setCirclePath()
     }
@@ -40,9 +40,9 @@ class Circle : SKShapeNode {
         self.radius = radius
         self.fillColor = color
         self.position = pos
-        self.strokeColor = SKColor.clearColor()
+        self.strokeColor = SKColor.clear
         
-        self.antialiased = true
+        self.isAntialiased = true
         
         self.setCirclePath()
     }
@@ -53,11 +53,11 @@ class Circle : SKShapeNode {
     }
     
     func setCirclePath() {
-        let myPath: CGMutablePathRef = CGPathCreateMutable();
+        let myPath: CGMutablePath = CGMutablePath();
         
-        CGPathAddArc(myPath, nil, CGFloat(0.0), CGFloat(0.0), self.radius, CGFloat(0.0), CGFloat(M_PI * 2), true)
+        myPath.addArc(center: self.position, radius: self.radius, startAngle: CGFloat(0.0), endAngle: CGFloat(M_PI * 2), clockwise: true, transform: CGAffineTransform.identity)
         
-        CGPathCloseSubpath(myPath);
+        myPath.closeSubpath();
         
         self.path = myPath
     }

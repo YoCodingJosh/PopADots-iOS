@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 7/24/15.
-//  Copyright © 2015 Sirkles LLC. All rights reserved.
+//  Copyright © 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -33,15 +33,15 @@ class VoidsScene: SKScene {
         super.init(coder: aDecoder)
     }
     
-    override func didMoveToView(view: SKView) {
-        globalGameState = GameState.ArcadeMode
+    override func didMove(to view: SKView) {
+        globalGameState = GameState.arcadeMode
         
         startNewGame()
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let myTouch: UITouch = touches.first!
-        let touchLocation = myTouch.locationInNode(self)
+        let touchLocation = myTouch.location(in: self)
         
         if (gameOver && gameOverScreenCreated) {
             switch(gameOverScreen!.getUserChoice(touchLocation)) {
@@ -56,7 +56,7 @@ class VoidsScene: SKScene {
             case 2:
                 print("go to main menu")
                 
-                let transition: SKTransition = SKTransition.fadeWithDuration(1)
+                let transition: SKTransition = SKTransition.fade(withDuration: 1)
                 let menu: MainMenuScene = MainMenuScene(size: self.frame.size)
                 let newBG: RainbowEffect = RainbowEffect(frame: self.frame)
                 
@@ -93,7 +93,7 @@ class VoidsScene: SKScene {
             let tempCircle: BadCircle = BadCircle()
             tempCircle.active = true
             tempCircle.touchable = true
-            tempCircle.state = BadCircleState.Original
+            tempCircle.state = BadCircleState.original
             
             tempCircle.zPosition = CGFloat(i)
             
@@ -119,30 +119,30 @@ class VoidsScene: SKScene {
     }
     
     func startNewGame() {
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         
         self.gameOverScreen = GameOverScreen(myFrame: self.frame)
         
         self.scoreShadowLabel = SKLabelNode(fontNamed: "Orbitron Black")
         self.scoreShadowLabel!.fontSize = Utils.getScaledFontSize(19) // or 20.5
         self.scoreShadowLabel?.text = "Score: 0"
-        self.scoreShadowLabel!.fontColor = UIColor.blackColor()
+        self.scoreShadowLabel!.fontColor = UIColor.black
         self.scoreShadowLabel!.position.y = Utils.getScreenResolution().height - self.scoreShadowLabel!.fontSize
         //self.scoreShadowLabel!.position.x += (self.scoreShadowLabel!.frame.width / 2) + 2
-        self.scoreShadowLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left;
+        self.scoreShadowLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left;
         self.addChild(self.scoreShadowLabel!)
         
         self.scoreLabel = SKLabelNode(fontNamed: "Orbitron Medium")
         self.scoreLabel!.fontSize = Utils.getScaledFontSize(19)
         self.scoreLabel?.text = "Score: 0"
-        self.scoreLabel!.fontColor = UIColor.whiteColor()
-        self.scoreLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left;
+        self.scoreLabel!.fontColor = UIColor.white
+        self.scoreLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left;
         self.scoreShadowLabel!.addChild(self.scoreLabel!)
         
         checkGameState()
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         if gameOver {
             if gameOverScreenCreated {
                 return

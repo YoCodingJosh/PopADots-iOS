@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/11/15.
-//  Copyright (c) 2015 Sirkles LLC. All rights reserved.
+//  Copyright (c) 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import SpriteKit
@@ -26,14 +26,14 @@ class MainMenuScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         print("loading main menu")
-        globalGameState = GameState.MainMenu;
+        globalGameState = GameState.mainMenu;
         
         if self.bg == nil {
             print("instantiating new bg for menu")
             self.bg = RainbowEffect(frame: self.frame)
-            self.scene?.backgroundColor = SKColor.whiteColor()
+            self.scene?.backgroundColor = SKColor.white
         }
         self.bg!.zPosition = -2
         
@@ -50,12 +50,12 @@ class MainMenuScene: SKScene {
         //print("Aspect Ratio: \(Utils.getAspectRatio())")
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         /* Called when a touch begins */
         
         // We only want one touch (unless we want multi-touch)
         let myTouch: UITouch = touches.first!
-        let touchLocation = myTouch.locationInNode(self)
+        let touchLocation = myTouch.location(in: self)
         
         for i in numBackgroundCircles..<self.circles!.count {
             if self.circles![i] is MenuCircle && self.circles![i].checkTouch(touchLocation) == true {
@@ -82,7 +82,7 @@ class MainMenuScene: SKScene {
         */
     }
    
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         /* Called before each frame is rendered */
         
         self.bg!.update(currentTime)
@@ -115,7 +115,7 @@ class MainMenuScene: SKScene {
         }
     }
     
-    func createMenuButton(button: Int) -> MenuCircle {
+    func createMenuButton(_ button: Int) -> MenuCircle {
         var circle: MenuCircle?
         
         switch button {
@@ -140,13 +140,13 @@ class MainMenuScene: SKScene {
         return circle!
     }
     
-    func menuAction(button: Int) {
+    func menuAction(_ button: Int) {
         print("Triggering button: \(button)")
         switch button {
         case 0:
             // Classic Mode
             print("Classic Mode pressed!")
-            let transition: SKTransition = SKTransition.fadeWithDuration(1)
+            let transition: SKTransition = SKTransition.fade(withDuration: 1)
             let classic: ClassicScene = ClassicScene(size: self.frame.size)
             let newBG: RainbowEffect = RainbowEffect(frame: classic.frame)
             
@@ -168,7 +168,7 @@ class MainMenuScene: SKScene {
         case 1:
             // Arcade Mode
             print("Arcade Mode pressed!")
-            let transition: SKTransition = SKTransition.fadeWithDuration(1)
+            let transition: SKTransition = SKTransition.fade(withDuration: 1)
             let arcade: ArcadeScene = ArcadeScene(size: self.frame.size)
             
             self.view?.presentScene(arcade, transition: transition)

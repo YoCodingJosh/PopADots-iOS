@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/21/15.
-//  Copyright © 2015 Sirkles LLC. All rights reserved.
+//  Copyright © 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -14,13 +14,13 @@ class BackgroundEffect: SKShapeNode {
     required init(frame: CGRect) {
         super.init()
         
-        let myPath: CGMutablePathRef = CGPathCreateMutable();
-        CGPathAddRect(myPath, nil, frame);
-        CGPathCloseSubpath(myPath);
+        let myPath: CGMutablePath = CGMutablePath();
+        myPath.addRect(frame);
+        myPath.closeSubpath();
         
         self.path = myPath
         
-        self.strokeColor = SKColor.clearColor()
+        self.strokeColor = SKColor.clear
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -28,7 +28,7 @@ class BackgroundEffect: SKShapeNode {
         super.init(coder: aDecoder)
     }
     
-    func update(currentTime: NSTimeInterval) {
+    func update(_ currentTime: TimeInterval) {
         // do nothing, just a placeholder to enforce design pattern
     }
 }

@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/12/15.
-//  Copyright © 2015 Sirkles LLC. All rights reserved.
+//  Copyright © 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -26,9 +26,9 @@ class TouchCircle : Circle {
         self.velocity = Utils.scaleVelocity(false)
         super.init()
         
-        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: CGPointMake(0, 0), color: UIColor.blackColor())
+        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: CGPoint(x: 0, y: 0), color: UIColor.black)
         
-        self.backgroundCircle?.position = CGPointMake(0, 0)
+        self.backgroundCircle?.position = CGPoint(x: 0, y: 0)
         
         self.backgroundCircle?.zPosition = -1
         
@@ -41,9 +41,9 @@ class TouchCircle : Circle {
         self.velocity = (xVel, yVel)
         super.init(radius: radius, pos: pos, color: color)
         
-        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: CGPointMake(0, 0), color: UIColor.blackColor())
+        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: CGPoint(x: 0, y: 0), color: UIColor.black)
         
-        self.backgroundCircle?.position = CGPointMake(0, 0)
+        self.backgroundCircle?.position = CGPoint(x: 0, y: 0)
         
         self.backgroundCircle?.zPosition = -1
         
@@ -56,16 +56,16 @@ class TouchCircle : Circle {
         //fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)
         
-        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: CGPointMake(0, 0), color: UIColor.blackColor())
+        self.backgroundCircle = Circle(radius: self.radius + (self.radius / 20), pos: CGPoint(x: 0, y: 0), color: UIColor.black)
         
-        self.backgroundCircle?.position = CGPointMake(0, 0)
+        self.backgroundCircle?.position = CGPoint(x: 0, y: 0)
         
         self.backgroundCircle?.zPosition = -1
         
         self.addChild(self.backgroundCircle!)
     }
     
-    func update(currentTime: CFTimeInterval) {
+    func update(_ currentTime: CFTimeInterval) {
         if (!self.active) {
             return
         }
@@ -93,19 +93,22 @@ class TouchCircle : Circle {
         self.position.y += velocity.yVel
     }
     
-    func checkTouch(touch: CGPoint) -> Bool {
+    func checkTouch(_ touch: CGPoint) -> Bool {
         if (!self.touchable) {
             return false
         }
         
-        return ((touch.x - self.position.x) * (touch.x - self.position.x)) + ((touch.y - self.position.y) * (touch.y - self.position.y)) < ((self.radius * self.radius));
+        let xDiff = (touch.x - self.position.x);
+        let yDiff = (touch.y - self.position.y);
+        
+        return (xDiff * xDiff) + (yDiff * yDiff) < (self.radius * self.radius);
     }
     
     /*
      * Note: this does not convert this instance into a BadCircle instance IN PLACE.
      *  That requires some magic that is waaaayyy out of scope of this function.
      */
-    func convertToBad(state: BadCircleState = BadCircleState.Original) -> BadCircle {
+    func convertToBad(_ state: BadCircleState = BadCircleState.original) -> BadCircle {
         let bad: BadCircle = BadCircle(radius: self.radius, pos: self.position, xVel: self.velocity.xVel, yVel: self.velocity.yVel)
         
         bad.state = state
@@ -113,7 +116,7 @@ class TouchCircle : Circle {
         return bad
     }
     
-    func checkCollision(circle: TouchCircle) -> Bool {
+    func checkCollision(_ circle: TouchCircle) -> Bool {
         let distX = circle.position.x - self.position.x
         let distY = circle.position.y - self.position.y
         let radii = circle.radius + self.radius

@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/11/15.
-//  Copyright (c) 2015 Sirkles LLC. All rights reserved.
+//  Copyright (c) 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import UIKit
@@ -19,58 +19,56 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
         
         self.initGameCenter()
         
-        if let scene: MainMenuScene? = MainMenuScene() {
+        //if let scene: MainMenuScene = MainMenuScene() {
         //if let scene = GameScene(fileNamed:"GameScene") {
-            // Configure the view.
-            let skView = self.view as! SKView
-            skView.showsFPS = false
-            skView.showsNodeCount = false
-            scene!.size = skView.bounds.size;
+        
+        let scene: MainMenuScene = MainMenuScene();
+        
+        // Configure the view.
+        let skView = self.view as! SKView
+        skView.showsFPS = false
+        skView.showsNodeCount = false
+        scene.size = skView.bounds.size;
             
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        skView.ignoresSiblingOrder = true
             
-            /* Set the scale mode to scale to fit the window */
-            scene!.scaleMode = .ResizeFill
-            
-            skView.presentScene(scene)
-        }
+        /* Set the scale mode to scale to fit the window */
+        scene.scaleMode = .resizeFill
+        
+        skView.presentScene(scene)
     }
     
     // Initialize Game Center
     func initGameCenter() {
         // Check if user is already authenticated in game center
-        if GKLocalPlayer().authenticated == false {
+        if GKLocalPlayer().isAuthenticated == false {
             // Show the Login Prompt for Game Center
             GKLocalPlayer().authenticateHandler = { (viewController, error) -> Void in
                 if viewController != nil {
                     //self.scene!.gamePaused = true
-                    self.presentViewController(viewController!, animated: true, completion: nil)
+                    self.present(viewController!, animated: true, completion: nil)
                     // Add an observer which calls ‘gameCenterStateChanged’ to handle a changed game center state
-                    let notificationCenter = NSNotificationCenter.defaultCenter()
-                    notificationCenter.addObserver(self, selector: #selector(GameViewController.gameCenterStateChanged), name: "GKPlayerAuthenticationDidChangeNotificationName", object: nil)
+                    _ = NotificationCenter.default
+                    //notificationCenter.addObserver(self, selector: #selector(GameViewController.gameCenterStateChanged), name: "GKPlayerAuthenticationDidChangeNotificationName" as NSNotification.Name, object: nil)
                 }
             }
         }
     }
     
-    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         print("done with game center for now...")
     }
     
     func gameCenterStateChanged() {
         // do something?
     }
-    
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
 
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
+    func supportedInterfaceOrientations() ->UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
         } else {
-            return .All
+            return .all
         }
     }
 

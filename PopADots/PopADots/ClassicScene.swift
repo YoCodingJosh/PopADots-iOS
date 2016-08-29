@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/16/15.
-//  Copyright © 2015 Sirkles LLC. All rights reserved.
+//  Copyright © 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -35,15 +35,15 @@ class ClassicScene: SKScene {
         super.init(coder: aDecoder)
     }
     
-    override func didMoveToView(view: SKView) {
-        globalGameState = GameState.ClassicMode
+    override func didMove(to view: SKView) {
+        globalGameState = GameState.classicMode
         
         startNewGame()
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let myTouch: UITouch = touches.first!
-        let touchLocation = myTouch.locationInNode(self)
+        let touchLocation = myTouch.location(in: self)
         
         if (gameOver && gameOverScreenCreated) {
             switch(gameOverScreen!.getUserChoice(touchLocation)) {
@@ -58,7 +58,7 @@ class ClassicScene: SKScene {
             case 2:
                 print("go to main menu")
                 
-                let transition: SKTransition = SKTransition.fadeWithDuration(1)
+                let transition: SKTransition = SKTransition.fade(withDuration: 1)
                 let menu: MainMenuScene = MainMenuScene(size: self.frame.size)
                 let newBG: RainbowEffect = RainbowEffect(frame: self.frame)
                 
@@ -83,9 +83,9 @@ class ClassicScene: SKScene {
         for i in 0..<self.circles!.count {
             if self.circles?[i].checkTouch(touchLocation) == true {                
                 self.circles?[i].removeFromParent()
-                self.circles?.removeAtIndex(i)
+                self.circles?.remove(at: i)
                 
-                self.runAction(Utils.getPopSound())
+                self.run(Utils.getPopSound())
                 
                 self.score += 1
                 self.numCirclesPopped += 1;
@@ -97,12 +97,12 @@ class ClassicScene: SKScene {
         for i in 0..<self.badCircles!.count {
             if self.badCircles?[i].checkTouch(touchLocation) == true {
                 self.gameOver = true
-                self.runAction(Utils.getBadPopSound())
+                self.run(Utils.getBadPopSound())
             }
         }
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         /* Called before each frame is rendered */
         
         //self.scoreLabel!.outlinedText = "Score: \(self.score)"
@@ -123,7 +123,7 @@ class ClassicScene: SKScene {
                 // Send the data for this session to the game over screen.
                 self.gameOverScreen!.myData?.numCirclesPopped = self.numCirclesPopped
                 self.gameOverScreen!.myData?.score = self.score
-                self.gameOverScreen!.myData?.gameState = GameState.ClassicMode
+                self.gameOverScreen!.myData?.gameState = GameState.classicMode
                 
                 self.gameOverScreen!.initialize()
                 
@@ -175,7 +175,7 @@ class ClassicScene: SKScene {
         
         // A bit more inefficent, as it takes two passes rather than one.
         // At least it doesn't crash! :^)
-        self.removeChildrenInArray(self.badCircles!)
+        self.removeChildren(in: self.badCircles!)
         self.badCircles!.removeAll();
         
         for i in 0..<self.numCircles {
@@ -193,7 +193,7 @@ class ClassicScene: SKScene {
             let tempCircle: BadCircle = BadCircle()
             tempCircle.active = true
             tempCircle.touchable = true
-            tempCircle.state = BadCircleState.Original
+            tempCircle.state = BadCircleState.original
             
             tempCircle.zPosition = CGFloat(i)
             
@@ -223,9 +223,9 @@ class ClassicScene: SKScene {
         //self.scoreLabel!.fontSize = Utils.getScaledFontSize(19)
         self.scoreLabel!.outlinedText = "0" // has to be less than 8 chars so it wont crash
         self.scoreLabel!.position.y = Utils.getScreenResolution().height - self.scoreLabel!.fontSize
-        self.scoreLabel!.fontColor = UIColor.whiteColor()
-        self.scoreLabel!.borderColor = UIColor.blackColor()
-        self.scoreLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left;
+        self.scoreLabel!.fontColor = UIColor.white
+        self.scoreLabel!.borderColor = UIColor.black
+        self.scoreLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left;
         //self.scoreShadowLabel!.addChild(self.scoreLabel!)
         self.addChild(self.scoreLabel!)
         

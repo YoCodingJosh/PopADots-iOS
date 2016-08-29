@@ -3,56 +3,56 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/30/15.
-//  Copyright © 2015 Sirkles LLC. All rights reserved.
+//  Copyright © 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
 enum BadCircleState {
-    case Original, Wiggle, Voids
+    case original, wiggle, voids
 }
 
 class BadCircle: TouchCircle {
-    var state: BadCircleState = .Original
+    var state: BadCircleState = .original
     
     override init(myFrame: CGRect = Utils.getScreenResolution()) {
         super.init(myFrame: myFrame)
         
-        self.fillColor = SKColor.blackColor()
+        self.fillColor = SKColor.black
     }
     
     init(radius: CGFloat, pos: CGPoint, xVel: CGFloat, yVel: CGFloat) {
-        super.init(radius: radius, pos: pos, color: SKColor.blackColor(), xVel: xVel, yVel: yVel)
+        super.init(radius: radius, pos: pos, color: SKColor.black, xVel: xVel, yVel: yVel)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateOriginal(currentTime: CFTimeInterval) {
+    func updateOriginal(_ currentTime: CFTimeInterval) {
         super.update(currentTime)
     }
     
-    func updateWiggle(currentTime: CFTimeInterval) {
+    func updateWiggle(_ currentTime: CFTimeInterval) {
         print("Wigge bad circle update")
     }
     
-    func updateVoids(currentTime: CFTimeInterval) {
+    func updateVoids(_ currentTime: CFTimeInterval) {
         print("Voids bad circle update")
     }
     
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: CFTimeInterval) {
         if !self.active {
             return
         }
         
         switch (state) {
-        case .Original:
+        case .original:
             updateOriginal(currentTime)
-        case .Wiggle:
+        case .wiggle:
             updateWiggle(currentTime)
-        case .Voids:
+        case .voids:
             updateVoids(currentTime)
         }
     }
