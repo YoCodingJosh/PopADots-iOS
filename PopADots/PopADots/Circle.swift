@@ -55,9 +55,7 @@ class Circle : SKShapeNode {
     func setCirclePath() {
         let myPath: CGMutablePath = CGMutablePath();
         
-        // myPath.addArc(center: self.position, radius: self.radius, startAngle: CGFloat(0.0), endAngle: CGFloat(M_PI * 2), clockwise: true)
-        
-        myPath.addArc(center: CGPoint(x: self.position.x, y: self.position.y / 4), radius: self.radius, startAngle: CGFloat(0.0), endAngle: CGFloat(M_PI * 2), clockwise: true)
+        myPath.addArc(center: CGPoint(x: 0, y: 0), radius: self.radius, startAngle: CGFloat(0.0), endAngle: CGFloat(M_PI * 2), clockwise: true)
         
         myPath.closeSubpath();
         
