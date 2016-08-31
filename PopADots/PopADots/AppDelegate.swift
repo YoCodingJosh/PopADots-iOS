@@ -8,8 +8,7 @@
 
 import UIKit
 
-import Fabric
-import Crashlytics
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("Pop a Dots\t(C) 2015-2016 Sirkles LLC.\n")
         
-        Fabric.with([Crashlytics.self, Answers.self])
+        // Use Firebase library to configure APIs
+        FIRApp.configure()
 
         if !Utils.connectedToNetwork() {
             print("Not connected to network. :(")

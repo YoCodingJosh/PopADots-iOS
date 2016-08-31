@@ -12,7 +12,6 @@
 		5C1329031B59679700059A43 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328FB1B59679700059A43 /* CFNetwork.framework */; };
 		5C1329041B59679700059A43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328FC1B59679700059A43 /* CoreGraphics.framework */; };
 		5C1329051B59679700059A43 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328FD1B59679700059A43 /* CoreLocation.framework */; };
-		5C1329061B59679700059A43 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328FE1B59679700059A43 /* iAd.framework */; };
 		5C1329071B59679700059A43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1328FF1B59679700059A43 /* QuartzCore.framework */; };
 		5C1329081B59679700059A43 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1329001B59679700059A43 /* Security.framework */; };
 		5C1329091B59679700059A43 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1329011B59679700059A43 /* SystemConfiguration.framework */; };
@@ -48,9 +47,9 @@
 		5CFCF56B1B628D9B00E63356 /* VoidsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */; };
 		5CFCF56D1B62DE5700E63356 /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */; };
 		5CFCF56F1B6A97D000E63356 /* FlashyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */; };
-		849373411C5C526600E1E41B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8493733F1C5C526600E1E41B /* Fabric.framework */; };
-		849373421C5C526600E1E41B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849373401C5C526600E1E41B /* Crashlytics.framework */; };
+		84422BA51D7675330063659D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84422BA41D7675330063659D /* GoogleService-Info.plist */; };
 		84BB8E241C1511F00044D8FB /* MKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */; };
+		C58F3BC28C8953C960E7C383 /* Pods_PopADots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F75D90FF504487D0E6AFA8B /* Pods_PopADots.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +59,6 @@
 		5C1328FB1B59679700059A43 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5C1328FC1B59679700059A43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5C1328FD1B59679700059A43 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		5C1328FE1B59679700059A43 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		5C1328FF1B59679700059A43 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5C1329001B59679700059A43 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5C1329011B59679700059A43 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -98,8 +96,10 @@
 		5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoidsScene.swift; sourceTree = "<group>"; };
 		5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScreen.swift; sourceTree = "<group>"; };
 		5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashyScore.swift; sourceTree = "<group>"; };
-		8493733F1C5C526600E1E41B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		849373401C5C526600E1E41B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		75F52B790D723DAA913F6456 /* Pods-PopADots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopADots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopADots/Pods-PopADots.debug.xcconfig"; sourceTree = "<group>"; };
+		7AAB6B960F57ED11B85E644A /* Pods-PopADots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopADots.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopADots/Pods-PopADots.release.xcconfig"; sourceTree = "<group>"; };
+		7F75D90FF504487D0E6AFA8B /* Pods_PopADots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopADots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84422BA41D7675330063659D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKOutlinedLabelNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,30 +112,35 @@
 				5C1329101B5969C600059A43 /* libz.tbd in Frameworks */,
 				5C13290D1B59698D00059A43 /* libsqlite3.tbd in Frameworks */,
 				5C13290B1B59697A00059A43 /* libstdc++.6.tbd in Frameworks */,
-				849373421C5C526600E1E41B /* Crashlytics.framework in Frameworks */,
 				5C1329021B59679700059A43 /* AudioToolbox.framework in Frameworks */,
 				5C1329031B59679700059A43 /* CFNetwork.framework in Frameworks */,
 				5C1329041B59679700059A43 /* CoreGraphics.framework in Frameworks */,
 				5C1329051B59679700059A43 /* CoreLocation.framework in Frameworks */,
-				5C1329061B59679700059A43 /* iAd.framework in Frameworks */,
 				5C1329071B59679700059A43 /* QuartzCore.framework in Frameworks */,
 				5C1329081B59679700059A43 /* Security.framework in Frameworks */,
 				5C1329091B59679700059A43 /* SystemConfiguration.framework in Frameworks */,
 				5C8CD1BC1B4178BA00C2D3C2 /* Social.framework in Frameworks */,
 				5C5FE2F31B2A833C0029EC23 /* StoreKit.framework in Frameworks */,
 				5C7108E11B742D7000A31D77 /* GameKit.framework in Frameworks */,
-				849373411C5C526600E1E41B /* Fabric.framework in Frameworks */,
+				C58F3BC28C8953C960E7C383 /* Pods_PopADots.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A3CDBC3FF8280965936684D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F75D90FF504487D0E6AFA8B /* Pods_PopADots.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5C5FE2C81B2A35530029EC23 = {
 			isa = PBXGroup;
 			children = (
-				8493733F1C5C526600E1E41B /* Fabric.framework */,
-				849373401C5C526600E1E41B /* Crashlytics.framework */,
+				84422BA41D7675330063659D /* GoogleService-Info.plist */,
 				5C692A051B7628DA00140B26 /* CloudKit.framework */,
 				5C7108E01B742D7000A31D77 /* GameKit.framework */,
 				5C13290F1B5969C600059A43 /* libz.tbd */,
@@ -145,7 +150,6 @@
 				5C1328FB1B59679700059A43 /* CFNetwork.framework */,
 				5C1328FC1B59679700059A43 /* CoreGraphics.framework */,
 				5C1328FD1B59679700059A43 /* CoreLocation.framework */,
-				5C1328FE1B59679700059A43 /* iAd.framework */,
 				5C1328FF1B59679700059A43 /* QuartzCore.framework */,
 				5C1329001B59679700059A43 /* Security.framework */,
 				5C1329011B59679700059A43 /* SystemConfiguration.framework */,
@@ -153,6 +157,8 @@
 				5C5FE2F21B2A833C0029EC23 /* StoreKit.framework */,
 				5C5FE2D31B2A35530029EC23 /* PopADots */,
 				5C5FE2D21B2A35530029EC23 /* Products */,
+				631052FA58D9414099DFC651 /* Pods */,
+				5A3CDBC3FF8280965936684D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +206,15 @@
 			path = PopADots;
 			sourceTree = "<group>";
 		};
+		631052FA58D9414099DFC651 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75F52B790D723DAA913F6456 /* Pods-PopADots.debug.xcconfig */,
+				7AAB6B960F57ED11B85E644A /* Pods-PopADots.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -207,10 +222,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C5FE2E71B2A35530029EC23 /* Build configuration list for PBXNativeTarget "PopADots" */;
 			buildPhases = (
+				AF84BD39B7AA0F893787D213 /* [CP] Check Pods Manifest.lock */,
 				5C5FE2CD1B2A35530029EC23 /* Sources */,
 				5C5FE2CE1B2A35530029EC23 /* Frameworks */,
 				5C5FE2CF1B2A35530029EC23 /* Resources */,
 				5CB6AE4F1B2A8A1C009D5CA7 /* ShellScript */,
+				9D19C30AFAA6678135F42B48 /* [CP] Embed Pods Frameworks */,
+				A0BD31A297E8C8E3A03B3436 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -283,6 +301,7 @@
 				5C5FE2E31B2A35530029EC23 /* LaunchScreen.storyboard in Resources */,
 				5CE66C5A1B379D080078B9A5 /* lowpop.wav in Resources */,
 				5CE66C521B379CF70078B9A5 /* highpop2.wav in Resources */,
+				84422BA51D7675330063659D /* GoogleService-Info.plist in Resources */,
 				5CE66C571B379D080078B9A5 /* badpop.wav in Resources */,
 				5C5FE2E01B2A35530029EC23 /* Assets.xcassets in Resources */,
 				5CE66C421B33A03B0078B9A5 /* Orbitron Medium.ttf in Resources */,
@@ -306,7 +325,52 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run a203038f631f3fb657ffbf336118d4030dc08760 21684da65228c446bfe5733572d11141fc91a9c97cdb286528db6f3928284709";
+			shellScript = "GOOGLE_APP_ID=1:1021897847933:ios:c709f40746c8218d\n\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"./Pop a Dots-aa7e9ae86d7a.json\"";
+		};
+		9D19C30AFAA6678135F42B48 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopADots/Pods-PopADots-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0BD31A297E8C8E3A03B3436 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopADots/Pods-PopADots-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF84BD39B7AA0F893787D213 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -451,6 +515,7 @@
 		};
 		5C5FE2E81B2A35530029EC23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75F52B790D723DAA913F6456 /* Pods-PopADots.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -474,6 +539,7 @@
 		};
 		5C5FE2E91B2A35530029EC23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AAB6B960F57ED11B85E644A /* Pods-PopADots.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

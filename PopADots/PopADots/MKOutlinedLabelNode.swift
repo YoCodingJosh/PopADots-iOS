@@ -75,8 +75,8 @@ class MKOutlinedLabelNode: SKLabelNode {
             var xPosition = 0 as CGFloat
             for index in 0...(chars.count - 1) {
                 let letter = CTFontCreatePathForGlyph(borderFont, glyphs[index], nil)
-                var t = CGAffineTransform(translationX: xPosition , y: 0)
-                letters.addPath(t as! CGPath, transform: letter!)
+                let t = CGAffineTransform(translationX: xPosition , y: 0)
+                letters.addPath(letter!, transform: t)
                 xPosition = xPosition + advances[index].width
             }
             

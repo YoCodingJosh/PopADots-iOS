@@ -64,7 +64,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
         // do something?
     }
 
-    func supportedInterfaceOrientations() ->UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
         } else {
@@ -76,9 +76,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    
+    override var prefersStatusBarHidden: Bool {
+        return true;
     }
     
     func viewControllerForPresentingModalView() -> UIViewController {
