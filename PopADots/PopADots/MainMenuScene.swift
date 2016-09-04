@@ -170,6 +170,21 @@ class MainMenuScene: SKScene {
             print("Arcade Mode pressed!")
             let transition: SKTransition = SKTransition.fade(withDuration: 1)
             let arcade: ArcadeScene = ArcadeScene(size: self.frame.size)
+            let newBG: RainbowEffect = RainbowEffect(frame: arcade.frame)
+            
+            newBG.r = self.bg!.r
+            newBG.g = self.bg!.g
+            newBG.b = self.bg!.b
+            
+            newBG.color? = (self.bg?.color)!
+            
+            arcade.bg = newBG
+            
+            arcade.bg!.r = self.bg!.r
+            arcade.bg!.g = self.bg!.g
+            arcade.bg!.b = self.bg!.b
+            
+            arcade.backgroundColor = arcade.bg!.color!
             
             self.view?.presentScene(arcade, transition: transition)
         case 2:

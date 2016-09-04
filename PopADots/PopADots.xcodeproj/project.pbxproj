@@ -46,7 +46,6 @@
 		5CE66C5A1B379D080078B9A5 /* lowpop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CE66C561B379D080078B9A5 /* lowpop.wav */; };
 		5CFCF56B1B628D9B00E63356 /* VoidsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */; };
 		5CFCF56D1B62DE5700E63356 /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */; };
-		5CFCF56F1B6A97D000E63356 /* FlashyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */; };
 		84422BA51D7675330063659D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84422BA41D7675330063659D /* GoogleService-Info.plist */; };
 		84BB8E241C1511F00044D8FB /* MKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */; };
 		C58F3BC28C8953C960E7C383 /* Pods_PopADots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F75D90FF504487D0E6AFA8B /* Pods_PopADots.framework */; };
@@ -95,7 +94,6 @@
 		5CE66C561B379D080078B9A5 /* lowpop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lowpop.wav; sourceTree = "<group>"; };
 		5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoidsScene.swift; sourceTree = "<group>"; };
 		5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScreen.swift; sourceTree = "<group>"; };
-		5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashyScore.swift; sourceTree = "<group>"; };
 		75F52B790D723DAA913F6456 /* Pods-PopADots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopADots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopADots/Pods-PopADots.debug.xcconfig"; sourceTree = "<group>"; };
 		7AAB6B960F57ED11B85E644A /* Pods-PopADots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopADots.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopADots/Pods-PopADots.release.xcconfig"; sourceTree = "<group>"; };
 		7F75D90FF504487D0E6AFA8B /* Pods_PopADots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopADots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,7 +198,6 @@
 				5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */,
 				5C7178E11B5C758600913122 /* ArcadeScene.swift */,
 				5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */,
-				5CFCF56E1B6A97D000E63356 /* FlashyScore.swift */,
 				84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */,
 			);
 			path = PopADots;
@@ -381,7 +378,6 @@
 			files = (
 				5C7178E21B5C758600913122 /* ArcadeScene.swift in Sources */,
 				5C5FE2ED1B2A7E520029EC23 /* Utils.swift in Sources */,
-				5CFCF56F1B6A97D000E63356 /* FlashyScore.swift in Sources */,
 				5C5FE2D91B2A35530029EC23 /* MainMenuScene.swift in Sources */,
 				5CE66C3E1B31D78E0078B9A5 /* MenuCircle.swift in Sources */,
 				5C5FE2EB1B2A785F0029EC23 /* Circle.swift in Sources */,

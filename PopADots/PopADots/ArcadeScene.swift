@@ -14,12 +14,14 @@ class ArcadeScene: SKScene {
     var numBadCircles: UInt32 = 0
     var circles: Array<TouchCircle>? = Array<TouchCircle>()
     var badCircles: Array<BadCircle>? = Array<BadCircle>()
+    var bg: RainbowEffect?
     var gameOver: Bool = false
     var gameOverScreenCreated: Bool = false
     var gameOverScreen: GameOverScreen?
-    var score: UInt64 = 0
-    var scoreLabel: SKLabelNode?
+    var score: Int64 = 0
+    var scoreLabel: MKOutlinedLabelNode?
     var scoreShadowLabel: SKLabelNode?
+    var numCirclesPopped: Int64 = 0
 
     override init() {
         super.init()
@@ -43,9 +45,6 @@ class ArcadeScene: SKScene {
         let myTouch: UITouch = touches.first!
         let touchLocation = myTouch.location(in: self)
         
-        self.scoreLabel!.text = "Score: \(self.score)"
-        self.scoreShadowLabel!.text = "Score: \(self.score)"
-        
         if (gameOver && gameOverScreenCreated) {
             switch(gameOverScreen!.getUserChoice(touchLocation)) {
             case 0:
@@ -63,7 +62,15 @@ class ArcadeScene: SKScene {
                 let menu: MainMenuScene = MainMenuScene(size: self.frame.size)
                 let newBG: RainbowEffect = RainbowEffect(frame: self.frame)
                 
-                menu.bg = newBG // For some reason, I need to set this before transitioning. :\
+                menu.backgroundColor = self.backgroundColor
+                newBG.r = self.bg!.r
+                newBG.g = self.bg!.g
+                newBG.b = self.bg!.b
+                newBG.color = self.bg!.color
+                
+                menu.bg = newBG
+                
+                self.removeAllChildren()
                 
                 self.view?.presentScene(menu, transition: transition)
             default:
@@ -108,9 +115,14 @@ class ArcadeScene: SKScene {
                 // create game over screen
                 self.gameOverScreen!.position.x = 0
                 self.gameOverScreen!.position.y = 0
-                self.gameOverScreen!.zPosition = 10
+                self.gameOverScreen!.zPosition = 50
                 
                 self.addChild(self.gameOverScreen!)
+                
+                // Send the data for this session to the game over screen.
+                self.gameOverScreen!.myData?.numCirclesPopped = self.numCirclesPopped
+                self.gameOverScreen!.myData?.score = self.score
+                self.gameOverScreen!.myData?.gameState = GameState.classicMode
                 
                 self.gameOverScreen!.initialize()
                 
@@ -118,15 +130,19 @@ class ArcadeScene: SKScene {
             }
         }
         
-        for i in 0 ..< self.circles!.count {
+        self.scoreLabel!.outlinedText = "\(self.score)"
+        
+        self.bg?.update(currentTime)
+        
+        for i in 0..<self.circles!.count {
             self.circles?[i].update(currentTime)
         }
         
-        for i in 0 ..< self.badCircles!.count {
+        for i in 0..<self.badCircles!.count {
             self.badCircles?[i].update(currentTime)
         }
-
-        checkGameState()
+        
+        self.checkGameState()
     }
     
     func resetGame() {
@@ -145,10 +161,12 @@ class ArcadeScene: SKScene {
     }
     
     func startNewGame() {
-        self.backgroundColor = UIColor.white
+        self.bg?.zPosition = -2
+        self.addChild(self.bg!)
         
         self.gameOverScreen = GameOverScreen(myFrame: self.frame)
         
+        /*
         self.scoreShadowLabel = SKLabelNode(fontNamed: "Orbitron Black")
         self.scoreShadowLabel!.fontSize = Utils.getScaledFontSize(19) // or 20.5
         self.scoreShadowLabel?.text = "Score: 0"
@@ -157,13 +175,17 @@ class ArcadeScene: SKScene {
         //self.scoreShadowLabel!.position.x += (self.scoreShadowLabel!.frame.width / 2) + 2
         self.scoreShadowLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left;
         self.addChild(self.scoreShadowLabel!)
+        */
         
-        self.scoreLabel = SKLabelNode(fontNamed: "Orbitron Medium")
-        self.scoreLabel!.fontSize = Utils.getScaledFontSize(19)
-        self.scoreLabel?.text = "Score: 0"
+        self.scoreLabel = MKOutlinedLabelNode(fontNamed: "Orbitron-Medium", fontSize: Utils.getScaledFontSize(19))
+        //self.scoreLabel!.fontSize = Utils.getScaledFontSize(19)
+        self.scoreLabel!.outlinedText = "0" // has to be less than 8 chars so it wont crash
+        self.scoreLabel!.position.y = Utils.getScreenResolution().height - self.scoreLabel!.fontSize
         self.scoreLabel!.fontColor = UIColor.white
+        self.scoreLabel!.borderColor = UIColor.black
         self.scoreLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left;
-        self.scoreShadowLabel!.addChild(self.scoreLabel!)
+        //self.scoreShadowLabel!.addChild(self.scoreLabel!)
+        self.addChild(self.scoreLabel!)
         
         checkGameState()
     }
@@ -191,11 +213,8 @@ class ArcadeScene: SKScene {
         }
         */
         
-        for child in self.children {
-            if child is TouchCircle || child is BadCircle {
-                child.removeFromParent()
-            }
-        }
+        self.removeChildren(in: self.badCircles!)
+        self.badCircles!.removeAll();
         
         for i in 0..<self.numCircles {
             let tempCircle: TouchCircle = TouchCircle()
