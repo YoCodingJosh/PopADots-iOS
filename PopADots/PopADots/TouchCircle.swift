@@ -104,6 +104,14 @@ class TouchCircle : Circle {
         return (xDiff * xDiff) + (yDiff * yDiff) < (self.radius * self.radius);
     }
     
+    func resizeCircle(_ newRadius: CGFloat, scale: Bool = false) {
+        self.radius = scale ? Utils.scaleRadius(newRadius) : newRadius
+        super.setCirclePath()
+        
+        self.backgroundCircle?.radius = self.radius + (self.radius / 20)
+        self.backgroundCircle?.setCirclePath()
+    }
+    
     /*
      * Note: this does not convert this instance into a BadCircle instance IN PLACE.
      *  That requires some magic that is waaaayyy out of scope of this function.

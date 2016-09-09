@@ -3,16 +3,21 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 6/11/15.
-//  Copyright (c) 2015-2016 Sirkles LLC. All rights reserved.
+//  Copyright © 2015-2016 Sirkles LLC. All rights reserved.
 //
 
 import SpriteKit
 
 class MainMenuScene: SKScene {
     var numCircles = 4
-    var circles:Array<TouchCircle>? = Array<TouchCircle>()
+    var circles:Array<TouchCircle> = Array<TouchCircle>()
     var bg: RainbowEffect?
     var numBackgroundCircles = 10
+    var isTransitioning: Bool = false
+    var isEnlarging: Bool = false
+    var isCompressing: Bool = false
+    var transitionCircle: TouchCircle?
+    var nextScreen = -1
     
     override init() {
         super.init()
@@ -57,29 +62,11 @@ class MainMenuScene: SKScene {
         let myTouch: UITouch = touches.first!
         let touchLocation = myTouch.location(in: self)
         
-        for i in numBackgroundCircles..<self.circles!.count {
-            if self.circles![i] is MenuCircle && self.circles![i].checkTouch(touchLocation) == true {
+        for i in numBackgroundCircles..<self.circles.count {
+            if self.circles[i] is MenuCircle && self.circles[i].checkTouch(touchLocation) == true {
                 self.menuAction(i - numBackgroundCircles)
             }
         }
-        
-        /*
-        for touch in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
-        */
     }
    
     override func update(_ currentTime: TimeInterval) {
@@ -87,8 +74,8 @@ class MainMenuScene: SKScene {
         
         self.bg!.update(currentTime)
         
-        for i in 0..<self.circles!.count {
-            self.circles![i].update(currentTime)
+        for i in 0..<self.circles.count {
+            self.circles[i].update(currentTime)
         }
     }
     
@@ -101,7 +88,7 @@ class MainMenuScene: SKScene {
             
             tempCircle.zPosition = CGFloat(i)
             
-            self.circles!.append(tempCircle)
+            self.circles.append(tempCircle)
             self.addChild(tempCircle)
         }
         
@@ -110,7 +97,7 @@ class MainMenuScene: SKScene {
             
             tempCircle.zPosition = CGFloat(numBackgroundCircles + (i + 1))
             
-            self.circles!.append(tempCircle)
+            self.circles.append(tempCircle)
             self.addChild(tempCircle)
         }
     }
@@ -138,6 +125,10 @@ class MainMenuScene: SKScene {
         circle?.initialize()
         
         return circle!
+    }
+    
+    func gotoScreen(_ screen: SKScene?) {
+        self.view?.presentScene(screen!)
     }
     
     func menuAction(_ button: Int) {
@@ -168,7 +159,16 @@ class MainMenuScene: SKScene {
         case 1:
             // Arcade Mode
             print("Arcade Mode pressed!")
-            let transition: SKTransition = SKTransition.fade(withDuration: 1)
+            
+            let rad = self.circles[self.circles.count - 3].radius
+            let pos = self.circles[self.circles.count - 3].position
+            let col = self.circles[self.circles.count - 3].fillColor
+            
+            transitionCircle = TouchCircle(radius: rad, pos: pos, color: col, xVel: 0, yVel: 0)
+            transitionCircle?.touchable = false
+            transitionCircle?.zPosition = 100 // Make it high as possible. #420
+            self.addChild(transitionCircle!)
+            
             let arcade: ArcadeScene = ArcadeScene(size: self.frame.size)
             let newBG: RainbowEffect = RainbowEffect(frame: arcade.frame)
             
@@ -186,7 +186,7 @@ class MainMenuScene: SKScene {
             
             arcade.backgroundColor = arcade.bg!.color!
             
-            self.view?.presentScene(arcade, transition: transition)
+            //self.view?.presentScene(arcade)
         case 2:
             // Voids Mode
             print("Voids Mode pressed!")
