@@ -77,6 +77,12 @@ class MainMenuScene: SKScene {
         for i in 0..<self.circles.count {
             self.circles[i].update(currentTime)
         }
+        
+        if self.isTransitioning {
+            if self.isEnlarging {
+                self.transitionCircle!.resizeCircle(self.transitionCircle!.radius * 1.1)
+            }
+        }
     }
     
     func generateCircles() {
@@ -164,10 +170,17 @@ class MainMenuScene: SKScene {
             let pos = self.circles[self.circles.count - 3].position
             let col = self.circles[self.circles.count - 3].fillColor
             
+            self.nextScreen = 1
+            
+            self.circles[self.circles.count - 3].removeFromParent()
+            
             transitionCircle = TouchCircle(radius: rad, pos: pos, color: col, xVel: 0, yVel: 0)
             transitionCircle?.touchable = false
-            transitionCircle?.zPosition = 100 // Make it high as possible. #420
+            transitionCircle?.zPosition = 420 // Make it high as possible. #420
             self.addChild(transitionCircle!)
+            
+            self.isTransitioning = true
+            self.isEnlarging = true
             
             let arcade: ArcadeScene = ArcadeScene(size: self.frame.size)
             let newBG: RainbowEffect = RainbowEffect(frame: arcade.frame)
