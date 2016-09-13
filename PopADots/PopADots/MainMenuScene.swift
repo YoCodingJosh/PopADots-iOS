@@ -17,7 +17,7 @@ class MainMenuScene: SKScene {
     var isEnlarging: Bool = false
     var isCompressing: Bool = false
     var transitionCircle: TouchCircle?
-    var nextScreen = -1
+    var nextScene: SKScene?
     
     override init() {
         super.init()
@@ -79,8 +79,38 @@ class MainMenuScene: SKScene {
         }
         
         if self.isTransitioning {
+            if nextScene is ArcadeScene {
+                (nextScene as! ArcadeScene).bg?.update(currentTime)
+            }
+            else if nextScene is ClassicScene {
+                (nextScene as! ClassicScene).bg?.update(currentTime)
+            }
+            
             if self.isEnlarging {
                 self.transitionCircle!.resizeCircle(self.transitionCircle!.radius * 1.1)
+                
+                if self.transitionCircle!.radius >= Utils.getScreenResolution().height {
+                    self.isEnlarging = false
+                    self.isCompressing = true
+                    
+                    for child in self.children {
+                        if child == self.transitionCircle || child == self.bg {
+                            continue
+                        }
+                        
+                        child.removeFromParent()
+                    }
+                }
+            }
+            
+            if self.isCompressing {
+                self.transitionCircle!.resizeCircle(self.transitionCircle!.radius / 1.25)
+                
+                if self.transitionCircle!.radius <= 10 {
+                    self.isCompressing = false
+                    self.isTransitioning = false
+                    self.gotoScreen(nextScene)
+                }
             }
         }
     }
@@ -143,7 +173,21 @@ class MainMenuScene: SKScene {
         case 0:
             // Classic Mode
             print("Classic Mode pressed!")
-            let transition: SKTransition = SKTransition.fade(withDuration: 1)
+            
+            let rad = self.circles[self.circles.count - 4].radius
+            let pos = self.circles[self.circles.count - 4].position
+            let col = self.circles[self.circles.count - 4].fillColor
+            
+            self.circles[self.circles.count - 4].removeFromParent()
+            
+            transitionCircle = TouchCircle(radius: rad, pos: pos, color: col, xVel: 0, yVel: 0)
+            transitionCircle?.touchable = false
+            transitionCircle?.zPosition = 420 // Make it high as possible. #420
+            self.addChild(transitionCircle!)
+            
+            self.isTransitioning = true
+            self.isEnlarging = true
+            
             let classic: ClassicScene = ClassicScene(size: self.frame.size)
             let newBG: RainbowEffect = RainbowEffect(frame: classic.frame)
             
@@ -161,7 +205,7 @@ class MainMenuScene: SKScene {
             
             classic.backgroundColor = classic.bg!.color!
             
-            self.view?.presentScene(classic, transition: transition)
+            self.nextScene = classic
         case 1:
             // Arcade Mode
             print("Arcade Mode pressed!")
@@ -169,8 +213,6 @@ class MainMenuScene: SKScene {
             let rad = self.circles[self.circles.count - 3].radius
             let pos = self.circles[self.circles.count - 3].position
             let col = self.circles[self.circles.count - 3].fillColor
-            
-            self.nextScreen = 1
             
             self.circles[self.circles.count - 3].removeFromParent()
             
@@ -199,7 +241,7 @@ class MainMenuScene: SKScene {
             
             arcade.backgroundColor = arcade.bg!.color!
             
-            //self.view?.presentScene(arcade)
+            self.nextScene = arcade
         case 2:
             // Voids Mode
             print("Voids Mode pressed!")
