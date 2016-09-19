@@ -58,7 +58,6 @@ class ClassicScene: SKScene {
             case 2:
                 print("go to main menu")
                 
-                let transition: SKTransition = SKTransition.fade(withDuration: 1)
                 let menu: MainMenuScene = MainMenuScene(size: self.frame.size)
                 let newBG: RainbowEffect = RainbowEffect(frame: self.frame)
                 
@@ -72,7 +71,7 @@ class ClassicScene: SKScene {
                 
                 self.removeAllChildren()
                 
-                self.view?.presentScene(menu, transition: transition)
+                self.view?.presentScene(menu)
             default:
                 print("god damn it swift, there are no other possible choices")
             }
