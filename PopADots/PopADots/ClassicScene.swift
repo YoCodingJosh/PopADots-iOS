@@ -36,7 +36,7 @@ class ClassicScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        globalGameState = GameState.classicMode
+        globalGameState = GameState.Classic
         
         startNewGame()
     }
@@ -122,7 +122,7 @@ class ClassicScene: SKScene {
                 // Send the data for this session to the game over screen.
                 self.gameOverScreen!.myData?.numCirclesPopped = self.numCirclesPopped
                 self.gameOverScreen!.myData?.score = self.score
-                self.gameOverScreen!.myData?.gameState = GameState.classicMode
+                self.gameOverScreen!.myData?.gameState = GameState.Classic
                 
                 self.gameOverScreen!.initialize()
                 

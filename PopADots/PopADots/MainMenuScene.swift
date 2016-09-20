@@ -33,7 +33,7 @@ class MainMenuScene: SKScene {
     
     override func didMove(to view: SKView) {
         print("loading main menu")
-        globalGameState = GameState.mainMenu;
+        globalGameState = GameState.MainMenu;
         
         if self.bg == nil {
             print("instantiating new bg for menu")

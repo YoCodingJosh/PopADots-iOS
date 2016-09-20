@@ -31,7 +31,7 @@ struct GameData {
 // so this is a way to skirt around that. :)
 class GameOverScreen: SKShapeNode {
     var myFrame: CGRect = Utils.getScreenResolution()
-    var myData: GameData? = GameData(score: 0, numCirclesPopped: 0, gameState: GameState.none)
+    var myData: GameData? = GameData(score: 0, numCirclesPopped: 0, gameState: GameState.None)
     var background: BackgroundEffect? // I'm too fucking lazy to figure out a better way. :P
     
     var restartCircle: MenuCircle = MenuCircle(radius: Utils.scaleRadius(225), pos: CGPoint(x: Utils.getScreenResolution().width / 4, y: Utils.getScreenResolution().height / 6), color: Utils.getColor(1), label: "Restart")
@@ -71,6 +71,8 @@ class GameOverScreen: SKShapeNode {
         
         restartCircle.labelNode?.fontSize = Utils.getScaledFontSize(19)
         menuCircle.labelNode?.fontSize = Utils.getScaledFontSize(19)
+        
+        globalGameState = GameState.GameOver
     }
 
     required init?(coder aDecoder: NSCoder) {

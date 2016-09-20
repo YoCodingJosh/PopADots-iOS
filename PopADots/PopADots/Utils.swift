@@ -12,17 +12,6 @@ import SpriteKit
 import UIKit
 import SystemConfiguration
 
-// MainMenu = Main Menu
-// ClassicMode = Classic Mode
-// ArcadeMode = Arcade Mode
-// Voids Mode = Voids Mode
-// None = Indeterminate state, usually when the container that holds this value has not been initialized.
-enum GameState {
-    case mainMenu, classicMode, arcadeMode, voidsMode, none
-}
-
-var globalGameState: GameState = GameState.mainMenu
-
 // Cache the sound actions to prevent a delay when popping circles.
 var lowPopSoundAction = SKAction.playSoundFileNamed("lowpop.wav", waitForCompletion: false)
 var highPopSoundAction = SKAction.playSoundFileNamed("highpop.wav", waitForCompletion: false)

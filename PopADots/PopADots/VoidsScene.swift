@@ -34,7 +34,7 @@ class VoidsScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        globalGameState = GameState.arcadeMode
+        globalGameState = GameState.Voids
         
         startNewGame()
     }

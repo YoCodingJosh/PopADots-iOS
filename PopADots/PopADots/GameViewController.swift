@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import GameKit
 
-import iAd
+import GoogleMobileAds
 
 class GameViewController: UIViewController, GKGameCenterControllerDelegate
 {
@@ -19,8 +19,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
         
         self.initGameCenter()
         
-        //if let scene: MainMenuScene = MainMenuScene() {
-        //if let scene = GameScene(fileNamed:"GameScene") {
+        // "If it don't make dollars, it don't make sense." - DJ Quik
+        AdStateMachine.start()
         
         let scene: MainMenuScene = MainMenuScene();
         
