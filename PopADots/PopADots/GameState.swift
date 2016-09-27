@@ -3,7 +3,7 @@
 //  Pop a Dots
 //
 //  Created by Josh Kennedy on 9/19/16.
-//  Copyright © 2016 Sirkles. All rights reserved.
+//  Copyright © 2016 Sirkles LLC. All rights reserved.
 //
 
 import Foundation
@@ -15,12 +15,36 @@ enum GameState {
     
     // The main menu.
     MainMenu,
+    
+    // Classic gameplay mode.
     Classic,
+    
+    // Arcade gameplay mode.
     Arcade,
+    
+    // Voids gameplay mode.
     Voids,
+    
+    // Insane gameplay mode.
     Insane,
+    
+    // Game Over screen that is displayed when the player has died.
     GameOver,
-    Options
+    
+    // The options menu screen.
+    Options,
+    
+    // Transition to Classic gameplay mode.
+    TransitionToClassic,
+    
+    // Transition to Arcade gameplay mode.
+    TransitionToArcade,
+    
+    // Transition to Voids gameplay mode.
+    TransitionToVoids,
+    
+    // Transition to Insane gameplay mode.
+    TransitionToInsane
 }
 
 var globalGameState: GameState = GameState.None

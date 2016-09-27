@@ -174,6 +174,8 @@ class MainMenuScene: SKScene {
             // Classic Mode
             print("Classic Mode pressed!")
             
+            globalGameState = GameState.TransitionToClassic
+            
             let rad = self.circles[self.circles.count - 4].radius
             let pos = self.circles[self.circles.count - 4].position
             let col = self.circles[self.circles.count - 4].fillColor
@@ -210,6 +212,8 @@ class MainMenuScene: SKScene {
             // Arcade Mode
             print("Arcade Mode pressed!")
             
+            globalGameState = GameState.TransitionToArcade
+            
             let rad = self.circles[self.circles.count - 3].radius
             let pos = self.circles[self.circles.count - 3].position
             let col = self.circles[self.circles.count - 3].fillColor
@@ -245,9 +249,11 @@ class MainMenuScene: SKScene {
         case 2:
             // Voids Mode
             print("Voids Mode pressed!")
+            globalGameState = GameState.TransitionToVoids
         case 3:
             // Insane Mode
             print("Insane Mode pressed!")
+            globalGameState = GameState.TransitionToInsane
         default:
             fatalError("Button index \(button) is invalid.")
         }
