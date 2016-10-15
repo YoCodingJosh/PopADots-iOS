@@ -8,24 +8,106 @@
 
 import UIKit
 
-import Firebase
-
+@available(iOS 9.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        print("Pop a Dots\t(C) 2015-2016 Sirkles LLC.\n")
+    
+    enum ShortcutIdentifier: String {
+        case ClassicShortcut
+        case ArcadeShortcut
+        case VoidsShortcut
+        case InsaneShortcut
         
-        // Use Firebase library to configure APIs
-        FIRApp.configure()
-
-        if !Utils.connectedToNetwork() {
-            print("Not connected to network. :(")
+        // MARK: - Initializers
+        
+        init?(fullType: String) {
+            guard let last = fullType.characters.split(separator: ".").map(String.init).last else { return nil }
+            
+            self.init(rawValue: last)
         }
         
-        return true
+        // MARK: - Properties
+        
+        var type: String {
+            return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
+        }
+    }
+    
+    /// Saved shortcut item used as a result of an app launch, used later when app is activated.
+    //@available(iOS 9.0, *)
+    var launchedShortcutItem: UIApplicationShortcutItem?
+    
+    //@available(iOS 9.0, *)
+    func handleShortCutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        var handled = false
+        
+        // Verify that the provided `shortcutItem`'s `type` is one handled by the application.
+        guard ShortcutIdentifier(fullType: shortcutItem.type) != nil else { return false }
+        
+        guard let shortCutType = shortcutItem.type as String? else { return false }
+        
+        switch (shortCutType) {
+        case ShortcutIdentifier.ClassicShortcut.type:
+            // Handle Classic shortcut (static).
+            startedGameplay = GameState.Classic
+            print("Starting Classic mode (via shortcut)")
+            
+            handled = true
+            break
+        case ShortcutIdentifier.ArcadeShortcut.type:
+            // Handle Arcade shortcut (static).
+            startedGameplay = GameState.Arcade
+            print("Starting Arcade mode (via shortcut)")
+            
+            handled = true
+            break
+        case ShortcutIdentifier.VoidsShortcut.type:
+            // Handle Voids shortcut (static).
+            startedGameplay = GameState.Voids
+            print("Starting Voids mode (via shortcut)")
+            
+            handled = true
+            break
+        case ShortcutIdentifier.InsaneShortcut.type:
+            // Handle Insane shortcut (static).
+            startedGameplay = GameState.Insane
+            print("Starting Insane mode (via shortcut)")
+            
+            handled = true
+            break
+        default:
+            break
+        }
+        
+        return handled
+    }
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        // Override point for customization after application launch.
+        var shouldPerformAdditionalDelegateHandling = true
+        
+        // If a shortcut was launched, display its information and take the appropriate action
+        if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            
+            launchedShortcutItem = shortcutItem
+            
+            // This will block "performActionForShortcutItem:completionHandler" from being called.
+            shouldPerformAdditionalDelegateHandling = false
+        }
+        
+        return shouldPerformAdditionalDelegateHandling
+    }
+    
+    @nonobjc @available(iOS 9.0, *)
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        let handledShortCutItem = handleShortCutItem(shortcutItem: shortcutItem)
+        
+        print("Shortcut tapped")
+        
+        completionHandler(handledShortCutItem)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -37,15 +119,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        AdStateMachine.pause()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        AdStateMachine.resume()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         AdStateMachine.resume()
+        
+        guard let shortcut = launchedShortcutItem else { return }
+        
+        handleShortCutItem(shortcutItem: shortcut)
+        
+        launchedShortcutItem = nil
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

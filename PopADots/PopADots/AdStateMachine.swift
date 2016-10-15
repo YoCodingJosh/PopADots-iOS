@@ -9,21 +9,46 @@
 import Foundation
 import Dispatch
 
+import GoogleMobileAds
+
 // This handles which ad to show and when to display it.
+//
+// A traditional FSM drives the actual application.
+// Since that'll be impossible in SpriteKit, we'll just observe the state changes and act upon it.
 class AdStateMachine {
+    // Types of ads.
+    enum AdType {
+        case None,
+        Banner,
+        Interstitial
+    }
+    
+    // States of the state machine.
     static var running: Bool = false
     static var paused: Bool = false
     
     var nextState: GameState
     var shouldPreload: Bool = false
+    var previousState: GameState
     
+    // Should only be created once, and only during game initialization!
     init() {
         // We initialize to None, because the game hasn't been initialized, so we can't tell what the next state is.
         nextState = GameState.None
+        previousState = GameState.None
     }
     
-    // One iteration of the state machine.
+    // One iteration (or "frame") of the state machine.
+    // PS: Frame would be a misnomer, as we're executing this almost twice a frame.
     func thunk() {
+        // Save a bit a performance by skipping if the state hasn't changed.
+        if previousState == globalGameState {
+            return
+        }
+        
+        // If we reach here, then the state has changed.
+        previousState = globalGameState
+        
         // If the state is None, then the game has not been initialized yet.
         if globalGameState == GameState.None {
             // We expect that the next state will be the main menu, so we don't show an ad yet.
@@ -39,12 +64,24 @@ class AdStateMachine {
                 // If the next state is the main menu, then we should preload the ad.
                 AdStateMachine.showAd = true
                 AdStateMachine.adId = "ca-app-pub-7424757056499341/8187100114"
+                AdStateMachine.adType = AdType.Banner
             }
+        }
+        
+        // Should we generate the ad object?
+        if AdStateMachine.adType != AdType.None && shouldPreload {
+            
         }
     }
     
     // Dispatch the FSM loop to GCD (Grand Central Dispatch) for concurrency.
     static func start() {
+        if running {
+            print("State machine already running!");
+            
+            return;
+        }
+        
         print("Starting up Ad State Machine...")
         
         let instance: AdStateMachine = AdStateMachine()
@@ -57,16 +94,18 @@ class AdStateMachine {
                     instance.thunk()
                     
                     // Sleep for a pinch, so we don't use a ton of CPU.
-                    usleep(50)
+                    // Note: usleep uses microseconds as opposed to milliseconds.
+                    usleep(10000)
                 } else {
                     // Since we're paused, we sleep for a bit longer.
-                    usleep(250)
+                    usleep(20000)
                 }
             }
             
             // Clear the ad data.
-            showAd = false
-            adId = ""
+            AdStateMachine.showAd = false
+            AdStateMachine.adId = ""
+            AdStateMachine.adType = AdType.None
             
             print("Ad State Machine has been stopped.")
         }
@@ -93,6 +132,8 @@ class AdStateMachine {
         running = false
     }
     
+    // Class variables that contain advertisment information.
     static var showAd: Bool = false
     static var adId: String = ""
+    static var adType: AdType = AdType.None
 }

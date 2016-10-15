@@ -6,8 +6,6 @@
 //  Copyright © 2016 Sirkles LLC. All rights reserved.
 //
 
-import Foundation
-
 enum GameState {
     // No active screen. This is only used during initialization.
     // Global game state should not be set to this again.
@@ -48,3 +46,6 @@ enum GameState {
 }
 
 var globalGameState: GameState = GameState.None
+
+/// In case the user the started a gameplay mode using the 3D Touch shortcut from iOS 9+.
+var startedGameplay: GameState = GameState.None

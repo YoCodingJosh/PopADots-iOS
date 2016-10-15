@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 import GameKit
 
+import Firebase
 import GoogleMobileAds
 
 class GameViewController: UIViewController, GKGameCenterControllerDelegate
@@ -17,26 +18,50 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Pop a Dots\t(C) 2015-2016 Sirkles LLC.\n")
+        
+        // Use Firebase library to configure APIs
+        FIRApp.configure()
+        
+        if !Utils.connectedToNetwork() {
+            print("Not connected to network. :(")
+        }
+        
         self.initGameCenter()
         
-        // "If it don't make dollars, it don't make sense." - DJ Quik
+        // "If it don't make dollars, it don't make sense." - DJ Quik 🤑
         AdStateMachine.start()
         
-        let scene: MainMenuScene = MainMenuScene();
+        var scene: SKScene! = nil
+        if startedGameplay == GameState.None {
+            scene = MainMenuScene();
+        }
+        else if startedGameplay == GameState.Classic {
+            scene = ClassicScene();
+        }
+        else if startedGameplay == GameState.Arcade {
+            scene = ArcadeScene();
+        }
+        else if startedGameplay == GameState.Voids {
+            scene = VoidsScene();
+        }
+        else if startedGameplay == GameState.Insane {
+            //scene = InsaneScene();
+        }
         
         // Configure the view.
         let skView = self.view as! SKView
         skView.showsFPS = false
         skView.showsNodeCount = false
-        scene.size = skView.bounds.size;
+        scene!.size = skView.bounds.size;
             
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
             
         /* Set the scale mode to scale to fit the window */
-        scene.scaleMode = .resizeFill
+        scene!.scaleMode = .resizeFill
         
-        skView.presentScene(scene)
+        skView.presentScene(scene!)
     }
     
     // Initialize Game Center
