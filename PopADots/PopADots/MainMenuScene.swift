@@ -78,6 +78,23 @@ class MainMenuScene: SKScene {
             self.circles[i].update(currentTime)
         }
         
+        if didStartViaShortcut {
+            didStartViaShortcut = false;
+            
+            if startedGameplay == GameState.Classic {
+                menuAction(0) // 0 is Classic
+            }
+            else if startedGameplay == GameState.Arcade {
+                menuAction(1) // 1 is Arcade
+            }
+            else if startedGameplay == GameState.Voids {
+                menuAction(2) // 2 is Voids
+            }
+            else if startedGameplay == GameState.Insane {
+                menuAction(3) // 3 is Insane
+            }
+        }
+        
         if self.isTransitioning {
             if nextScene is ArcadeScene {
                 (nextScene as! ArcadeScene).bg?.update(currentTime)

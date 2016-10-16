@@ -33,21 +33,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
         AdStateMachine.start()
         
         var scene: SKScene! = nil
-        if startedGameplay == GameState.None {
-            scene = MainMenuScene();
-        }
-        else if startedGameplay == GameState.Classic {
-            scene = ClassicScene();
-        }
-        else if startedGameplay == GameState.Arcade {
-            scene = ArcadeScene();
-        }
-        else if startedGameplay == GameState.Voids {
-            scene = VoidsScene();
-        }
-        else if startedGameplay == GameState.Insane {
-            //scene = InsaneScene();
-        }
+        scene = MainMenuScene();
         
         // Configure the view.
         let skView = self.view as! SKView

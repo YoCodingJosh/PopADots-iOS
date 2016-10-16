@@ -49,3 +49,4 @@ var globalGameState: GameState = GameState.None
 
 /// In case the user the started a gameplay mode using the 3D Touch shortcut from iOS 9+.
 var startedGameplay: GameState = GameState.None
+var didStartViaShortcut: Bool = false

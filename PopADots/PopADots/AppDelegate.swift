@@ -52,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case ShortcutIdentifier.ClassicShortcut.type:
             // Handle Classic shortcut (static).
             startedGameplay = GameState.Classic
+            didStartViaShortcut = true
             print("Starting Classic mode (via shortcut)")
             
             handled = true
@@ -59,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case ShortcutIdentifier.ArcadeShortcut.type:
             // Handle Arcade shortcut (static).
             startedGameplay = GameState.Arcade
+            didStartViaShortcut = true
             print("Starting Arcade mode (via shortcut)")
             
             handled = true
@@ -66,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case ShortcutIdentifier.VoidsShortcut.type:
             // Handle Voids shortcut (static).
             startedGameplay = GameState.Voids
+            didStartViaShortcut = true
             print("Starting Voids mode (via shortcut)")
             
             handled = true
@@ -73,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case ShortcutIdentifier.InsaneShortcut.type:
             // Handle Insane shortcut (static).
             startedGameplay = GameState.Insane
+            didStartViaShortcut = true
             print("Starting Insane mode (via shortcut)")
             
             handled = true
