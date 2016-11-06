@@ -30,6 +30,7 @@ class AdStateMachine {
     var nextState: GameState
     var shouldPreload: Bool = false
     var previousState: GameState
+    var shouldGenerate: Bool = false
     
     // Should only be created once, and only during game initialization!
     init() {
@@ -56,6 +57,7 @@ class AdStateMachine {
             AdStateMachine.showAd = false
             
             shouldPreload = true
+            shouldGenerate = true;
         }
         
         // Should we preload ad information?
@@ -69,8 +71,18 @@ class AdStateMachine {
         }
         
         // Should we generate the ad object?
-        if AdStateMachine.adType != AdType.None && shouldPreload {
-            
+        if AdStateMachine.adType != AdType.None && shouldPreload && shouldGenerate {
+            // Which kind of ad to generate?
+            switch(AdStateMachine.adType) {
+            case AdType.Banner:
+                
+                break;
+            case AdType.Interstitial:
+                
+                break;
+            default:
+                break;
+            }
         }
     }
     
@@ -102,7 +114,7 @@ class AdStateMachine {
                 }
             }
             
-            // Clear the ad data.
+            // Clear the ad data when we exit.
             AdStateMachine.showAd = false
             AdStateMachine.adId = ""
             AdStateMachine.adType = AdType.None

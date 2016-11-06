@@ -8,7 +8,6 @@
 
 import UIKit
 
-@available(iOS 9.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -36,10 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /// Saved shortcut item used as a result of an app launch, used later when app is activated.
-    //@available(iOS 9.0, *)
     var launchedShortcutItem: UIApplicationShortcutItem?
     
-    //@available(iOS 9.0, *)
     func handleShortCutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
         var handled = false
         
@@ -105,46 +102,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return shouldPerformAdditionalDelegateHandling
     }
     
-    @nonobjc @available(iOS 9.0, *)
-    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         let handledShortCutItem = handleShortCutItem(shortcutItem: shortcutItem)
         
         print("Shortcut tapped")
         
         completionHandler(handledShortCutItem)
     }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        //AdStateMachine.resume()
+        
+        guard let shortcut = launchedShortcutItem else { return }
+        
+        _ = handleShortCutItem(shortcutItem: shortcut)
+        
+        launchedShortcutItem = nil
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-        AdStateMachine.pause()
+        //AdStateMachine.pause()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        AdStateMachine.pause()
+        //AdStateMachine.pause()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        AdStateMachine.resume()
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        AdStateMachine.resume()
-        
-        guard let shortcut = launchedShortcutItem else { return }
-        
-        handleShortCutItem(shortcutItem: shortcut)
-        
-        launchedShortcutItem = nil
+        //AdStateMachine.resume()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        AdStateMachine.stop()
+        //AdStateMachine.stop()
         print("Bye! We'll miss you.")
     }
 }

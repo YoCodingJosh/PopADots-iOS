@@ -32,17 +32,21 @@ struct GameData {
 class GameOverScreen: SKShapeNode {
     var myFrame: CGRect = Utils.getScreenResolution()
     var myData: GameData? = GameData(score: 0, numCirclesPopped: 0, gameState: GameState.None)
-    var background: BackgroundEffect? // I'm too fucking lazy to figure out a better way. :P
+    var background: BackgroundEffect?
     
     var restartCircle: MenuCircle = MenuCircle(radius: Utils.scaleRadius(225), pos: CGPoint(x: Utils.getScreenResolution().width / 4, y: Utils.getScreenResolution().height / 6), color: Utils.getColor(1), label: "Restart")
     
-    var menuCircle: MenuCircle = MenuCircle(radius: Utils.scaleRadius(225), pos: CGPoint(x: Utils.getScreenResolution().width - (Utils.getScreenResolution().width / 4), y: Utils.getScreenResolution().height / 6), color: Utils.getColor(8), label: "Menu") // used to be 4
+    var menuCircle: MenuCircle = MenuCircle(radius: Utils.scaleRadius(225), pos: CGPoint(x: Utils.getScreenResolution().width - (Utils.getScreenResolution().width / 4), y: Utils.getScreenResolution().height / 6), color: Utils.getColor(8), label: "Menu")
+    
+    var highScoreLabel: SKLabelNode?
+    var userScoreLabel: SKLabelNode?
     
     init(myFrame: CGRect, myData: GameData? = nil) {
         super.init()
         
         self.myFrame = myFrame
         
+        // Construct the frame of this node.
         let myPath: CGMutablePath = CGMutablePath();
         myPath.addRect(self.myFrame);
         myPath.closeSubpath();
@@ -52,14 +56,19 @@ class GameOverScreen: SKShapeNode {
         self.strokeColor = SKColor.clear
         
         self.background = BackgroundEffect(frame: self.frame)
-        self.background!.fillColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 150/255.0)
+        self.background!.fillColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 200/255.0)
         self.background!.zPosition = -2
         
         self.myData = myData
         
+        self.userScoreLabel = SKLabelNode();
+        self.userScoreLabel?.text = "Your Score: " + String(describing: self.myData?.score)
+        self.userScoreLabel?.color = SKColor.black
+        
         self.addChild(background!)
         self.addChild(restartCircle)
         self.addChild(menuCircle)
+        self.addChild(userScoreLabel!)
     }
     
     func initialize() {

@@ -20,6 +20,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
         
         print("Pop a Dots\t(C) 2015-2016 Sirkles LLC.\n")
         
+        /* Disable dimming of display during game. */
+        UIApplication.shared.isIdleTimerDisabled = true;
+        
         // Use Firebase library to configure APIs
         FIRApp.configure()
         
@@ -28,9 +31,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate
         }
         
         self.initGameCenter()
-        
-        // "If it don't make dollars, it don't make sense." - DJ Quik 🤑
-        AdStateMachine.start()
         
         var scene: SKScene! = nil
         scene = MainMenuScene();

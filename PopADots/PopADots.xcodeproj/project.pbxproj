@@ -47,6 +47,7 @@
 		5CFCF56B1B628D9B00E63356 /* VoidsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56A1B628D9B00E63356 /* VoidsScene.swift */; };
 		5CFCF56D1B62DE5700E63356 /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCF56C1B62DE5700E63356 /* GameOverScreen.swift */; };
 		84422BA51D7675330063659D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84422BA41D7675330063659D /* GoogleService-Info.plist */; };
+		847B6A3E1DCEB33400D18C68 /* ScoreCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B6A3D1DCEB33400D18C68 /* ScoreCipher.swift */; };
 		84B8762F1D90BB4900BD910E /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8762E1D90BB4900BD910E /* GameState.swift */; };
 		84B876311D90BD7E00BD910E /* AdStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B876301D90BD7E00BD910E /* AdStateMachine.swift */; };
 		84BB8E241C1511F00044D8FB /* MKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */; };
@@ -100,6 +101,7 @@
 		7AAB6B960F57ED11B85E644A /* Pods-PopADots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopADots.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopADots/Pods-PopADots.release.xcconfig"; sourceTree = "<group>"; };
 		7F75D90FF504487D0E6AFA8B /* Pods_PopADots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopADots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84422BA41D7675330063659D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		847B6A3D1DCEB33400D18C68 /* ScoreCipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCipher.swift; sourceTree = "<group>"; };
 		84B8762E1D90BB4900BD910E /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		84B876301D90BD7E00BD910E /* AdStateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdStateMachine.swift; sourceTree = "<group>"; };
 		84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKOutlinedLabelNode.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				84BB8E231C1511F00044D8FB /* MKOutlinedLabelNode.swift */,
 				84B8762E1D90BB4900BD910E /* GameState.swift */,
 				84B876301D90BD7E00BD910E /* AdStateMachine.swift */,
+				847B6A3D1DCEB33400D18C68 /* ScoreCipher.swift */,
 			);
 			path = PopADots;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				84B8762F1D90BB4900BD910E /* GameState.swift in Sources */,
 				84BB8E241C1511F00044D8FB /* MKOutlinedLabelNode.swift in Sources */,
 				5C065D451B3091D8001A4CF3 /* ClassicScene.swift in Sources */,
+				847B6A3E1DCEB33400D18C68 /* ScoreCipher.swift in Sources */,
 				5C66757F1B431409007E352F /* BadCircle.swift in Sources */,
 				5C5FE2DB1B2A35530029EC23 /* GameViewController.swift in Sources */,
 				5CE66C4E1B379C660078B9A5 /* BackgroundEffect.swift in Sources */,
@@ -531,7 +535,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = PopADots/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.sirkles.PopADots.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -554,7 +558,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = PopADots/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.sirkles.PopADots.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";

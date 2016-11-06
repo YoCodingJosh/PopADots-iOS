@@ -121,7 +121,7 @@ class ArcadeScene: SKScene {
                 // Send the data for this session to the game over screen.
                 self.gameOverScreen!.myData?.numCirclesPopped = self.numCirclesPopped
                 self.gameOverScreen!.myData?.score = self.score
-                self.gameOverScreen!.myData?.gameState = GameState.Classic
+                self.gameOverScreen!.myData?.gameState = GameState.Arcade
                 
                 self.gameOverScreen!.initialize()
                 
