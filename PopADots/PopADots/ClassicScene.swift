@@ -120,11 +120,9 @@ class ClassicScene: SKScene {
                 self.addChild(self.gameOverScreen!)
                 
                 // Send the data for this session to the game over screen.
-                self.gameOverScreen!.myData?.numCirclesPopped = self.numCirclesPopped
-                self.gameOverScreen!.myData?.score = self.score
-                self.gameOverScreen!.myData?.gameState = GameState.Classic
+                let myData: GameData = GameData(score: self.score, numCirclesPopped: self.numCirclesPopped, gameState: GameState.Classic)
                 
-                self.gameOverScreen!.initialize()
+                self.gameOverScreen!.initialize(data: myData)
                 
                 gameOverScreenCreated = true
             }
@@ -227,6 +225,8 @@ class ClassicScene: SKScene {
         self.scoreLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left;
         //self.scoreShadowLabel!.addChild(self.scoreLabel!)
         self.addChild(self.scoreLabel!)
+        
+        print("high score: " + String(ScoreCipher.getScore(mode: GameState.Classic)))
         
         checkGameState()
     }

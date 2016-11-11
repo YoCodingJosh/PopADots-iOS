@@ -25,13 +25,14 @@ import Foundation
 // EXCEPT we're...
 // * removing the conditional add 1
 // * upping the prime multiplier constant to 73
+// * upping the non-prime multiplier constant to 8
 
 class ScoreCipher {
     static func setScore(score: Int64, mode: GameState) -> Void {
-        let newScore: Int64 = Int64(((score * 6 / 2) + 100) * 73 + 1)
+        let newScore: Int64 = Int64(((score * 8 / 2) + 100) * 73 + 1)
         let hexNewScore: String = String(newScore, radix: 16)
         
-        // Construct the file name.
+        // Construct the file name which is the key for the K-V store in iCloud.
         var fileName = "POP-"
         
         switch (mode) {
@@ -54,21 +55,9 @@ class ScoreCipher {
         
         fileName += ".DAT"
         
-        let file: FileHandle? = FileHandle(forWritingAtPath: fileName)
+        let keyStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
         
-        if file != nil {
-            // Set the data we want to write
-            let data = (hexNewScore as String).data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
-            
-            // Write it to the file
-            file?.write(data!)
-            
-            // Close the file
-            file?.closeFile()
-        }
-        else {
-            print("Ooops! Something went wrong!")
-        }
+        keyStore.set(hexNewScore, forKey: fileName)
     }
     
     static func getScore(mode: GameState) -> Int64 {
@@ -97,25 +86,16 @@ class ScoreCipher {
         
         fileName += ".DAT"
         
-        let file: FileHandle? = FileHandle(forReadingAtPath: fileName)
+        let keyStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
         
-        if file != nil {
-            // Read all the data
-            let data = file?.readDataToEndOfFile()
-            
-            // Close the file
-            file?.closeFile()
-            
-            // Convert our data to string
-            let str = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
-            scoreString = str!
-        }
-        else {
-            print("Ooops! Something went wrong!")
+        scoreString = keyStore.string(forKey: fileName) ?? ""
+        
+        if (scoreString == "") {
+            return 0
         }
         
         let tempScore = Int64(scoreString, radix: 16)
         
-        return Int64(exactly: (tempScore! / 73) - 100 * 2 / 6)!;
+        return Int64(exactly: (tempScore! / 73) - 100 * 2 / 8)!;
     }
 }

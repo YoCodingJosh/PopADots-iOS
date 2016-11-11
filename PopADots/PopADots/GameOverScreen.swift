@@ -41,7 +41,7 @@ class GameOverScreen: SKShapeNode {
     var highScoreLabel: SKLabelNode?
     var userScoreLabel: SKLabelNode?
     
-    init(myFrame: CGRect, myData: GameData? = nil) {
+    init(myFrame: CGRect) {
         super.init()
         
         self.myFrame = myFrame
@@ -59,19 +59,13 @@ class GameOverScreen: SKShapeNode {
         self.background!.fillColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 200/255.0)
         self.background!.zPosition = -2
         
-        self.myData = myData
-        
-        self.userScoreLabel = SKLabelNode();
-        self.userScoreLabel?.text = "Your Score: " + String(describing: self.myData?.score)
-        self.userScoreLabel?.color = SKColor.black
-        
         self.addChild(background!)
         self.addChild(restartCircle)
         self.addChild(menuCircle)
-        self.addChild(userScoreLabel!)
+        
     }
     
-    func initialize() {
+    func initialize(data: GameData? = nil) {
         restartCircle.position = convert(restartCircle.position, from: self.parent!)
         menuCircle.position = convert(menuCircle.position, from: self.parent!)
         
@@ -82,6 +76,22 @@ class GameOverScreen: SKShapeNode {
         menuCircle.labelNode?.fontSize = Utils.getScaledFontSize(19)
         
         globalGameState = GameState.GameOver
+        
+        self.myData = data!
+        
+        let highScore = ScoreCipher.getScore(mode: self.myData!.gameState)
+        
+        if (self.myData!.score > highScore) {
+            ScoreCipher.setScore(score: self.myData!.score, mode: self.myData!.gameState)
+        }
+        
+        self.userScoreLabel = SKLabelNode(fontNamed: "Orbitron Medium");
+        self.userScoreLabel?.text = "Your Score: " + String(describing: self.myData!.score)
+        self.userScoreLabel?.fontColor = SKColor.black
+        self.userScoreLabel?.fontSize = Utils.getScaledFontSize(23)
+        self.userScoreLabel?.position = CGPoint(x: Utils.getScreenResolution().width / 2, y: (Utils.getScreenResolution().height / 4) - ((Utils.getScreenResolution().height / 6) - (Utils.getScreenResolution().height / 4)))
+        
+        self.addChild(userScoreLabel!)
     }
 
     required init?(coder aDecoder: NSCoder) {

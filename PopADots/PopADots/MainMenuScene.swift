@@ -18,6 +18,7 @@ class MainMenuScene: SKScene {
     var isCompressing: Bool = false
     var transitionCircle: TouchCircle?
     var nextScene: SKScene?
+    var settingsButton: MenuCircle = MenuCircle(radius: Utils.scaleRadius(200), pos: CGPoint(x: Utils.getScreenResolution().width / 4, y: Utils.getScreenResolution().height - Utils.getScreenResolution().height - Utils.getScreenResolution().height / 3 + (Utils.getScreenResolution().height - Utils.getScreenResolution().height / 4 - Utils.getScreenResolution().height / 5) - 10), color: SKColor.gray, label: "Settings")
     
     override init() {
         super.init()
@@ -49,6 +50,10 @@ class MainMenuScene: SKScene {
         
         self.generateCircles()
         
+        self.settingsButton.zPosition = CGFloat(self.numBackgroundCircles + self.numCircles + 1)
+        self.settingsButton.initialize()
+        self.addChild(self.settingsButton)
+        
         print("at main menu")
         
         //print("Screen Resolution (x,y,w,h): \(Utils.getScreenResolution())")
@@ -66,6 +71,11 @@ class MainMenuScene: SKScene {
             if self.circles[i] is MenuCircle && self.circles[i].checkTouch(touchLocation) == true {
                 self.menuAction(i - numBackgroundCircles)
             }
+        }
+        
+        if self.settingsButton.checkTouch(touchLocation) == true {
+            let currentController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController!)!
+            currentController.performSegue(withIdentifier: "TransitionToSettings", sender: nil)
         }
     }
    
