@@ -14,7 +14,6 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("hello");
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,14 +21,25 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func click(_ sender: Any) {
-        let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+    @IBAction func clearDataSettings(_ sender: Any) {
+        let alert = UIAlertController(title: "Are you sure?", message: "This will permanently clear all scores stored locally and on iCloud.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive, handler: { (action: UIAlertAction!) in
+            Utils.clearUbiquitousStorage()
+            let completeAlert = UIAlertController(title: "Delete Complete", message: "Your game data has been deleted from local storage and iCloud.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            completeAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            self.present(completeAlert, animated: true, completion: nil)
+        }))
         self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func doneButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func viewCredits(_ sender: Any) {
     }
 
     /*

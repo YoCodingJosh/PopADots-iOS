@@ -247,4 +247,16 @@ class Utils {
     static func getBadPopSound() -> SKAction {
         return badPopSoundAction
     }
+    
+    static func clearUbiquitousStorage() {
+        let store: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
+        
+        let storeDict: Dictionary = store.dictionaryRepresentation
+        
+        let array: Array = Array(storeDict.keys)
+        
+        for key in array {
+            store.removeObject(forKey: key)
+        }
+    }
 }

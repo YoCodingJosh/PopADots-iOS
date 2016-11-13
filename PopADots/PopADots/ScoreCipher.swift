@@ -49,8 +49,7 @@ class ScoreCipher {
             fileName += "VOIDS"
             break
         default:
-            fileName += "WHATTHEFU"
-            break
+            return
         }
         
         fileName += ".DAT"
@@ -80,8 +79,7 @@ class ScoreCipher {
             fileName += "VOIDS"
             break
         default:
-            fileName += "WHATTHEFU"
-            break
+            return 0
         }
         
         fileName += ".DAT"
@@ -96,6 +94,12 @@ class ScoreCipher {
         
         let tempScore = Int64(scoreString, radix: 16)
         
-        return Int64(exactly: (tempScore! / 73) - 100 * 2 / 8)!;
+        let step1 = tempScore! - 1
+        let step2 = step1 / 73
+        let step3 = step2 - 100
+        let step4 = step3 * 2
+        let step5 = step4 / 8
+        
+        return step5
     }
 }
