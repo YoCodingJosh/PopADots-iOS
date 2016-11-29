@@ -56,7 +56,7 @@ class GameOverScreen: SKShapeNode {
         self.strokeColor = SKColor.clear
         
         self.background = BackgroundEffect(frame: self.frame)
-        self.background!.fillColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 200/255.0)
+        self.background!.fillColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 212/255.0)
         self.background!.zPosition = -2
         
         self.addChild(background!)
@@ -80,18 +80,41 @@ class GameOverScreen: SKShapeNode {
         self.myData = data!
         
         let highScore = ScoreCipher.getScore(mode: self.myData!.gameState)
+        var isNewHighScore: Bool = false
         
         if (self.myData!.score > highScore) {
             ScoreCipher.setScore(score: self.myData!.score, mode: self.myData!.gameState)
+            isNewHighScore = true
         }
         
-        self.userScoreLabel = SKLabelNode(fontNamed: "Orbitron Medium");
-        self.userScoreLabel?.text = "Your Score: " + String(describing: self.myData!.score)
+        self.userScoreLabel = SKLabelNode(fontNamed: "Orbitron Medium")
+        self.userScoreLabel?.text = (isNewHighScore ? "New Score: " : "Your Score: ") + String(describing: self.myData!.score)
         self.userScoreLabel?.fontColor = SKColor.black
         self.userScoreLabel?.fontSize = Utils.getScaledFontSize(23)
         self.userScoreLabel?.position = CGPoint(x: Utils.getScreenResolution().width / 2, y: (Utils.getScreenResolution().height / 4) - ((Utils.getScreenResolution().height / 6) - (Utils.getScreenResolution().height / 4)))
         
+        
+        self.highScoreLabel = SKLabelNode(fontNamed: "Orbitron Medium")
+        self.highScoreLabel?.text = (isNewHighScore ? "Old Score: " : "High Score: ") + String(describing: highScore)
+        self.highScoreLabel?.fontColor = SKColor.black
+        self.highScoreLabel?.fontSize = Utils.getScaledFontSize(23)
+        self.highScoreLabel?.position = CGPoint(x: Utils.getScreenResolution().width / 2, y: (Utils.getScreenResolution().height / 4) - ((Utils.getScreenResolution().height / 6) - (Utils.getScreenResolution().height / 3)))
+        
+        var congratsLabel: SKLabelNode? = nil
+        
+        if (isNewHighScore) {
+            congratsLabel = SKLabelNode(fontNamed: "Orbitron Medium")
+            congratsLabel?.text = "You got a new high score!"
+            congratsLabel?.fontSize = Utils.getScaledFontSize(20)
+            congratsLabel?.fontColor = SKColor.black
+            congratsLabel?.position = CGPoint(x: Utils.getScreenResolution().width / 2, y: Utils.getScreenResolution().height / 2)
+            
+            
+            self.addChild(congratsLabel!)
+        }
+        
         self.addChild(userScoreLabel!)
+        self.addChild(highScoreLabel!)
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -249,6 +249,8 @@ class Utils {
     }
     
     static func clearUbiquitousStorage() {
+        print("Clearing Ubiquitous Storage...")
+        
         let store: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
         
         let storeDict: Dictionary = store.dictionaryRepresentation
@@ -258,5 +260,7 @@ class Utils {
         for key in array {
             store.removeObject(forKey: key)
         }
+        
+        print("Cleared Ubiquitous Storage!")
     }
 }

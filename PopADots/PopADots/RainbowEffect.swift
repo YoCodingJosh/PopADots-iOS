@@ -94,7 +94,7 @@ class RainbowEffect: BackgroundEffect {
                 else {
                     r -= 1
                     
-                    if (r == 0) {
+                    if (r <= 0) {
                         green = true
                         purple = true
                         colorIncrement = true
